@@ -1,18 +1,36 @@
+# name
 NAME = so_long
 
-CC = @CC
+# compiler
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
+INCLUDE = 
+LIB = -Lminilibx-linux -lmlx_Linux -lX11 -lXext
 
-# all: $(NAME)
+#auxiliary commands
+RM = rm
 
-# $(NAME): 
+SRCS = so_long.c
+OBJ = $(SRCS:.c=.o)
 
-# %.c: %.o
+all: $(NAME)
 
-# clean:
+$(NAME): 
+	$(CC) $(CFLAGS) $(SRCS) $(INCLUDE) $(LIB) -o $(NAME)
 
-# fclean:
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# re:
+clean:
+	$(RM) $(OBJ)
 
-.PHONY: all clean fclean re
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
+
+# test section
+test: all
+	./$(NAME)
+
+.PHONY: all clean fclean re test
