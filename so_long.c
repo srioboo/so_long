@@ -21,7 +21,7 @@ int	main(void)
 	if (!mlx_conn)
 		return (1);
 	mlx_window = mlx_new_window(mlx_conn, 200, 200, "so long");
-	if (mlx_window)
+	if (!mlx_window)
 	{
 		mlx_destroy_display(mlx_conn);
 		free(mlx_conn);

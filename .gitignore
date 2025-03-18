@@ -51,5 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# ignore minilib files
+# ignore minilib files and exec
 minilib*
+so_long
