@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/18 13:07:40 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:30:22 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	main(void)
 {
-	void *mlx_conn;
-	void *mlx_window;
-	
+	void	*mlx_conn;
+	void	*mlx_window;
+
 	mlx_conn = mlx_init();
 	if (!mlx_conn)
 		return (1);
-	mlx_window = mlx_new_window(mlx_conn, 200, 200, "so long");
+	mlx_window = mlx_new_window(mlx_conn, W_WIDTH, W_HEIGHT, "So long");
 	if (!mlx_window)
 	{
 		mlx_destroy_display(mlx_conn);
