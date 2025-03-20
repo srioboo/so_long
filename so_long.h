@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/19 17:31:38 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/20 09:22:43 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,17 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "minilibx-linux/mlx.h"
 
-# define W_HEIGHT	800
-# define W_WIDTH	800
+// TODO - delete
+# include <stdio.h>
+
+# define W_HEIGHT	1080
+# define W_WIDTH	1920
+
+typedef struct s_vars
+{
+	void	*mlx;
+	void	*win;
+}	t_vars;
 
 #endif

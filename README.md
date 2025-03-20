@@ -11,6 +11,10 @@
 - go to main directorio and do 'make'
 - 'make test' for testing
 
+# utils
+
+- **sudo showkey -k** show preset key
+
 # Resources
 
 https://harm-smits.github.io/42docs/
