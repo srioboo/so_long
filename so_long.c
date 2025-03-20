@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/20 16:54:06 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/20 20:31:24 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,20 @@ int	main(void)
 	img.img = mlx_new_image(vars.mlx, W_WIDTH, W_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
-	my_mlx_pixel_put(&img, 50, 50, 0x00FF0000);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 100, 100);
+	my_mlx_pixel_put(&img, 50, 5, 0x00FF0000);
+	my_mlx_pixel_put(&img, 60, 5, 0x00FF0000);
+	my_mlx_pixel_put(&img, 70, 5, 0x00FF0000);
+
+	int x = 50;
+	int y = 50;
+ 	while (x < 100 && y < 100) 
+	{
+		my_mlx_pixel_put(&img, x, y, 0x000000FF);
+		x++;
+		y++;
+	}
+
+	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 
 	mlx_hook(vars.win, 2, 1L<<0, close_so_long, &vars);
 	// mlx_key_hook(vars.win, close_so_long, &vars);
