@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/20 16:52:00 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/20 23:53:17 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "mlx_linux/mlx.h"
+
+# include "so_colors.h"
+# include "so_keys.h"
 
 // TODO - delete
 # include <stdio.h>
@@ -29,12 +32,28 @@ typedef struct s_vars
 	void	*win;
 }	t_vars;
 
-typedef struct s_data {
+typedef struct s_data
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 }	t_data;
+
+/**
+ * @brief Draw a pixel
+ */
+void	draw_pixel(t_data *data, int x, int y, int color);
+
+// TODO - create struct tipe vector to store x and y
+void	draw_line(t_data *data, int x, int y, int x1, int y1, int color);
+
+/**
+ * @brief Close the window
+ * 
+ * @details Close the window when the ESC key is pressed
+ */
+int		close_window(int keycode, t_vars *vars);
 
 #endif
