@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/20 23:53:17 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/21 09:50:27 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "mlx_linux/mlx.h"
+# include "mlx.h"
 
 # include "so_colors.h"
 # include "so_keys.h"

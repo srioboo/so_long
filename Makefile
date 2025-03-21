@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/03/20 23:47:27 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/03/21 09:50:13 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,6 @@ NAME = so_long
 # compiler
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-INCLUDE = -I/usr/include -Imlx-linux
-LIB = -Lmlx-linux -lmlx_Linux -lXext -lX11 -lm -lz
 
 #auxiliary commands
 RM = rm
@@ -29,17 +27,11 @@ OBJ = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-# $(NAME): $(OBJ)
-#	$(CC) $(OBJ) $(INCLUDE) $(LIB) -o $(NAME)
-
-# %.o: %.c
-#	$(CC) $(CFLAGS) $(INCLUDE) -03 -c $< -o $@
-
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx-linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx-linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -Iinclude -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
