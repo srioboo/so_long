@@ -13,8 +13,10 @@
 
 # utils
 
-- **sudo showkey -k** show preset key
+- **sudo showkey -k** show pressed key (-a for ascii)
+- **convert svg to png**: mogrify -format png *.svg or mogrify -format xpm *.svg
 
 # Resources
 
 https://harm-smits.github.io/42docs/
+https://iconoir.com/
