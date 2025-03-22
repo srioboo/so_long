@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/03/21 09:50:13 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/03/22 23:35:59 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,4 +45,18 @@ re: fclean all
 test: all
 	./$(NAME)
 
-.PHONY: all clean fclean re test
+tclean: clean
+	$(RM) $(NAME)
+
+# detect memory leaks
+sane: $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) -fsanitize=address,undefined -g
+	./$(NAME)
+
+val: all
+	valgrind --leak-check=full ./$(NAME)
+
+vall: all
+	valgrind --leak-check=full --verbose --track-origins=yes --log-file=leaks.txt ./$(NAME)
+
+.PHONY: all clean fclean re sane val vall test tclean
