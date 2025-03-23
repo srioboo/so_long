@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/03/22 23:38:01 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/03/23 19:59:38 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ RM = rm
 
 SRCS = so_long.c \
 		so_mngmt.c \
+		so_scene.c \
+		so_player.c \
 		so_draw.c
 OBJ = $(SRCS:.c=.o)
 
