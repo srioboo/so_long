@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/23 20:04:41 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/24 11:52:31 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,12 @@ int		close_window(int keycode, t_vars *vars);
 int		draw_scene(t_vars vars);
 
 int		draw_scene_test(t_vars vars);
+
+/**
+ * @brief Draw the player
+ * 
+ * @details Draw the player with the images
+ */
+int		draw_player(t_vars vars);
 
 #endif

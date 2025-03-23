@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/23 20:57:15 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/24 11:48:49 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	draw_scene(t_vars vars)
 	int		img_width;
 	int		img_height;
 
-	relative_path = "./img/xmark-white.xpm";
-	// relative_path = "./img/world_tilset.png";
+	// relative_path = "./img/xmark-white.xpm";
+	relative_path = "./img/slime_green.xpm";
 	// TODO - texture to image require OPENGL
 	//img.img = mlx_texture_to_image(vars.mlx, relative_path, 
 	//	&img_width, &img_height);

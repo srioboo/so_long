@@ -1,5 +1,5 @@
 /* XPM */
-static const char *world_tileset[] = {
+static char *world_tileset[] = {
 /* columns rows colors chars-per-pixel */
 "256 256 51 1 ",
 "  c #120C0A",

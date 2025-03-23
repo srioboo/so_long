@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/23 20:19:35 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/24 11:55:25 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	draw_player(t_vars vars)
 	int		img_width;
 	int		img_height;
 
-	relative_path = "./resources/img/xmark-white.png";
+	img_width = 5;
+	img_height = 5;
+	relative_path = "./img/knight.xpm";
 	img.img = mlx_xpm_file_to_image(vars.mlx, relative_path,
 			&img_width, &img_height);
 	result = mlx_put_image_to_window(vars.mlx, vars.win, img.img,

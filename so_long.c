@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/23 20:08:28 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/24 11:50:15 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(void)
 	}
 	// draw_scene_test(vars);
 	draw_scene(vars);
+	draw_player(vars);
 
 	// HOOKS
 	mlx_hook(vars.win, 2, 1L<<0, close_window, &vars);
