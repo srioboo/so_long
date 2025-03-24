@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/24 11:55:25 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/24 12:09:52 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,17 @@ int	draw_player(t_vars vars)
 	return (result);
 }
 
-int	move_character(int keycode, t_vars *vars)
+static void	move(t_vars vars, t_data img, int amount_x, int amount_y)
+{
+	mlx_put_image_to_window(vars.mlx, vars.win, img.img,
+		800 + amount_x, 100 + amount_y);
+}
+
+int	move_player(int keycode, t_vars *vars, t_data *img)
 {
 	printf("keycode: %d %p\n", keycode, vars->win);
 	if (keycode == KEY_RIGHT)
-		printf("move: %d\n", keycode);
+		move(*vars, *img, 10, 0);//printf("move: %d\n", keycode);
 	if (keycode == KEY_LEFT)
 		printf("move: %d\n", keycode);
 	if (keycode == KEY_UP)

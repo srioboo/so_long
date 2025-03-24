@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/24 11:50:15 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/24 12:02:35 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(void)
 	// HOOKS
 	mlx_hook(vars.win, 2, 1L<<0, close_window, &vars);
 	// mlx_hook(vars.win, 4, 1L<<2, test_hooks, &vars);
-	// mlx_key_hook(vars.win, close_window, &vars);
+	mlx_key_hook(vars.win, move_player, &vars);
 
 	mlx_loop(vars.mlx);
 	return (0);
