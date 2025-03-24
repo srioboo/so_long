@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/03/24 18:11:10 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/03/24 23:26:16 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,7 @@ CFLAGS = -Wall -Wextra -Werror
 #auxiliary commands
 RM = rm
 
-SRCS = so_long.c \
-		so_mngmt.c \
-		so_scene.c \
-		so_player.c \
-		so_draw.c
+SRCS = so_long.c 
 OBJ = $(SRCS:.c=.o)
 
 all: $(NAME)
