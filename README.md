@@ -18,5 +18,7 @@
 
 # Resources
 
-https://harm-smits.github.io/42docs/
-https://iconoir.com/
+- https://harm-smits.github.io/42docs/
+- https://iconoir.com/
+- https://github.com/codam-coding-college/MLX42
+- https://itch.io/
