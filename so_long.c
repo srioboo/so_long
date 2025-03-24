@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/24 12:02:35 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:16:22 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 {
 	t_vars	vars;
 
-	vars.mlx = mlx_init();
+	vars.mlx = mlx_init(W_WIDTH, W_HEIGHT, "So long", true);
 	if (!vars.mlx)
 		return (1);
 	vars.win = mlx_new_window(vars.mlx, W_WIDTH, W_HEIGHT, "So long");

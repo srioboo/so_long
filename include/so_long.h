@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/24 12:08:25 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:14:20 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "mlx.h"
+# include <MLX42/MLX42.h>
 
 # include "so_colors.h"
 # include "so_keys.h"
@@ -23,8 +23,8 @@
 // TODO - delete
 # include <stdio.h>
 
-# define W_HEIGHT	1080
-# define W_WIDTH	1920
+# define W_HEIGHT	512
+# define W_WIDTH	512
 
 typedef struct s_vars
 {
