@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/24 23:27:24 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:53:47 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void ft_randomize(void* param)
 	}
 }
 
-void ft_hook(void* param)
+void	ft_hook(void *param)
 {
-	mlx_t* mlx = param;
+	mlx_t	*mlx = param;
 
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
@@ -57,9 +57,9 @@ void ft_hook(void* param)
 
 // -----------------------------------------------------------------------------
 
-int32_t main(void)
+int32_t	main(void)
 {
-	mlx_t* mlx;
+	mlx_t	*mlx;
 
 	// Gotta error check this stuff
 	if (!(mlx = mlx_init(W_WIDTH, W_HEIGHT, "MLX42", true)))
@@ -79,7 +79,7 @@ int32_t main(void)
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
 	}
-	
+
 	mlx_loop_hook(mlx, ft_randomize, mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 

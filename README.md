@@ -16,6 +16,14 @@
 - **sudo showkey -k** show pressed key (-a for ascii)
 - **convert svg to png**: mogrify -format png *.svg or mogrify -format xpm *.svg
 
+# compile library MLX42
+
+```shell
+cd MLX42
+cmake -B build # build here refers to the outputfolder.
+cmake --build build -j4 # or do make -C build -j4
+```
+
 # Resources
 
 - https://harm-smits.github.io/42docs/

@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/03/24 23:26:16 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/03/26 15:55:27 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,12 +31,17 @@ all: $(NAME)
 # %.o: %.c
 # 	$(CC) $(CFLAGS) -Iinclude -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
+# $(NAME): $(OBJ)
+# 	$(CC) $(CFLAGS) $(OBJ) -I/usr/local/include -LMLX42/build -l:libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
+
+# %.o: %.c
+# 	$(CC) $(CFLAGS) -I/usr/local/include -LMLX42/build -l:libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -O3 -c $< -o $@
+
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -I/usr/local/include libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -I/usr/local/include -LMLX42/build -l:libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I/usr/local/include libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -O3 -c $< -o $@
-
+	$(CC) $(CFLAGS) -I/usr/local/include -LMLX42/build -l:libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -O3 -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
