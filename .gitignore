@@ -55,3 +55,4 @@ dkms.conf
 minilib*
 # mlx_linux*
 so_long
+MLX42/build
