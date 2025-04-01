@@ -53,5 +53,5 @@ dkms.conf
 
 # ignore minilib files and exec
 minilib*
-mlx_linux*
+# mlx_linux*
 so_long
