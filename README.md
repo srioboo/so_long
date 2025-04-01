@@ -16,9 +16,15 @@
 - **sudo showkey -k** show pressed key (-a for ascii)
 - **convert svg to png**: mogrify -format png *.svg or mogrify -format xpm *.svg
 
+- scale image
+	convert small.xpm -scale 16x16 bigger.xpm
+
 # Resources
 
 - https://harm-smits.github.io/42docs/
 - https://iconoir.com/
 - https://github.com/codam-coding-college/MLX42
 - https://itch.io/
+- https://convertio.co/
+- https://www.freepik.com/
+
