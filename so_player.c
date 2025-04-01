@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/01 10:48:08 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/01 19:57:52 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	draw_player(t_vars vars)
 
 	img_width = 5;
 	img_height = 5;
-	relative_path = "./img/dolphin_16x16.xpm";
+	relative_path = "./img/dolphin_64x64.xpm";
 	img.img = mlx_xpm_file_to_image(vars.mlx, relative_path,
 			&img_width, &img_height);
 	result = mlx_put_image_to_window(vars.mlx, vars.win, img.img,
