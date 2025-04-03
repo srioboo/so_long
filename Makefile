@@ -6,48 +6,42 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/03/26 15:55:27 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/04/03 23:28:13 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # name
-NAME = so_long
+NAME 	= so_long
 
 # compiler
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CC 		= cc
+# CFLAGS = -Wall -Wextra -Werror
+CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+LIBMLX	:= ./MLX42
 
-#auxiliary commands
-RM = rm
+HEADERS	= -I ./include -I $(LIBMLX)/include
+LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+# SRCS	= so_draw.c  so_long.c  so_mngmt.c  so_player.c  so_scene.c
+SRCS	= so_long.c
+OBJS	= $(SRCS:.c=.o)
 
-SRCS = so_long.c 
-OBJ = $(SRCS:.c=.o)
+all: libmlx $(NAME)
 
-all: $(NAME)
-
-# $(NAME): $(OBJ)
-# 	$(CC) $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-
-# %.o: %.c
-# 	$(CC) $(CFLAGS) -Iinclude -I/usr/include -Imlx_linux -O3 -c $< -o $@
-
-# $(NAME): $(OBJ)
-# 	$(CC) $(CFLAGS) $(OBJ) -I/usr/local/include -LMLX42/build -l:libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
-
-# %.o: %.c
-# 	$(CC) $(CFLAGS) -I/usr/local/include -LMLX42/build -l:libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -O3 -c $< -o $@
-
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -I/usr/local/include -LMLX42/build -l:libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
+libmlx:
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I/usr/local/include -LMLX42/build -l:libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -O3 -c $< -o $@
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
+
+$(NAME): $(OBJS)
+	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
 clean:
-	$(RM) $(OBJ)
+	@rm -rf $(OBJS)
+	@rm -rf $(LIBMLX)/build
 
 fclean: clean
-	$(RM) $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 
@@ -59,8 +53,8 @@ tclean: clean
 	$(RM) $(NAME)
 
 # detect memory leaks
-sane: $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) -fsanitize=address,undefined -g
+sane: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) -fsanitize=address,undefined -g
 	./$(NAME)
 
 val: all
@@ -69,4 +63,4 @@ val: all
 vall: all
 	valgrind --leak-check=full --verbose --track-origins=yes --log-file=leaks.txt ./$(NAME)
 
-.PHONY: all clean fclean re sane val vall test tclean
+.PHONY: all, clean, fclean, re, sane, val, vall, test, tclean, libmlx
