@@ -6,13 +6,40 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/24 11:48:49 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/06 19:43:29 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	draw_scene(t_vars vars)
+// TODO - refactor
+static void error(void)
+{
+	puts(mlx_strerror(mlx_errno));
+	exit(EXIT_FAILURE);
+}
+
+int	draw_scene(mlx_t *mlx)
+{
+	int				result;
+	char			*relative_path;
+	mlx_image_t		*img;
+	mlx_texture_t	*texture;
+
+	relative_path = "./img/png/wall_32x32.png";
+	texture = mlx_load_png(relative_path);
+	if (!texture)
+		error();
+	img = mlx_texture_to_image(mlx, texture);
+	if (!img)
+		error();
+	result = mlx_image_to_window(mlx, img, 0, 0);
+	if (result < 0)
+		error();
+	return (result);
+}
+
+/*int	draw_scene(t_vars vars)
 {
 	t_data	img;
 	int		result;
@@ -30,14 +57,14 @@ int	draw_scene(t_vars vars)
 	result = mlx_put_image_to_window(vars.mlx, vars.win, img.img,
 			0, 0);
 	return (result);
-}
+}*/
 
-int	draw_scene_test(t_vars vars)
+/*int	draw_scene_test(t_vars vars)
 {
 	t_data	img;
 	int		result;
 
-	img.img = mlx_new_image(vars.mlx, W_WIDTH, W_HEIGHT);
+	img.img = mlx_new_image(vars.mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
 	draw_pixel(&img, 50, 5, C_RED);
@@ -46,4 +73,4 @@ int	draw_scene_test(t_vars vars)
 	draw_line(&img, 50, 50, 500, 500, C_BLUE);
 	result = mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	return (result);
-}
+}*/

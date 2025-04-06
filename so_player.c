@@ -6,30 +6,39 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/24 12:09:52 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/06 19:51:40 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	draw_player(t_vars vars)
+static void error(void)
 {
-	t_data	img;
-	int		result;
-	char	*relative_path;
-	int		img_width;
-	int		img_height;
+	puts(mlx_strerror(mlx_errno));
+	exit(EXIT_FAILURE);
+}
 
-	img_width = 5;
-	img_height = 5;
-	relative_path = "./img/knight.xpm";
-	img.img = mlx_xpm_file_to_image(vars.mlx, relative_path,
-			&img_width, &img_height);
-	result = mlx_put_image_to_window(vars.mlx, vars.win, img.img,
-			800, 100);
+int	draw_player(mlx_t *mlx)
+{
+	int				result;
+	char			*relative_path;
+	mlx_image_t		*img;
+	mlx_texture_t	*texture;
+
+	relative_path = "./img/png/dolphin_32x32.png";
+	texture = mlx_load_png(relative_path);
+	if (!texture)
+		error();
+	img = mlx_texture_to_image(mlx, texture);
+	if (!img)
+		error();
+	result = mlx_image_to_window(mlx, img, 30, 30);
+	if (result < 0)
+		error();
 	return (result);
 }
 
+/* TODO - enable moviment
 static void	move(t_vars vars, t_data img, int amount_x, int amount_y)
 {
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img,
@@ -49,3 +58,4 @@ int	move_player(int keycode, t_vars *vars, t_data *img)
 		printf("move: %d\n", keycode);
 	return (0);
 }
+*/

@@ -6,25 +6,28 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/03/24 18:14:20 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/06 19:47:23 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <unistd.h>
 # include <stdlib.h>
-# include <MLX42/MLX42.h>
+# include <unistd.h>
+// # include <MLX42/MLX42.h>
+# include "MLX42/MLX42.h"
 
 # include "so_colors.h"
 # include "so_keys.h"
 
-// TODO - delete
+// TODO - delete or NOT?
 # include <stdio.h>
 
-# define W_HEIGHT	512
-# define W_WIDTH	512
+# define WIDTH	512
+# define HEIGHT	512
+// # define WIDTH 256
+// # define HEIGHT 256
 
 typedef struct s_vars
 {
@@ -66,16 +69,17 @@ int		close_window(int keycode, t_vars *vars);
  * 
  * @details Draw the scene with the images
  */
-int		draw_scene(t_vars vars);
+int		draw_scene(mlx_t *mlx);
 
-int		draw_scene_test(t_vars vars);
+// TODO - Create with main test
+// int		draw_scene_test(t_vars vars);
 
 /**
  * @brief Draw the player
  * 
  * @details Draw the player with the images
  */
-int		draw_player(t_vars vars);
+int		draw_player(mlx_t *mlx);
 
 /**
  * @brief Move the player

@@ -15,6 +15,7 @@
 
 - **sudo showkey -k** show pressed key (-a for ascii)
 - **convert svg to png**: mogrify -format png *.svg or mogrify -format xpm *.svg
+- **scale image**: convert small.xpm -scale 16x16 bigger.xpm
 
 # compile library MLX42
 
@@ -30,3 +31,5 @@ cmake --build build -j4 # or do make -C build -j4
 - https://iconoir.com/
 - https://github.com/codam-coding-college/MLX42
 - https://itch.io/
+- https://convertio.co/
+- https://www.freepik.com/
