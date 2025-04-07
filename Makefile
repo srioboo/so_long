@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/04/06 19:50:22 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/04/07 10:36:41 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,7 @@ LIBMLX	:= ./MLX42
 
 HEADERS	= -I ./include -I $(LIBMLX)/include
 LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-# SRCS	= so_draw.c  so_long.c  so_mngmt.c  so_player.c  so_scene.c
-SRCS	= so_long.c so_draw.c so_scene.c so_player.c
+SRCS	= so_long.c so_draw.c so_scene.c so_player.c so_mngmt.c
 OBJS	= $(SRCS:.c=.o)
 
 all: libmlx $(NAME)

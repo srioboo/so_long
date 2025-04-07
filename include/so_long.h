@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/06 19:47:23 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/07 12:48:43 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@
 # include "MLX42/MLX42.h"
 
 # include "so_colors.h"
-# include "so_keys.h"
 
 // TODO - delete or NOT?
 # include <stdio.h>
 
-# define WIDTH	512
-# define HEIGHT	512
-// # define WIDTH 256
-// # define HEIGHT 256
+// SD size 1280 x 720
+# define WIDTH	1280
+# define HEIGHT	720
+
+// HD size 1920×1080
+# define HD_WIDTH	1920
+# define HD_HEIGHT	1080
 
 typedef struct s_vars
 {
@@ -47,10 +49,10 @@ typedef struct s_data
 /**
  * @brief Draw a pixel
  */
-void	draw_pixel(t_data *data, int x, int y, int color);
+void	draw_pixel(mlx_image_t *img, int x, int y, int color);
 
 // TODO - create struct tipe vector to store x and y
-void	draw_line(t_data *data, int x, int y, int x1, int y1, int color);
+void	draw_line(mlx_image_t *img, int x, int y, int x1, int y1, int color);
 
 /**
  * @brief Close the window
@@ -71,8 +73,10 @@ int		close_window(int keycode, t_vars *vars);
  */
 int		draw_scene(mlx_t *mlx);
 
-// TODO - Create with main test
-// int		draw_scene_test(t_vars vars);
+/**
+ * @brief Draw for testing purposes
+ */
+int		draw_scene_test(mlx_t *mlx);
 
 /**
  * @brief Draw the player
@@ -84,6 +88,11 @@ int		draw_player(mlx_t *mlx);
 /**
  * @brief Move the player
  */
-int		move_player(int keycode, t_vars *vars, t_data *img);
+void		move_player(mlx_key_data_t keydata, void *param);
+
+/**
+ * @brief Error management
+ */
+void	error(void);
 
 #endif

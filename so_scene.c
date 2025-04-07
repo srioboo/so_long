@@ -6,18 +6,11 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/06 19:43:29 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/07 12:28:27 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// TODO - refactor
-static void error(void)
-{
-	puts(mlx_strerror(mlx_errno));
-	exit(EXIT_FAILURE);
-}
 
 int	draw_scene(mlx_t *mlx)
 {
@@ -26,6 +19,7 @@ int	draw_scene(mlx_t *mlx)
 	mlx_image_t		*img;
 	mlx_texture_t	*texture;
 
+	// TODO - add map to draw the complete map
 	relative_path = "./img/png/wall_32x32.png";
 	texture = mlx_load_png(relative_path);
 	if (!texture)
@@ -39,38 +33,22 @@ int	draw_scene(mlx_t *mlx)
 	return (result);
 }
 
-/*int	draw_scene(t_vars vars)
+int	draw_scene_test(mlx_t *mlx)
 {
-	t_data	img;
-	int		result;
-	char	*relative_path;
-	int		img_width;
-	int		img_height;
+	mlx_image_t	*img;
+	int			result;
 
-	// relative_path = "./img/xmark-white.xpm";
-	relative_path = "./img/slime_green.xpm";
-	// TODO - texture to image require OPENGL
-	//img.img = mlx_texture_to_image(vars.mlx, relative_path, 
-	//	&img_width, &img_height);
-	img.img = mlx_xpm_file_to_image(vars.mlx, relative_path,
-		&img_width, &img_height);
-	result = mlx_put_image_to_window(vars.mlx, vars.win, img.img,
-			0, 0);
+	// TODO - not working
+	img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	draw_pixel(img, 50, 5, C_RED);
+	draw_pixel(img, 60, 5, C_GREEN);
+	draw_pixel(img, 70, 5, C_BLUE);
+	// TODO - throw an error
+	// draw_line(img, 50, 50, 500, 500, C_BLUE);
+	for (uint32_t x = 0; x < img->width; x++)
+		for(uint32_t y= 0; y < img->height; y++)
+			mlx_put_pixel(img, x, y, rand() % RAND_MAX);
+
+	result = mlx_image_to_window(mlx, img, 100, 100);
 	return (result);
-}*/
-
-/*int	draw_scene_test(t_vars vars)
-{
-	t_data	img;
-	int		result;
-
-	img.img = mlx_new_image(vars.mlx, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-			&img.line_length, &img.endian);
-	draw_pixel(&img, 50, 5, C_RED);
-	draw_pixel(&img, 60, 5, C_GREEN);
-	draw_pixel(&img, 70, 5, C_BLUE);
-	draw_line(&img, 50, 50, 500, 500, C_BLUE);
-	result = mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	return (result);
-}*/
+}
