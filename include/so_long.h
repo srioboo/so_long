@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/07 16:10:35 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/12 09:54:59 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
-// # include <MLX42/MLX42.h>
-# include "MLX42/MLX42.h"
+# include <MLX42/MLX42.h>
+// # include "MLX42/MLX42.h"
+# include "libft.h"
+# include "get_next_line.h"
+# include "ft_printf.h"
 
 # include "so_colors.h"
 

@@ -6,19 +6,36 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/07 20:19:59 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/12 09:30:37 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+# include <fcntl.h>
 
-// #define BPP sizeof(int32_t)
-
-/*static int get_rgba(int r, int g, int b, int a)
+// TODO - load map from file
+static void	load_map()
 {
-    return (r << 24 | g << 16 | b << 8 | a);
-}*/
+	char	*line;
+	int		fd;
+	int		end;
+
+	end = 1;
+	fd = open("map.ber", O_RDONLY);
+	// printf("=== [%s] === \n\n", file);
+	while (end == 1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			end = 0;
+		printf("%s", line);
+		free(line);
+		line = NULL;
+	}
+	//printf("\n\n======================\n\n");
+	close(fd);
+}
 
 static int	draw_ocean(mlx_t *mlx)
 {
@@ -67,6 +84,9 @@ static int	draw_wall(mlx_t *mlx)
 int	draw_scene(mlx_t *mlx)
 {
 	int				result;
+
+	// TODO TEST - draw ocean -> need import libft
+	load_map();
 
 	result = draw_ocean(mlx);
 	result = draw_wall(mlx);
