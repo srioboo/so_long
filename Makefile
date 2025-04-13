@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/04/12 09:52:04 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/04/13 15:45:18 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,8 @@ re: fclean all
 libft-clean:
 	@make -C ./libft fclean
 
+full-clean: libft-clean fclean
+
 # test section
 test: all
 	./$(NAME)
@@ -71,4 +73,4 @@ val: all
 vall: all
 	valgrind --leak-check=full --verbose --track-origins=yes --log-file=leaks.txt ./$(NAME)
 
-.PHONY: all clean fclean re sane val vall test tclean libmlx libft libft-clean
+.PHONY: all clean fclean re sane val vall test tclean libmlx libft libft-clean full-clean
