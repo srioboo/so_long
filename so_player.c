@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/11 22:18:39 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/16 10:20:49 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void	move_player(mlx_key_data_t keydata, void *param)
 	if ((keydata.key == MLX_KEY_S) || (keydata.key == MLX_KEY_DOWN))
 		move(0, step);
 	//if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE)) // This doesnt work
-	if ((keydata.key == MLX_KEY_ESCAPE))
+	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(mlx);
 }
