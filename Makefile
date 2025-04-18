@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/04/13 15:45:18 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/04/18 18:44:40 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,13 @@ HEADERS	= -I ./include -I $(LIBMLX)/include \
 		-I $(LIBFT)/src -I $(LIBFT)/get_next_line -I $(LIBFT)/ft_printf
 LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIBSFT	= $(LIBFT)/libft.a
-SRCS	= so_long.c so_draw.c so_scene.c so_player.c so_mngmt.c
+SRCS	= so_long.c \
+	so_draw.c \
+	so_scene.c \
+	so_player.c \
+	so_mngmt.c \
+	so_wall.c \
+	so_ocean.c
 OBJS	= $(SRCS:.c=.o)
 
 all: libmlx libft $(NAME)
@@ -36,7 +42,7 @@ libft:
 	@make -C $(LIBFT) full
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) -o $(NAME)

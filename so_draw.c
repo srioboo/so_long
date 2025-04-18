@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/07 12:21:28 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/18 18:08:09 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 void	draw_pixel(mlx_image_t *img, int x, int y, int color)
 {
-	// char	*dst;
-
-	// dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	// *(unsigned int *)dst = color;
 	mlx_put_pixel(img, x, y, color);
 }
 
@@ -34,7 +30,7 @@ void	draw_square(int keycode)
 void	draw_line(mlx_image_t *img, int x, int y, int x1, int y1, int color)
 {
 	while (x < x1 && y < y1)
-		mlx_put_pixel(img, x, y, color); // draw_pixel(data, x++, y++, color);
+		mlx_put_pixel(img, x, y, color);
 }
 
 void	draw_circle(int keycode)

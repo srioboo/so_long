@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/13 18:26:40 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/18 18:39:37 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,44 +51,38 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
+/* ************************************************************************** */
+/* DRAW                                                                      */
+/* ************************************************************************** */
+
 /**
  * @brief Draw a pixel
  */
-void	draw_pixel(mlx_image_t *img, int x, int y, int color);
+void		draw_pixel(mlx_image_t *img, int x, int y, int color);
 
 // TODO - create struct tipe vector to store x and y
-void	draw_line(mlx_image_t *img, int x, int y, int x1, int y1, int color);
+void		draw_line(mlx_image_t *img, int x, int y, int x1, int y1, int color);
 
-/**
- * @brief Close the window
- * 
- * @details Close the window when the ESC key is pressed
- */
-int		close_window(int keycode, t_vars *vars);
+//int		close_window(int keycode, t_vars *vars);
 
 
-/** 
- * SCENE
-*/
+/* ************************************************************************** */
+/* SCENE                                                                      */
+/* ************************************************************************** */
 
 /**
  * @brief Draw the scene
  * 
  * @details Draw the scene with the images
  */
-int		draw_scene(mlx_t *mlx);
-
-/**
- * @brief Draw for testing purposes
- */
-int		draw_scene_test(mlx_t *mlx);
+int			draw_scene(mlx_t *mlx);
 
 /**
  * @brief Draw the player
  * 
  * @details Draw the player with the images
  */
-int		draw_player(mlx_t *mlx);
+int			draw_player(mlx_t *mlx);
 
 /**
  * @brief Move the player
@@ -98,6 +92,22 @@ void		move_player(mlx_key_data_t keydata, void *param);
 /**
  * @brief Error management
  */
-void	error(void);
+void		error(void);
+
+/* ************************************************************************** */
+/* WALL                                                                       */
+/* ************************************************************************** */
+
+mlx_image_t	*get_wall(mlx_t *mlx);
+
+int			draw_wall(mlx_t *mlx, mlx_image_t *img_wall, char *line, int y);
+
+/* ************************************************************************** */
+/* WALL                                                                       */
+/* ************************************************************************** */
+
+mlx_image_t	*get_ocean(mlx_t *mlx);
+
+int			draw_ocean(mlx_t *mlx, mlx_image_t *img_ocean, char *line, int y);
 
 #endif
