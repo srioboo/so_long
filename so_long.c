@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/11 22:26:14 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/18 21:47:29 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 int32_t	main(void)
 {
-	mlx_t	*mlx;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
 
 	mlx_set_setting(MLX_MAXIMIZED, false);
 	mlx = mlx_init(HD_WIDTH, HD_HEIGHT, "So long", true);
 	if (!mlx)
 		error();
 	draw_scene(mlx);
-	draw_player(mlx);
-	mlx_key_hook(mlx, &move_player, NULL);
+	img = draw_player(mlx);
+	mlx_key_hook(mlx, &move_player, img);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);

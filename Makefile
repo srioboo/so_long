@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/04/18 18:44:40 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/04/18 21:56:16 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ libft:
 	@make -C $(LIBFT) full
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
+	$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+	printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) -o $(NAME)

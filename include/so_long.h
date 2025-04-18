@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/18 18:39:37 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/18 20:28:49 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int			draw_scene(mlx_t *mlx);
  * 
  * @details Draw the player with the images
  */
-int			draw_player(mlx_t *mlx);
+mlx_image_t	*draw_player(mlx_t *mlx);
 
 /**
  * @brief Move the player
