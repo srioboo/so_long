@@ -11,12 +11,18 @@
 				"-fdiagnostics-color=always",
 				"-g",
 				// files to include in the debugging
-				"*.c",
-				"-Lmlx_linux", "-lmlx_Linux", "-L/usr/lib", "-Imlx-linux", "-lXext", "-lX11", "-lm", "-lz",
-				// alternative, put each c file
-				// "file_1.c",
-				// "file_2.c",
-				// "main.c",
+				"so_long.c",
+				"so_draw.c",
+				"so_scene.c",
+				"so_player.c",
+				"so_mngmt.c",
+				"so_wall.c",
+				"so_ocean.c",
+				// compiler options
+				"libft/libft.a", "MLX42/build/libmlx42.a", "-ldl", 
+				"-lglfw", "-pthread", "-lm",
+				"-Ofast", "-Iinclude", "-IMLX42/include", "-Ilibft/src", 
+				"-Ilibft/get_next_line", "-Ilibft/ft_printf",
 				// -o: output file genterate in the build
 				"-o",
 				// compiled file generate and their path
