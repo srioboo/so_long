@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/13 18:52:14 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/18 17:52:37 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static int	draw_ocean(mlx_t *mlx, mlx_image_t *img_ocean, char *line, int y)
 	count = 0;
 	while (line[count] != 0)
 	{
-		// ft_printf("%d %c\n", count, line[count]);
 		if (line[count] == '0')
 			result = mlx_image_to_window(mlx, img_ocean, count * 64, y * 64);
 		count++;
@@ -72,7 +71,6 @@ static int	draw_wall(mlx_t *mlx, mlx_image_t *img_wall, char *line, int y)
 	count = 0;
 	while (line[count] != 0)
 	{
-		// ft_printf("%d %c\n", count, line[count]);
 		if (line[count] == '1')
 			result = mlx_image_to_window(mlx, img_wall, count * 64, y * 64);
 		count++;
@@ -100,7 +98,8 @@ int	draw_scene(mlx_t *mlx)
 	while (end == 1)
 	{
 		line = get_next_line(fd);
-		if (line == NULL || y == 5) // TODO if y > 6 fail, because the file ends there, need to fix this
+		// TODO if y > 6 fail, because the file ends there, need to fix this
+		if (line == NULL || y == 5)
 			end = 0;
 		printf("%s", line);
 		result = draw_wall(mlx, mlx_wall, line, y);
