@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/19 11:31:02 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/19 22:24:47 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
-
 # include "so_colors.h"
-
-// TODO - delete or NOT?
-# include <stdio.h>
 
 // SD size 1280 x 720
 # define WIDTH	1280
@@ -63,9 +59,6 @@ void		draw_pixel(mlx_image_t *img, int x, int y, int color);
 // TODO - create struct tipe vector to store x and y
 void		draw_line(mlx_image_t *img, int x, int y, int x1, int y1, int color);
 
-//int		close_window(int keycode, t_vars *vars);
-
-
 /* ************************************************************************** */
 /* SCENE                                                                      */
 /* ************************************************************************** */
@@ -100,36 +93,30 @@ void		error(void);
 
 void		win_close(mlx_key_data_t keydata, void *param);
 
-/* ************************************************************************** */
-/* WALL                                                                       */
-/* ************************************************************************** */
-
-mlx_image_t	*get_wall(mlx_t *mlx);
-
-int			draw_wall(mlx_t *mlx, mlx_image_t *img_wall, char *line, int y);
+mlx_image_t	*get_image(mlx_t *mlx, char *relative_path);
 
 /* ************************************************************************** */
 /* WALL                                                                       */
 /* ************************************************************************** */
 
-mlx_image_t	*get_ocean(mlx_t *mlx);
+int			draw_wall(mlx_t *mlx, char *line, int y);
 
-int			draw_ocean(mlx_t *mlx, mlx_image_t *img_ocean, char *line, int y);
+/* ************************************************************************** */
+/* WALL                                                                       */
+/* ************************************************************************** */
+
+int			draw_ocean(mlx_t *mlx, char *line, int y);
 
 /* ************************************************************************** */
 /* DOOR                                                                       */
 /* ************************************************************************** */
 
-mlx_image_t	*get_door(mlx_t *mlx);
-
-int			draw_door(mlx_t *mlx, mlx_image_t *img, char *line, int y);
+int			draw_door(mlx_t *mlx, char *line, int y);
 
 /* ************************************************************************** */
 /* FISH                                                                       */
 /* ************************************************************************** */
 
-mlx_image_t	*get_fish(mlx_t *mlx);
-
-int			draw_fish(mlx_t *mlx, mlx_image_t *img, char *line, int y);
+int			draw_fish(mlx_t *mlx, char *line, int y);
 
 #endif

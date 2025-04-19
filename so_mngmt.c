@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/19 08:48:14 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/19 22:27:19 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,18 @@ void	win_close(mlx_key_data_t keydata, void *param)
 	mlx = param;
 	if ((keydata.key == MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
+}
+
+mlx_image_t	*get_image(mlx_t *mlx, char *relative_path)
+{
+	mlx_image_t		*img;
+	mlx_texture_t	*texture;
+
+	texture = mlx_load_png(relative_path);
+	if (!texture)
+		error();
+	img = mlx_texture_to_image(mlx, texture);
+	if (!img)
+		error();
+	return (img);
 }
