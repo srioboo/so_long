@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:57:33 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/18 18:01:22 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/19 11:21:47 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ mlx_image_t	*get_wall(mlx_t *mlx)
 	mlx_image_t		*img_wall;
 	mlx_texture_t	*texture;
 
-	relative_path = "./img/png/wall_64x64.png";
+	relative_path = "./img/png/wall_64.png";
 	texture = mlx_load_png(relative_path);
 	if (!texture)
 		error();

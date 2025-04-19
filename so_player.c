@@ -6,13 +6,11 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/21 22:47:10 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:47:39 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// static mlx_image_t	*g_img; // TODO - error
 
 mlx_image_t	*draw_player(mlx_t *mlx)
 {
@@ -21,7 +19,7 @@ mlx_image_t	*draw_player(mlx_t *mlx)
 	char				*relative_path;
 	mlx_texture_t		*texture;
 
-	relative_path = "./img/png/dolphin_64x64.png";
+	relative_path = "./img/png/dolphin_64.png";
 	texture = mlx_load_png(relative_path);
 	if (!texture)
 		error();
@@ -55,6 +53,4 @@ void	move_player(mlx_key_data_t keydata, void *param)
 		move(img, 0, -step);
 	if ((keydata.key == MLX_KEY_S) || (keydata.key == MLX_KEY_DOWN))
 		move(img, 0, step);
-	// if ((keydata.key == MLX_KEY_ESCAPE))
-	//	mlx_close_window(mlx);
 }

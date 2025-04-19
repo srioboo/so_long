@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/19 08:47:05 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/19 11:31:02 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,21 @@ int			draw_wall(mlx_t *mlx, mlx_image_t *img_wall, char *line, int y);
 mlx_image_t	*get_ocean(mlx_t *mlx);
 
 int			draw_ocean(mlx_t *mlx, mlx_image_t *img_ocean, char *line, int y);
+
+/* ************************************************************************** */
+/* DOOR                                                                       */
+/* ************************************************************************** */
+
+mlx_image_t	*get_door(mlx_t *mlx);
+
+int			draw_door(mlx_t *mlx, mlx_image_t *img, char *line, int y);
+
+/* ************************************************************************** */
+/* FISH                                                                       */
+/* ************************************************************************** */
+
+mlx_image_t	*get_fish(mlx_t *mlx);
+
+int			draw_fish(mlx_t *mlx, mlx_image_t *img, char *line, int y);
 
 #endif
