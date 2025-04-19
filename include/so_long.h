@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/18 20:28:49 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/19 08:47:05 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,16 @@ mlx_image_t	*draw_player(mlx_t *mlx);
  */
 void		move_player(mlx_key_data_t keydata, void *param);
 
+/* ************************************************************************** */
+/* GAME MANAGEMENT                                                            */
+/* ************************************************************************** */
+
 /**
  * @brief Error management
  */
 void		error(void);
+
+void		win_close(mlx_key_data_t keydata, void *param);
 
 /* ************************************************************************** */
 /* WALL                                                                       */
