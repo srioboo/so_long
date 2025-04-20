@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/20 17:59:11 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/22 08:50:29 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	char		*map;
-	t_player	player;
+	//struct s_map_pos	*positions;
+	char				**lines;
+	int					map_height;
+	int					map_with;
+	struct s_player		player;
 }	t_map;
 
 /* ************************************************************************** */

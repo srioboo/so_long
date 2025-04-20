@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/20 18:00:46 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/21 10:47:22 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	win_close(mlx_key_data_t keydata, void *param)
 	mlx_t	*mlx;
 
 	mlx = param;
-	if ((keydata.key == MLX_KEY_ESCAPE))
+	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(mlx);
 }
 

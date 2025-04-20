@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:59:38 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/02/17 12:15:57 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/22 10:03:55 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_set_line(char *ln_buffer)
 
 	if (!ln_buffer)
 		return (NULL);
-	len_buffer = ft_strlen(ln_buffer);
+	len_buffer = ft_strlen_nxl(ln_buffer);
 	end_ln = 0;
 	while (ln_buffer[end_ln] != '\n' && ln_buffer[end_ln] != 0)
 		end_ln++;
@@ -35,9 +35,9 @@ char	*ft_set_line(char *ln_buffer)
 		return (NULL);
 	end_ln++;
 	if (end_ln < len_buffer)
-		left_chars = ft_substr(ln_buffer, end_ln, len_buffer - end_ln);
+		left_chars = ft_substr_nxl(ln_buffer, end_ln, len_buffer - end_ln);
 	else
-		left_chars = ft_strdup("");
+		left_chars = ft_strdup_nxl("");
 	ln_buffer[end_ln] = 0;
 	if (!left_chars || *left_chars == 0)
 		ft_free(&left_chars);
@@ -53,16 +53,16 @@ char	*ft_set_buffer(int fd, char *buffer)
 	if (!ln_buffer)
 		return (NULL);
 	number_read = 1;
-	while (number_read > 0 && !ft_strchr(buffer, '\n'))
+	while (number_read > 0 && !ft_strchr_nxl(buffer, '\n'))
 	{
 		number_read = read(fd, ln_buffer, BUFFER_SIZE);
 		if (number_read < 0)
 			return (ft_free(&ln_buffer));
 		ln_buffer[number_read] = 0;
 		if (!buffer && number_read > 0)
-			buffer = ft_strdup(ln_buffer);
+			buffer = ft_strdup_nxl(ln_buffer);
 		else if (number_read > 0)
-			buffer = ft_strjoin(buffer, ln_buffer);
+			buffer = ft_strjoin_nxl(buffer, ln_buffer);
 	}
 	ft_free(&ln_buffer);
 	return (buffer);

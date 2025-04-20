@@ -6,40 +6,45 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/20 10:05:42 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/22 10:54:02 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* static int	get_map(mlx_t *mlx)
+static t_map	*get_map()
 {
-	int			result;
 	char		*line;
 	int			fd;
 	int			end;
 	int			y;
+	t_map		*map;
+	char		**lines;
 
-	result = 0;
+	map = (t_map *)malloc(sizeof(t_map));
+	if (!map)
+		return (map);
 	end = 1;
 	fd = open("map.ber", O_RDONLY);
 	y = 0;
+	lines = (char **)malloc(sizeof(char *) * 8);
+	if (lines == NULL)
+		lines = NULL;
 	while (end == 1)
 	{
 		line = get_next_line(fd);
-		if (line != NULL || line != 0)
-		{
-			// result = full_scene(mlx, line, y);
-			free(line);
-			line = NULL;
-		}
-		else
+		if (line == NULL)
 			end = 0;
+		else
+			lines[y] = line;
 		y++;
 	}
+	lines[y] = NULL;
+	map->lines = lines;
+	map->map_height = y;
 	close(fd);
-	return (result);
-}*/
+	return (map);
+}
 
 static int	full_scene(mlx_t *mlx, char *line, int y)
 {
@@ -55,29 +60,22 @@ static int	full_scene(mlx_t *mlx, char *line, int y)
 
 int	draw_scene(mlx_t *mlx)
 {
-	int			result;
-	char		*line;
-	int			fd;
-	int			end;
-	int			y;
+	int		result;
+	int		y;
+	char	**lines;
+	int		nbr_lines;
+	t_map	*map;
 
+	map = get_map();
 	result = 0;
-	end = 1;
-	fd = open("map.ber", O_RDONLY);
 	y = 0;
-	while (end == 1)
+	lines = map->lines;
+	nbr_lines = map->map_height;
+
+	while (y < (nbr_lines - 1))
 	{
-		line = get_next_line(fd);
-		if (line != NULL || line != 0)
-		{
-			result = full_scene(mlx, line, y);
-			free(line);
-			line = NULL;
-		}
-		else
-			end = 0;
+		result = full_scene(mlx, lines[y], y);
 		y++;
 	}
-	close(fd);
 	return (result);
 }

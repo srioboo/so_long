@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:01:11 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/02/14 15:18:25 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/22 10:02:00 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ char	*get_next_line(int fd);
 char	*ft_free(char **str);
 
 // functions auxlilar from libft
-char	*ft_strchr(const char *s, int c);
-char	*ft_strdup(const char *s);
-size_t	ft_strlen(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr_nxl(const char *s, int c);
+char	*ft_strdup_nxl(const char *s);
+size_t	ft_strlen_nxl(const char *s);
+char	*ft_substr_nxl(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin_nxl(char const *s1, char const *s2);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/04/19 11:34:30 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/04/22 10:55:53 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME	= so_long
 
 # compiler
 CC 		= cc
-# CFLAGS = -Wall -Wextra -Werror
 CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX	:= ./MLX42
 LIBFT	:= ./libft
@@ -25,14 +24,14 @@ HEADERS	= -I ./include -I $(LIBMLX)/include \
 LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIBSFT	= $(LIBFT)/libft.a
 SRCS	= so_long.c \
-	so_draw.c \
-	so_scene.c \
-	so_player.c \
-	so_mngmt.c \
-	so_wall.c \
-	so_ocean.c \
-	so_door.c \
-	so_fish.c
+		so_draw.c \
+		so_scene.c \
+		so_player.c \
+		so_mngmt.c \
+		so_wall.c \
+		so_ocean.c \
+		so_door.c \
+		so_fish.c
 OBJS	= $(SRCS:.c=.o)
 
 all: libmlx libft $(NAME)

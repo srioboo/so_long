@@ -18,11 +18,23 @@
 				"so_mngmt.c",
 				"so_wall.c",
 				"so_ocean.c",
+				"so_door.c",
+				"so_fish.c",
+				"-I", "include",
+				"-I", "MLX42/include",
+				"-I", "libft/src",
+				"-I", "libft/get_next_line",
+				"-I", "libft/ft_printf",
 				// compiler options
-				"libft/libft.a", "MLX42/build/libmlx42.a", "-ldl", 
-				"-lglfw", "-pthread", "-lm",
-				"-Ofast", "-Iinclude", "-IMLX42/include", "-Ilibft/src", 
-				"-Ilibft/get_next_line", "-Ilibft/ft_printf",
+				"-L./libft/libft.a", 
+				"MLX42/build/libmlx42.a", 
+				"-ldl", 
+				"-lglfw", 
+				"-pthread", 
+				"-lm",
+				"-Wunreachable-code",
+				"-Ofast",
+
 				// -o: output file genterate in the build
 				"-o",
 				// compiled file generate and their path

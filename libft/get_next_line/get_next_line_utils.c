@@ -6,13 +6,13 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:00:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/02/14 10:13:02 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/22 09:33:20 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr_nxl(const char *s, int c)
 {
 	unsigned char	chr;
 	int				count;
@@ -37,14 +37,14 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup_nxl(const char *s)
 {
 	char	*srt;
 	int		j;
 
 	if (!s)
 		return (ft_free((char **)&s));
-	srt = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	srt = (char *)malloc((ft_strlen_nxl(s) + 1) * sizeof(char));
 	if (!srt)
 		return (ft_free(&srt));
 	j = -1;
@@ -54,7 +54,7 @@ char	*ft_strdup(const char *s)
 	return (srt);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen_nxl(const char *s)
 {
 	int	len;
 
@@ -64,17 +64,17 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr_nxl(char const *s, unsigned int start, size_t len)
 {
 	char	*result;
 	int		i;
 	size_t	s_len;
 	size_t	end;
 
-	s_len = ft_strlen(s);
+	s_len = ft_strlen_nxl(s);
 	end = start + len;
 	if (len == 0 || s_len == 0 || start > s_len)
-		result = ft_strdup("");
+		result = ft_strdup_nxl("");
 	else if (end > s_len)
 		result = (char *)malloc(((s_len - start) + 1) * sizeof(char));
 	else
@@ -92,7 +92,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (result);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_nxl(char const *s1, char const *s2)
 {
 	char	*result;
 	int		i;
@@ -101,7 +101,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	total_size = ft_strlen(s1) + ft_strlen(s2);
+	total_size = ft_strlen_nxl(s1) + ft_strlen_nxl(s2);
 	result = (char *)malloc((total_size + 1));
 	if (!result)
 		return (ft_free((char **)(&s1)));
