@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/19 22:27:19 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/20 18:00:46 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error(void)
 {
-	puts(mlx_strerror(mlx_errno));
+	ft_printf(mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
 }
 

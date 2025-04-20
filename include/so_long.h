@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/19 22:24:47 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:59:11 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,32 @@
 # define HD_WIDTH	1920
 # define HD_HEIGHT	1080
 
+# define IMG_SIZE 64
+
 typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
 }	t_vars;
 
-typedef struct s_data
+typedef struct s_map_pos
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
+	int		x;
+	int		y;
+	char	type;
+}	t_map_pos;
+
+typedef struct s_player
+{
+	int	x;
+	int	y;
+}	t_player;
+
+typedef struct s_map
+{
+	char		*map;
+	t_player	player;
+}	t_map;
 
 /* ************************************************************************** */
 /* DRAW                                                                      */
@@ -54,10 +66,13 @@ typedef struct s_data
 /**
  * @brief Draw a pixel
  */
-void		draw_pixel(mlx_image_t *img, int x, int y, int color);
+void		draw_pixel(mlx_image_t *img, t_map_pos pos, int color);
 
-// TODO - create struct tipe vector to store x and y
-void		draw_line(mlx_image_t *img, int x, int y, int x1, int y1, int color);
+/**
+ * @brief Draw a line
+ */
+void		draw_line(mlx_image_t *img,
+				t_map_pos pos_ini, t_map_pos pos_end, int color);
 
 /* ************************************************************************** */
 /* SCENE                                                                      */
@@ -69,6 +84,10 @@ void		draw_line(mlx_image_t *img, int x, int y, int x1, int y1, int color);
  * @details Draw the scene with the images
  */
 int			draw_scene(mlx_t *mlx);
+
+/* ************************************************************************** */
+/* PLAYER                                                                     */
+/* ************************************************************************** */
 
 /**
  * @brief Draw the player

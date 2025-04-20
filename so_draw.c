@@ -6,34 +6,35 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/18 18:08:09 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:02:20 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	draw_pixel(mlx_image_t *img, int x, int y, int color)
+void	draw_pixel(mlx_image_t *img, t_map_pos pos, int color)
 {
-	mlx_put_pixel(img, x, y, color);
+	mlx_put_pixel(img, pos.x, pos.y, color);
 }
 
 void	draw_rectangle(int keycode)
 {
-	printf("draw rectable: %d\n", keycode);
+	ft_printf("draw rectable: %d\n", keycode);
 }
 
 void	draw_square(int keycode)
 {
-	printf("draw square: %d\n", keycode);
+	ft_printf("draw square: %d\n", keycode);
 }
 
-void	draw_line(mlx_image_t *img, int x, int y, int x1, int y1, int color)
+void	draw_line(mlx_image_t *img,
+	t_map_pos pos_ini, t_map_pos pos_end, int color)
 {
-	while (x < x1 && y < y1)
-		mlx_put_pixel(img, x, y, color);
+	while (pos_ini.x < pos_end.x && pos_ini.x < pos_end.y)
+		mlx_put_pixel(img, pos_ini.x, pos_end.y, color);
 }
 
 void	draw_circle(int keycode)
 {
-	printf("draw circle: %d\n", keycode);
+	ft_printf("draw circle: %d\n", keycode);
 }
