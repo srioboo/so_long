@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/22 08:50:29 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:57:11 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,10 @@
 # include "ft_printf.h"
 # include "so_colors.h"
 
-// SD size 1280 x 720
-# define WIDTH	1280
-# define HEIGHT	720
-
 // HD size 1920×1080
 # define HD_WIDTH	1920
-# define HD_HEIGHT	1080
 
+// Image size
 # define IMG_SIZE 64
 
 typedef struct s_vars
@@ -40,6 +36,7 @@ typedef struct s_vars
 	void	*win;
 }	t_vars;
 
+// TODO - is this usefull?
 typedef struct s_map_pos
 {
 	int		x;
@@ -62,6 +59,13 @@ typedef struct s_map
 	struct s_player		player;
 }	t_map;
 
+typedef struct s_game_data
+{
+	void			*mlx;
+	mlx_image_t		*player_img;
+	struct s_map	*map;
+}	t_game_data;
+
 /* ************************************************************************** */
 /* DRAW                                                                      */
 /* ************************************************************************** */
@@ -82,11 +86,16 @@ void		draw_line(mlx_image_t *img,
 /* ************************************************************************** */
 
 /**
+ * @brief Get the map
+ */
+t_map		*get_map(void);
+
+/**
  * @brief Draw the scene
  * 
  * @details Draw the scene with the images
  */
-int			draw_scene(mlx_t *mlx);
+int			draw_scene(mlx_t *mlx, t_map *map);
 
 /* ************************************************************************** */
 /* PLAYER                                                                     */
@@ -99,10 +108,7 @@ int			draw_scene(mlx_t *mlx);
  */
 mlx_image_t	*draw_player(mlx_t *mlx);
 
-/**
- * @brief Move the player
- */
-void		move_player(mlx_key_data_t keydata, void *param);
+void		move(mlx_image_t *img, int amount_x, int amount_y);
 
 /* ************************************************************************** */
 /* GAME MANAGEMENT                                                            */
@@ -116,6 +122,11 @@ void		error(void);
 void		win_close(mlx_key_data_t keydata, void *param);
 
 mlx_image_t	*get_image(mlx_t *mlx, char *relative_path);
+
+/**
+ * @brief Move the player
+ */
+void		process_moves(mlx_key_data_t keydata, void *param);
 
 /* ************************************************************************** */
 /* WALL                                                                       */

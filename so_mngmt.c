@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/21 10:47:22 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:51:55 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,25 @@ void	error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	win_close(mlx_key_data_t keydata, void *param)
+void	process_moves(mlx_key_data_t keydata, void *param)
 {
-	mlx_t	*mlx;
+	t_game_data			*data;
+	static mlx_image_t	*img;
+	int					step;
 
-	mlx = param;
+	data = param;
+	img = data->player_img;
+	step = IMG_SIZE / 2;
+	if ((keydata.key == MLX_KEY_D) || (keydata.key == MLX_KEY_RIGHT))
+		move(img, step, 0);
+	if ((keydata.key == MLX_KEY_A) || (keydata.key == MLX_KEY_LEFT))
+		move(img, -step, 0);
+	if ((keydata.key == MLX_KEY_W) || (keydata.key == MLX_KEY_UP))
+		move(img, 0, -step);
+	if ((keydata.key == MLX_KEY_S) || (keydata.key == MLX_KEY_DOWN))
+		move(img, 0, step);
 	if (keydata.key == MLX_KEY_ESCAPE)
-		mlx_close_window(mlx);
+		mlx_close_window(data->mlx);
 }
 
 mlx_image_t	*get_image(mlx_t *mlx, char *relative_path)
