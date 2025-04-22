@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/22 17:55:34 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/22 18:10:07 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int32_t	main(void)
 	map = get_map();
 	// ft_printf("Map: %d %d", map->map_height, map->map_with);
 	mlx_set_setting(MLX_MAXIMIZED, false);
-	mlx = mlx_init(HD_WIDTH,
+	mlx = mlx_init((IMG_SIZE * map->map_with),
 			(IMG_SIZE * (map->map_height - 1)), "So long", true);
 	if (!mlx)
 		error();
