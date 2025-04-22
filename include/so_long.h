@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/22 17:57:11 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/22 22:06:14 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,28 @@ typedef struct s_map_pos
 
 typedef struct s_player
 {
-	int	x;
-	int	y;
+	int			x_ini;
+	int			y_ini;
+	int			x;
+	int			y;
+	mlx_image_t	*player_img;
 }	t_player;
 
 typedef struct s_map
 {
 	//struct s_map_pos	*positions;
-	char				**lines;
-	int					map_height;
-	int					map_with;
-	struct s_player		player;
+	char	**lines;
+	int		map_height;
+	int		map_with;
+	int		player_x;
+	int		player_y;
 }	t_map;
 
 typedef struct s_game_data
 {
 	void			*mlx;
 	mlx_image_t		*player_img;
+	struct s_player	*player;
 	struct s_map	*map;
 }	t_game_data;
 
@@ -106,7 +111,7 @@ int			draw_scene(mlx_t *mlx, t_map *map);
  * 
  * @details Draw the player with the images
  */
-mlx_image_t	*draw_player(mlx_t *mlx);
+mlx_image_t	*draw_player(mlx_t *mlx, t_game_data *data);
 
 void		move(mlx_image_t *img, int amount_x, int amount_y);
 

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/22 18:09:39 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/22 22:17:33 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 t_map	*get_map(void)
 {
-	char		*line;
-	int			fd;
-	int			y;
-	t_map		*map;
-	char		**lines;
+	char	*line;
+	int		fd;
+	int		x;
+	int		y;
+	t_map	*map;
+	char	**lines;
+	int		found;
 
 	fd = open("map.ber", O_RDONLY);
 	lines = (char **)ft_calloc(8, sizeof(char *));
@@ -27,12 +29,24 @@ t_map	*get_map(void)
 	lines[y++] = line;
 	map = ft_calloc(1, sizeof(t_map));
 	map->map_with = ft_strlen(line) - 1;
+	found = -1;
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
+		x = 0;
+		while ((line != NULL && line[x] != '\0') && found == -1)
+		{
+			if (line[x] == 'P')
+			{
+				map->player_x = x;
+				map->player_y = y;
+				found = 0;
+			}
+			x++;
+		}
 		lines[y++] = line;
 	}
-	// lines[y] = NULL;
+	lines[y] = NULL;
 	map->lines = lines;
 	map->map_height = y;
 	close(fd);

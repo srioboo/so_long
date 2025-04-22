@@ -6,13 +6,13 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/22 17:50:07 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/22 22:23:55 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-mlx_image_t	*draw_player(mlx_t *mlx)
+mlx_image_t	*draw_player(mlx_t *mlx, t_game_data *game_data)
 {
 	mlx_image_t			*img;
 	int					result;
@@ -26,7 +26,9 @@ mlx_image_t	*draw_player(mlx_t *mlx)
 	img = mlx_texture_to_image(mlx, texture);
 	if (!img)
 		error();
-	result = mlx_image_to_window(mlx, img, 64 * 5, 64 * 5);
+	result = mlx_image_to_window(mlx, img,
+			64 * (game_data->map->player_x),
+			64 * (game_data->map->player_y));
 	if (result < 0)
 		error();
 	return (img);
