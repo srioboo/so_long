@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/22 22:06:14 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:41:57 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ int			draw_scene(mlx_t *mlx, t_map *map);
  */
 mlx_image_t	*draw_player(mlx_t *mlx, t_game_data *data);
 
-void		move(mlx_image_t *img, int amount_x, int amount_y);
+void		move_player(mlx_image_t *img, t_game_data *game_data,
+				int steps_x, int steps_y);
 
 /* ************************************************************************** */
 /* GAME MANAGEMENT                                                            */
@@ -124,9 +125,9 @@ void		move(mlx_image_t *img, int amount_x, int amount_y);
  */
 void		error(void);
 
-void		win_close(mlx_key_data_t keydata, void *param);
-
 mlx_image_t	*get_image(mlx_t *mlx, char *relative_path);
+
+int			is_move_posible(int current_x, int current_y);
 
 /**
  * @brief Move the player

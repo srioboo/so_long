@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/22 22:18:27 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:29:05 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int32_t	main(void)
 	game_data->mlx = mlx;
 	img = draw_player(mlx, game_data);
 	game_data->player_img = img;
-	// mlx_loop_hook(mlx, &win_close, mlx);
 	mlx_key_hook(mlx, &process_moves, game_data);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
