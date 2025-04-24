@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/22 22:17:33 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:16:07 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ static int	full_scene(mlx_t *mlx, char *line, int y)
 	int	result;
 
 	result = 0;
-	result += draw_wall(mlx, line, y);
 	result += draw_ocean(mlx, line, y);
+	result += draw_wall(mlx, line, y);
 	result += draw_door(mlx, line, y);
 	result += draw_fish(mlx, line, y);
 	return (result);

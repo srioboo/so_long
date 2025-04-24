@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/24 11:07:12 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:31:11 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ mlx_image_t	*draw_player(mlx_t *mlx, t_game_data *game_data)
 	return (img);
 }
 
-void	move_player(mlx_image_t *img, t_game_data *game_data,
+void	move_player(t_game_data *game_data,
 				int steps_x, int steps_y)
 {
 	int	current_x;
@@ -44,17 +44,17 @@ void	move_player(mlx_image_t *img, t_game_data *game_data,
 	int	next_x;
 	int next_y;
 
-	pixels_x = img->instances[0].x;
-	pixels_y = img->instances[0].y;
+	pixels_x = game_data->player_img->instances[0].x;
+	pixels_y = game_data->player_img->instances[0].y;
 	current_x = pixels_x / (IMG_SIZE);
 	current_y = pixels_y / (IMG_SIZE);
 	next_x = (pixels_x + (steps_x * IMG_SIZE)) / IMG_SIZE;
 	next_y = (pixels_y + (steps_y * IMG_SIZE)) / IMG_SIZE;
 
-	if (is_move_posible(next_x, next_y) > 0)
-		img->instances[0].x += (steps_x * IMG_SIZE);
-	if (is_move_posible(next_x, next_y) > 0)
-		img->instances[0].y += (steps_y * IMG_SIZE);
+	if (is_move_posible(game_data, next_x, next_y) > 0)
+		game_data->player_img->instances[0].x += (steps_x * IMG_SIZE);
+	if (is_move_posible(game_data, next_x, next_y) > 0)
+		game_data->player_img->instances[0].y += (steps_y * IMG_SIZE);
 
 	ft_printf("X: %d - Y: %d (%d,%d) %c\n", current_x, current_y, steps_x, steps_y, game_data->player_img->enabled); // TODO - remove
 }
