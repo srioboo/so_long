@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/24 11:31:31 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/25 09:58:18 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,8 @@ void		error(void);
 
 mlx_image_t	*get_image(mlx_t *mlx, char *relative_path);
 
-int			is_move_posible(t_game_data *game_data, int current_x, int current_y);
+int			is_move_posible(t_game_data *game_data,
+				int current_x, int current_y);
 
 /**
  * @brief Move the player
@@ -150,7 +151,7 @@ int			draw_ocean(mlx_t *mlx, char *line, int y);
 /* DOOR                                                                       */
 /* ************************************************************************** */
 
-int			draw_door(mlx_t *mlx, char *line, int y);
+int			draw_exit(mlx_t *mlx, char *line, int y);
 
 /* ************************************************************************** */
 /* FISH                                                                       */

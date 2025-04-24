@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/24 11:31:11 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/25 10:01:45 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ mlx_image_t	*draw_player(mlx_t *mlx, t_game_data *game_data)
 	char				*relative_path;
 	mlx_texture_t		*texture;
 
-	relative_path = "./img/png/dolphin_64.png";
+	relative_path = "./img/dolphin_64.png";
 	texture = mlx_load_png(relative_path);
 	if (!texture)
 		error();
@@ -37,24 +37,26 @@ mlx_image_t	*draw_player(mlx_t *mlx, t_game_data *game_data)
 void	move_player(t_game_data *game_data,
 				int steps_x, int steps_y)
 {
-	int	current_x;
-	int	current_y;
-	int pixels_x;
-	int pixels_y;
-	int	next_x;
-	int next_y;
+	t_map_pos	current;
+	t_map_pos	pixels;
+	t_map_pos	next;
 
-	pixels_x = game_data->player_img->instances[0].x;
-	pixels_y = game_data->player_img->instances[0].y;
-	current_x = pixels_x / (IMG_SIZE);
-	current_y = pixels_y / (IMG_SIZE);
-	next_x = (pixels_x + (steps_x * IMG_SIZE)) / IMG_SIZE;
-	next_y = (pixels_y + (steps_y * IMG_SIZE)) / IMG_SIZE;
+	pixels.x = game_data->player_img->instances[0].x;
+	pixels.y = game_data->player_img->instances[0].y;
+	current.x = pixels.x / (IMG_SIZE);
+	current.y = pixels.y / (IMG_SIZE);
+	next.x = (pixels.x + (steps_x * IMG_SIZE)) / IMG_SIZE;
+	next.y = (pixels.y + (steps_y * IMG_SIZE)) / IMG_SIZE;
 
-	if (is_move_posible(game_data, next_x, next_y) > 0)
+	if (is_move_posible(game_data, next.x, next.y) > 0)
+	{
 		game_data->player_img->instances[0].x += (steps_x * IMG_SIZE);
-	if (is_move_posible(game_data, next_x, next_y) > 0)
 		game_data->player_img->instances[0].y += (steps_y * IMG_SIZE);
-
-	ft_printf("X: %d - Y: %d (%d,%d) %c\n", current_x, current_y, steps_x, steps_y, game_data->player_img->enabled); // TODO - remove
+		if (game_data->map->lines[next.y][next.x] == 'C')
+		{
+			ft_printf("PESCAOOOOOO!!!! - RE-DRAW\n");
+			game_data->map->lines[next.y][next.x] = '0';
+		}
+	}
+	ft_printf("X: %d - Y: %d (%d,%d) %c\n", current.x, current.y, steps_x, steps_y, game_data->player_img->enabled); // TODO - remove
 }

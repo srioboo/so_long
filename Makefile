@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/04/22 10:55:53 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/04/25 10:02:22 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS	= so_long.c \
 		so_mngmt.c \
 		so_wall.c \
 		so_ocean.c \
-		so_door.c \
+		so_exit.c \
 		so_fish.c
 OBJS	= $(SRCS:.c=.o)
 

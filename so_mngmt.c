@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/24 11:50:59 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/25 10:00:53 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	error(void)
 	exit(EXIT_FAILURE);
 }
 
-int		is_move_posible(t_game_data *game_data, int next_x, int next_y)
+int	is_move_posible(t_game_data *game_data, int next_x, int next_y)
 {
-	int can_move;
+	int	can_move;
 
 	can_move = 1;
 	if (next_x < 0 || next_y < 0
@@ -34,16 +34,20 @@ int		is_move_posible(t_game_data *game_data, int next_x, int next_y)
 
 void	process_moves(mlx_key_data_t keydata, void *param)
 {
-	t_game_data			*data;
+	t_game_data	*data;
 
 	data = param;
-	if ((keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT) && keydata.action == MLX_PRESS)
+	if ((keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
+		&& keydata.action == MLX_PRESS)
 		move_player(data, 1, 0);
-	if ((keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT) && keydata.action == MLX_PRESS)
+	if ((keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT)
+		&& keydata.action == MLX_PRESS)
 		move_player(data, -1, 0);
-	if ((keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP) && keydata.action == MLX_PRESS)
+	if ((keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
+		&& keydata.action == MLX_PRESS)
 		move_player(data, 0, -1);
-	if ((keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN) && keydata.action == MLX_PRESS)
+	if ((keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
+		&& keydata.action == MLX_PRESS)
 		move_player(data, 0, 1);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(data->mlx);

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:56:29 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/24 11:13:13 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/25 10:05:47 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	draw_fish(mlx_t *mlx, char *line, int y)
 	mlx_image_t	*img;
 	char		*relative_path;
 
-	relative_path = "./img/png/clown-fish_64.png";
+	relative_path = "./img/clown-fish_64.png";
 	img = get_image(mlx, relative_path);
 	result = 0;
 	x = 0;

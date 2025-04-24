@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:57:33 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/24 11:14:27 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/25 10:05:53 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	draw_wall(mlx_t *mlx, char *line, int y)
 	mlx_image_t	*img;
 	char		*relative_path;
 
-	relative_path = "./img/png/wall_64.png";
+	relative_path = "./img/wall_64.png";
 	img = get_image(mlx, relative_path);
 	result = 0;
 	x = 0;
