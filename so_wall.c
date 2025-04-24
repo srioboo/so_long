@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:57:33 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/19 22:19:32 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:08:07 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	draw_wall(mlx_t *mlx, char *line, int y)
 	while (line[count] != 0)
 	{
 		if (line[count] == '1')
-			result = mlx_image_to_window(mlx, img, count * 64, y * 64);
+			result = mlx_image_to_window(mlx, img, count * IMG_SIZE, y * IMG_SIZE);
 		count++;
 	}
 	if (result < 0)

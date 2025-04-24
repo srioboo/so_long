@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/24 10:57:03 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:07:12 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ mlx_image_t	*draw_player(mlx_t *mlx, t_game_data *game_data)
 	if (!img)
 		error();
 	result = mlx_image_to_window(mlx, img,
-			64 * (game_data->map->player_x),
-			64 * (game_data->map->player_y));
+			IMG_SIZE * (game_data->map->player_x),
+			IMG_SIZE * (game_data->map->player_y));
 	if (result < 0)
 		error();
 	return (img);
@@ -56,5 +56,5 @@ void	move_player(mlx_image_t *img, t_game_data *game_data,
 	if (is_move_posible(next_x, next_y) > 0)
 		img->instances[0].y += (steps_y * IMG_SIZE);
 
-	ft_printf("X: %d - Y: %d (%d,%d) %c\n", current_x, current_y, steps_x, steps_y, game_data->player_img->enabled); // tODO - remove
+	ft_printf("X: %d - Y: %d (%d,%d) %c\n", current_x, current_y, steps_x, steps_y, game_data->player_img->enabled); // TODO - remove
 }

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:56:29 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/19 22:20:13 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:06:27 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	draw_fish(mlx_t *mlx, char *line, int y)
 	while (line[count] != 0)
 	{
 		if (line[count] == 'C')
-			result = mlx_image_to_window(mlx, img, count * 64, y * 64);
+			result = mlx_image_to_window(mlx, img, count * IMG_SIZE, y * IMG_SIZE);
 		count++;
 	}
 	if (result < 0)
