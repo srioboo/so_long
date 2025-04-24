@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/24 11:38:50 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:50:59 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int		is_move_posible(t_game_data *game_data, int next_x, int next_y)
 	can_move = 1;
 	if (next_x < 0 || next_y < 0
 			|| next_x >= game_data->map->map_with
-			|| next_y >= (game_data->map->map_height - 1)) // TODO - I have a height greater than the size - review
+			|| next_y >= (game_data->map->map_height - 1) // TODO - I have a height greater than the size - review
+			|| game_data->map->lines[next_y][next_x] == '1') 
 		can_move = 0;
 	ft_printf("can move (%d,%d)?: %d\t map_height: %d\t", next_x, next_y, can_move, game_data->map->map_height); // TODO - remove
 	return (can_move);
