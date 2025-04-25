@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/25 09:58:18 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/25 10:18:18 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <string.h>
 # include <fcntl.h>
 # include <MLX42/MLX42.h>
-// # include "MLX42/MLX42.h"
 # include "libft.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
@@ -30,13 +29,13 @@
 // Image size
 # define IMG_SIZE 64
 
+/* TODO - delete
 typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
-}	t_vars;
+}	t_vars; */
 
-// TODO - is this usefull?
 typedef struct s_map_pos
 {
 	int		x;
@@ -55,7 +54,6 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	//struct s_map_pos	*positions;
 	char	**lines;
 	int		map_height;
 	int		map_with;

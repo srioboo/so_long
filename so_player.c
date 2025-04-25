@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/25 10:01:45 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/25 10:13:05 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	move_player(t_game_data *game_data,
 		{
 			ft_printf("PESCAOOOOOO!!!! - RE-DRAW\n");
 			game_data->map->lines[next.y][next.x] = '0';
+			draw_scene(game_data->mlx, game_data->map);
 		}
 	}
 	ft_printf("X: %d - Y: %d (%d,%d) %c\n", current.x, current.y, steps_x, steps_y, game_data->player_img->enabled); // TODO - remove
