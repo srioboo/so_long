@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/25 10:18:18 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:10:28 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_game_data
 	mlx_image_t		*player_img;
 	struct s_player	*player;
 	struct s_map	*map;
+	int				moves;
 }	t_game_data;
 
 /* ************************************************************************** */
@@ -109,7 +110,7 @@ int			draw_scene(mlx_t *mlx, t_map *map);
  * 
  * @details Draw the player with the images
  */
-mlx_image_t	*draw_player(mlx_t *mlx, t_game_data *data);
+mlx_image_t	*draw_player(t_game_data *data);
 
 void		move_player(t_game_data *game_data,
 				int steps_x, int steps_y);

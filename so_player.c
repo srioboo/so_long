@@ -6,13 +6,13 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/25 10:13:05 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:19:32 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-mlx_image_t	*draw_player(mlx_t *mlx, t_game_data *game_data)
+mlx_image_t	*draw_player(t_game_data *game_data)
 {
 	mlx_image_t			*img;
 	int					result;
@@ -23,10 +23,10 @@ mlx_image_t	*draw_player(mlx_t *mlx, t_game_data *game_data)
 	texture = mlx_load_png(relative_path);
 	if (!texture)
 		error();
-	img = mlx_texture_to_image(mlx, texture);
+	img = mlx_texture_to_image(game_data->mlx, texture);
 	if (!img)
 		error();
-	result = mlx_image_to_window(mlx, img,
+	result = mlx_image_to_window(game_data->mlx, img,
 			IMG_SIZE * (game_data->map->player_x),
 			IMG_SIZE * (game_data->map->player_y));
 	if (result < 0)
@@ -56,8 +56,10 @@ void	move_player(t_game_data *game_data,
 		{
 			ft_printf("PESCAOOOOOO!!!! - RE-DRAW\n");
 			game_data->map->lines[next.y][next.x] = '0';
+			// game_data->
 			draw_scene(game_data->mlx, game_data->map);
 		}
+		game_data->moves++;
+		ft_printf("move: %d\n", game_data->moves);
 	}
-	ft_printf("X: %d - Y: %d (%d,%d) %c\n", current.x, current.y, steps_x, steps_y, game_data->player_img->enabled); // TODO - remove
 }
