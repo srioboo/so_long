@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/25 11:10:28 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:56:12 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_game_data
 {
 	void			*mlx;
 	mlx_image_t		*player_img;
+	mlx_image_t		*fish_img;
 	struct s_player	*player;
 	struct s_map	*map;
 	int				moves;
@@ -99,7 +100,7 @@ t_map		*get_map(void);
  * 
  * @details Draw the scene with the images
  */
-int			draw_scene(mlx_t *mlx, t_map *map);
+int			draw_scene(t_game_data *game_data);
 
 /* ************************************************************************** */
 /* PLAYER                                                                     */
@@ -141,7 +142,7 @@ void		process_moves(mlx_key_data_t keydata, void *param);
 int			draw_wall(mlx_t *mlx, char *line, int y);
 
 /* ************************************************************************** */
-/* WALL                                                                       */
+/* OCEAN                                                                      */
 /* ************************************************************************** */
 
 int			draw_ocean(mlx_t *mlx, char *line, int y);
@@ -156,6 +157,6 @@ int			draw_exit(mlx_t *mlx, char *line, int y);
 /* FISH                                                                       */
 /* ************************************************************************** */
 
-int			draw_fish(mlx_t *mlx, char *line, int y);
+int			draw_fish(t_game_data *game_data, char *line, int y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/25 11:11:00 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:05:45 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int32_t	main(void)
 			(IMG_SIZE * (map->map_height - 1)), "So long", true);
 	if (!mlx)
 		error();
-	draw_scene(mlx, map);
 	game_data = (t_game_data *)ft_calloc(100, sizeof(t_game_data));
 	game_data->map = map;
 	game_data->mlx = mlx;
+	draw_scene(game_data);
 	img = draw_player(game_data);
 	game_data->player_img = img;
 	game_data->moves = 0;

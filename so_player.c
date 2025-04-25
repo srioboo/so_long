@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/25 11:19:32 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/26 11:51:37 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ mlx_image_t	*draw_player(t_game_data *game_data)
 	result = mlx_image_to_window(game_data->mlx, img,
 			IMG_SIZE * (game_data->map->player_x),
 			IMG_SIZE * (game_data->map->player_y));
+	// mlx_set_instance_depth(&game_data->player_img->instances[0], 100);
 	if (result < 0)
 		error();
 	return (img);
@@ -37,17 +38,13 @@ mlx_image_t	*draw_player(t_game_data *game_data)
 void	move_player(t_game_data *game_data,
 				int steps_x, int steps_y)
 {
-	t_map_pos	current;
 	t_map_pos	pixels;
 	t_map_pos	next;
 
 	pixels.x = game_data->player_img->instances[0].x;
 	pixels.y = game_data->player_img->instances[0].y;
-	current.x = pixels.x / (IMG_SIZE);
-	current.y = pixels.y / (IMG_SIZE);
 	next.x = (pixels.x + (steps_x * IMG_SIZE)) / IMG_SIZE;
 	next.y = (pixels.y + (steps_y * IMG_SIZE)) / IMG_SIZE;
-
 	if (is_move_posible(game_data, next.x, next.y) > 0)
 	{
 		game_data->player_img->instances[0].x += (steps_x * IMG_SIZE);
@@ -56,8 +53,7 @@ void	move_player(t_game_data *game_data,
 		{
 			ft_printf("PESCAOOOOOO!!!! - RE-DRAW\n");
 			game_data->map->lines[next.y][next.x] = '0';
-			// game_data->
-			draw_scene(game_data->mlx, game_data->map);
+			// redraw_scene(game_data); // FIXME - redraw scene
 		}
 		game_data->moves++;
 		ft_printf("move: %d\n", game_data->moves);
