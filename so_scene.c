@@ -6,13 +6,13 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/26 11:55:34 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/26 20:00:57 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_map	*get_map(void)
+t_map	*get_map(char *game_map)
 {
 	char	*line;
 	int		fd;
@@ -22,7 +22,10 @@ t_map	*get_map(void)
 	char	**lines;
 	int		found;
 
-	fd = open("map.ber", O_RDONLY);
+	if (!game_map)
+		fd = open("map.ber", O_RDONLY);
+	else
+		fd = open(game_map, O_RDONLY);
 	lines = (char **)ft_calloc(8, sizeof(char *));
 	line = get_next_line(fd);
 	y = 0;

@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/04/25 10:02:22 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/04/26 20:06:35 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,9 +63,9 @@ libft-clean:
 
 full-clean: libft-clean fclean
 
-# test section
+# test section - make test MAP=something
 test: all
-	./$(NAME)
+	./$(NAME) $(MAP)
 
 tclean: clean
 	$(RM) $(NAME)

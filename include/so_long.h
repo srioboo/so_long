@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/26 11:43:02 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/26 16:02:06 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void		draw_line(mlx_image_t *img,
 /**
  * @brief Get the map
  */
-t_map		*get_map(void);
+t_map		*get_map(char *game_map);
 
 /**
  * @brief Draw the scene

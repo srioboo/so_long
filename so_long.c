@@ -6,20 +6,20 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/25 12:05:45 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/26 19:59:52 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int32_t	main(void)
+void	create_game(char *game_map)
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_game_data	*game_data;
 	t_map		*map;
 
-	map = get_map();
+	map = get_map(game_map);
 	mlx_set_setting(MLX_MAXIMIZED, false);
 	mlx = mlx_init((IMG_SIZE * map->map_with),
 			(IMG_SIZE * (map->map_height - 1)), "So long", true);
@@ -35,5 +35,15 @@ int32_t	main(void)
 	mlx_key_hook(mlx, &process_moves, game_data);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
+}
+
+int32_t	main(int argc, char **argv)
+{
+
+	if (argc == 2)
+		create_game(argv[1]);
+	else if (argc == 1)
+		create_game(NULL);
+
 	return (EXIT_SUCCESS);
 }
