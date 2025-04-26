@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/25 12:56:12 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/26 11:43:02 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ t_map		*get_map(void);
  */
 int			draw_scene(t_game_data *game_data);
 
+int			redraw_scene(t_game_data *game_data);
+
 /* ************************************************************************** */
 /* PLAYER                                                                     */
 /* ************************************************************************** */
@@ -158,5 +160,7 @@ int			draw_exit(mlx_t *mlx, char *line, int y);
 /* ************************************************************************** */
 
 int			draw_fish(t_game_data *game_data, char *line, int y);
+
+int			redraw_fish(t_game_data *game_data, char *line, int y);
 
 #endif

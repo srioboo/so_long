@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/25 12:39:19 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/26 11:55:34 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,34 +53,44 @@ t_map	*get_map(void)
 	return (map);
 }
 
-static int	full_scene(t_game_data *game_data, char *line, int y)
-{
-	int		result;
-	mlx_t	*mlx;
-
-	mlx = game_data->mlx;
-	result = 0;
-	result += draw_ocean(mlx, line, y);
-	result += draw_wall(mlx, line, y);
-	result += draw_exit(mlx, line, y);
-	result += draw_fish(game_data, line, y);
-	return (result);
-}
-
 int	draw_scene(t_game_data *game_data)
 {
 	int		result;
 	int		y;
 	char	**lines;
 	int		nbr_lines;
+	mlx_t	*mlx;
 
+	mlx = game_data->mlx;
 	result = 0;
 	y = 0;
 	lines = game_data->map->lines;
 	nbr_lines = game_data->map->map_height;
 	while (y < (nbr_lines - 1))
 	{
-		result = full_scene(game_data, lines[y], y);
+		result += draw_ocean(mlx, lines[y], y);
+		result += draw_wall(mlx, lines[y], y);
+		result += draw_exit(mlx, lines[y], y);
+		result += draw_fish(game_data, lines[y], y);
+		y++;
+	}
+	return (result);
+}
+
+int	redraw_scene(t_game_data *game_data)
+{
+	int		result;
+	int		y;
+	// char	**lines;
+	int		nbr_lines;
+
+	result = 0;
+	y = 0;
+	// lines = game_data->map->lines;
+	nbr_lines = game_data->map->map_height;
+	while (y < (nbr_lines - 1))
+	{
+		// result += redraw_fish(game_data, lines[y], y);
 		y++;
 	}
 	return (result);
