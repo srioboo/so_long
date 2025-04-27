@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/04/27 12:02:00 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/04/27 12:36:16 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CC 		= cc
 CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX	:= ./MLX42
 LIBFT	:= ./libft
+DEBUG	= -fdiagnostics-color=always -g
 
 HEADERS	= -I ./include -I $(LIBMLX)/include \
 		-I $(LIBFT)/src -I $(LIBFT)/get_next_line -I $(LIBFT)/ft_printf
@@ -48,6 +49,9 @@ libft:
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) -o $(NAME)
+
+debug: $(OBJS)
+	@$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) $(DEBUG) -o main
 
 clean:
 	@rm -rf $(OBJS)
@@ -81,4 +85,4 @@ val: all
 vall: all
 	valgrind --leak-check=full --verbose --track-origins=yes --log-file=leaks.txt ./$(NAME)
 
-.PHONY: all clean fclean re sane val vall test tclean libmlx libft libft-clean full-clean
+.PHONY: all clean fclean re sane val vall test tclean libmlx libft libft-clean full-clean debug

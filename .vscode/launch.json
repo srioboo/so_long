@@ -12,7 +12,7 @@
 			// launch
 			"request": "launch",
 			// path of the program to debug
-			"program": "${fileDirname}/main",
+			"program": "${workspaceFolder}/main",
 			// arguments
 			"args": [],
 			"stopAtEntry": false,

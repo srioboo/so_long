@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/27 11:59:49 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:08:54 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,26 @@ t_map	*get_map(char *game_map)
 {
 	char	*line;
 	int		fd;
-	int		y;
+	int		height;
 	t_map	*map;
 	char	**lines;
 
+	height = validate_map(game_map);
 	fd = load_map(game_map);
-	lines = (char **)ft_calloc(8, sizeof(char *)); // TODO - this is wrong
-	y = 0;
+	lines = (char **)ft_calloc(height + 1, sizeof(char *)); // TODO - this is wrong
+	height = 0;
 	line = get_next_line(fd);
-	lines[y++] = line;
+	lines[height++] = line;
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
-		lines[y++] = line;
+		lines[height++] = line;
 	}
-	lines[y] = NULL;
+	lines[height] = NULL;
 	map = ft_calloc(8, sizeof(t_map));
 	map->map_with = ft_strlen(lines[0]) - 1;
 	map->lines = lines;
-	map->map_height = y;
+	map->map_height = height;
 	map = fill_map_data(map);
 	close(fd);
 	return (map);
