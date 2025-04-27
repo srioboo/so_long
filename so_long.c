@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/26 19:59:52 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/27 11:03:55 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	create_game(char *game_map)
 
 int32_t	main(int argc, char **argv)
 {
-
 	if (argc == 2)
 		create_game(argv[1]);
 	else if (argc == 1)
