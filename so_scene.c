@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/27 10:55:54 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/27 11:59:49 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ t_map	*get_map(char *game_map)
 	t_map	*map;
 	char	**lines;
 
-	if (!game_map)
-		fd = open("map.ber", O_RDONLY);
-	else
-		fd = open(game_map, O_RDONLY);
+	fd = load_map(game_map);
 	lines = (char **)ft_calloc(8, sizeof(char *)); // TODO - this is wrong
 	y = 0;
 	line = get_next_line(fd);

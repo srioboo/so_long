@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/04/26 20:24:56 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/04/27 12:02:00 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ HEADERS	= -I ./include -I $(LIBMLX)/include \
 LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIBSFT	= $(LIBFT)/libft.a
 SRCS	= so_long.c \
-		so_validate.c \
+		so_map.c \
 		so_scene.c \
 		so_player.c \
 		so_mngmt.c \

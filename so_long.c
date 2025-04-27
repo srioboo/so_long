@@ -6,13 +6,13 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/27 11:03:55 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/27 11:12:27 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	create_game(char *game_map)
+static void	create_game(char *game_map)
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
@@ -43,6 +43,5 @@ int32_t	main(int argc, char **argv)
 		create_game(argv[1]);
 	else if (argc == 1)
 		create_game(NULL);
-
 	return (EXIT_SUCCESS);
 }
