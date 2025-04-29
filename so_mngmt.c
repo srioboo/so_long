@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/29 17:39:23 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:50:45 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ void	process_moves(mlx_key_data_t keydata, void *param)
 
 	game_data = param;
 	if ((keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
-		&& keydata.action == MLX_PRESS)
+		&& (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		move_player(game_data, 1, 0);
 	if ((keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT)
-		&& keydata.action == MLX_PRESS)
+		&& (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		move_player(game_data, -1, 0);
 	if ((keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
-		&& keydata.action == MLX_PRESS)
+		&& (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		move_player(game_data, 0, -1);
 	if ((keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
-		&& keydata.action == MLX_PRESS)
+		&& (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		move_player(game_data, 0, 1);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		close_window(game_data);
