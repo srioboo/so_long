@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/29 17:39:49 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/29 22:13:38 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,6 @@
 
 # define TRUE 1
 # define FALSE 0
-
-/* TODO - delete
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-}	t_vars; */
 
 typedef struct s_map_pos
 {
