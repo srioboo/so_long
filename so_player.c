@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/29 17:19:08 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:43:54 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ void	move_player(t_game_data *game_data,
 			game_data->redraw = 1;
 			draw_scene(game_data);
 		}
+		if (game_data->map->lines[next.y][next.x] == 'E'
+			&& game_data->fish_img->count == 0)
+			close_window(game_data);
 		game_data->moves++;
 		ft_printf("move: %d\n", game_data->moves);
 	}

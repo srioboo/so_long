@@ -6,11 +6,16 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/25 11:24:09 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:39:23 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	close_window(t_game_data *game_data)
+{
+	mlx_close_window(game_data->mlx);
+}
 
 void	error(void)
 {
@@ -33,23 +38,23 @@ int	is_move_posible(t_game_data *game_data, int next_x, int next_y)
 
 void	process_moves(mlx_key_data_t keydata, void *param)
 {
-	t_game_data	*data;
+	t_game_data	*game_data;
 
-	data = param;
+	game_data = param;
 	if ((keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
 		&& keydata.action == MLX_PRESS)
-		move_player(data, 1, 0);
+		move_player(game_data, 1, 0);
 	if ((keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT)
 		&& keydata.action == MLX_PRESS)
-		move_player(data, -1, 0);
+		move_player(game_data, -1, 0);
 	if ((keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
 		&& keydata.action == MLX_PRESS)
-		move_player(data, 0, -1);
+		move_player(game_data, 0, -1);
 	if ((keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
 		&& keydata.action == MLX_PRESS)
-		move_player(data, 0, 1);
+		move_player(game_data, 0, 1);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_close_window(data->mlx);
+		close_window(game_data);
 }
 
 mlx_image_t	*get_image(mlx_t *mlx, char *relative_path)
