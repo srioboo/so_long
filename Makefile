@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/04/28 12:01:13 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/04/29 10:30:13 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ libft:
 	@printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) -o $(NAME)
+	$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) -o $(NAME)
 
 debug: $(OBJS)
 	@$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) $(DEBUG) -o main

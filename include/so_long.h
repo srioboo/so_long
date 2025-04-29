@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/27 17:07:44 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:20:27 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,13 @@ typedef struct s_game_data
 	void			*mlx;
 	mlx_image_t		*player_img;
 	mlx_image_t		*fish_img;
+	mlx_image_t		*ocean_img;
+	mlx_image_t		*wall_img;
+	mlx_image_t		*exit_img;
 	struct s_player	*player;
 	struct s_map	*map;
 	int				moves;
+	int				redraw;
 }	t_game_data;
 
 /* ************************************************************************** */
@@ -137,29 +141,24 @@ int			is_move_posible(t_game_data *game_data,
 void		process_moves(mlx_key_data_t keydata, void *param);
 
 /* ************************************************************************** */
-/* WALL                                                                       */
+/* OBJECTS                                                                    */
 /* ************************************************************************** */
 
-int			draw_wall(mlx_t *mlx, char *line, int y);
+int			draw_fish(t_game_data *game_data, char type, int x, int y);
+
+void		delete_fish_instance(t_game_data *game_data, int x, int y);
 
 /* ************************************************************************** */
-/* OCEAN                                                                      */
+/* OBJECTS                                                                    */
 /* ************************************************************************** */
 
-int			draw_ocean(mlx_t *mlx, char *line, int y);
+int			draw_wall(t_game_data *game_data, char type, int x, int y);
 
-/* ************************************************************************** */
-/* DOOR                                                                       */
-/* ************************************************************************** */
+int			draw_ocean(t_game_data *game_data, char type, int x, int y);
 
-int			draw_exit(mlx_t *mlx, char *line, int y);
+int			draw_exit(t_game_data *game_data, char type, int x, int y);
 
-/* ************************************************************************** */
-/* FISH                                                                       */
-/* ************************************************************************** */
-
-int			draw_fish(t_game_data *game_data, char *line, int y);
-
-int			redraw_fish(t_game_data *game_data, char *line, int y);
+t_game_data	*get_objects_images(t_game_data *game_data);
+// int			redraw_fish(t_game_data *game_data, char *line, int y);
 
 #endif

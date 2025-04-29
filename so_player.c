@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/26 11:51:37 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:19:08 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ mlx_image_t	*draw_player(t_game_data *game_data)
 	result = mlx_image_to_window(game_data->mlx, img,
 			IMG_SIZE * (game_data->map->player_x),
 			IMG_SIZE * (game_data->map->player_y));
-	// mlx_set_instance_depth(&game_data->player_img->instances[0], 100);
 	if (result < 0)
 		error();
 	return (img);
@@ -51,9 +50,10 @@ void	move_player(t_game_data *game_data,
 		game_data->player_img->instances[0].y += (steps_y * IMG_SIZE);
 		if (game_data->map->lines[next.y][next.x] == 'C')
 		{
-			ft_printf("PESCAOOOOOO!!!! - RE-DRAW\n");
 			game_data->map->lines[next.y][next.x] = '0';
-			// redraw_scene(game_data); // FIXME - redraw scene
+			delete_fish_instance(game_data, next.x, next.y);
+			game_data->redraw = 1;
+			draw_scene(game_data);
 		}
 		game_data->moves++;
 		ft_printf("move: %d\n", game_data->moves);

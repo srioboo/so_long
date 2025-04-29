@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/27 17:08:54 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:16:20 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_map	*get_map(char *game_map)
 
 	height = validate_map(game_map);
 	fd = load_map(game_map);
-	lines = (char **)ft_calloc(height + 1, sizeof(char *)); // TODO - this is wrong
+	lines = (char **)ft_calloc(height + 1, sizeof(char *));
 	height = 0;
 	line = get_next_line(fd);
 	lines[height++] = line;
@@ -64,44 +64,42 @@ t_map	*get_map(char *game_map)
 	return (map);
 }
 
+static int	draw_all(t_game_data *game_data, char type, int x, int y)
+{
+	int	result;
+
+	result = 0;
+	if (game_data->redraw == 0)
+	{
+		result += draw_ocean(game_data, type, x, y);
+		result += draw_wall(game_data, type, x, y);
+		result += draw_exit(game_data, type, x, y);
+	}
+	result += draw_fish(game_data, type, x, y);
+	return (result);
+}
+
 int	draw_scene(t_game_data *game_data)
 {
 	int		result;
 	int		y;
+	int		x;
 	char	**lines;
 	int		nbr_lines;
-	mlx_t	*mlx;
 
-	mlx = game_data->mlx;
 	result = 0;
 	y = 0;
 	lines = game_data->map->lines;
 	nbr_lines = game_data->map->map_height;
+	game_data = get_objects_images(game_data);
 	while (y < (nbr_lines - 1))
 	{
-		result += draw_ocean(mlx, lines[y], y);
-		result += draw_wall(mlx, lines[y], y);
-		result += draw_exit(mlx, lines[y], y);
-		result += draw_fish(game_data, lines[y], y);
-		y++;
-	}
-	return (result);
-}
-
-int	redraw_scene(t_game_data *game_data)
-{
-	int		result;
-	int		y;
-	// char	**lines;
-	int		nbr_lines;
-
-	result = 0;
-	y = 0;
-	// lines = game_data->map->lines;
-	nbr_lines = game_data->map->map_height;
-	while (y < (nbr_lines - 1))
-	{
-		// result += redraw_fish(game_data, lines[y], y);
+		x = 0;
+		while (lines[y][x] != 0)
+		{
+			result = draw_all(game_data, lines[y][x], x, y);
+			x++;
+		}
 		y++;
 	}
 	return (result);

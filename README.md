@@ -48,3 +48,27 @@ cmake --build build -j4 # or do make -C build -j4
 ==192925== 
 ==192925== For lists of detected and suppressed errors, rerun with: -s
 ==192925== ERROR SUMMARY: 12 errors from 12 contexts (suppressed: 0 from 0)
+
+==294654== LEAK SUMMARY:
+==294654==    definitely lost: 22,718 bytes in 645 blocks
+==294654==    indirectly lost: 10,355,166 bytes in 640 blocks
+==294654==      possibly lost: 81,920 bytes in 5 blocks
+==294654==    still reachable: 317,955 bytes in 3,106 blocks
+==294654==         suppressed: 0 bytes in 0 blocks
+==294654== Reachable blocks (those to which a pointer was found) are not shown.
+==294654== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==294654== 
+==294654== For lists of detected and suppressed errors, rerun with: -s
+==294654== ERROR SUMMARY: 18 errors from 18 contexts (suppressed: 0 from 0)
+
+==297874== LEAK SUMMARY:
+==297874==    definitely lost: 12,542 bytes in 221 blocks
+==297874==    indirectly lost: 3,473,886 bytes in 220 blocks
+==297874==      possibly lost: 16,384 bytes in 1 blocks
+==297874==    still reachable: 317,955 bytes in 3,106 blocks
+==297874==         suppressed: 0 bytes in 0 blocks
+==297874== Reachable blocks (those to which a pointer was found) are not shown.
+==297874== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==297874== 
+==297874== For lists of detected and suppressed errors, rerun with: -s
+==297874== ERROR SUMMARY: 16 errors from 16 contexts (suppressed: 0 from 0)

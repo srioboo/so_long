@@ -6,72 +6,72 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:57:33 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/28 12:00:33 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:51:55 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	draw_wall(mlx_t *mlx, char *line, int y)
+t_game_data	*get_objects_images(t_game_data *game_data)
 {
-	int			result;
-	int			x;
-	mlx_image_t	*img;
-	char		*relative_path;
+	char	*path_wall;
+	char	*path_ocean;
+	char	*path_exit;
+	char	*path_fish;
 
-	relative_path = "./img/wall_64.png";
-	img = get_image(mlx, relative_path);
+	path_wall = "./img/wall_64.png";
+	game_data->wall_img = get_image(game_data->mlx, path_wall);
+	path_ocean = "./img/ocean_64.png";
+	game_data->ocean_img = get_image(game_data->mlx, path_ocean);
+	path_exit = "./img/luffys_flag_64.png";
+	game_data->exit_img = get_image(game_data->mlx, path_exit);
+	path_fish = "./img/clown-fish_64.png";
+	game_data->fish_img = get_image(game_data->mlx, path_fish);
+	// TODO - asign and free memory
+	// free(path_wall);
+	// free(path_ocean);
+	// free(path_exit);
+
+	return (game_data);
+}
+
+int	draw_wall(t_game_data *game_data, char type, int x, int y)
+{
+	int		result;
+
 	result = 0;
-	x = 0;
-	while (line[x] != 0)
-	{
-		if (line[x] == '1')
-			result = mlx_image_to_window(mlx, img, x * IMG_SIZE, y * IMG_SIZE);
-		x++;
-	}
+	if (type == '1')
+		result = mlx_image_to_window(game_data->mlx,
+				game_data->wall_img, x * IMG_SIZE, y * IMG_SIZE);
+	// mlx_set_instance_depth(game_data->wall_img->instances, 10);
 	if (result < 0)
 		error();
 	return (result);
 }
 
-int	draw_ocean(mlx_t *mlx, char *line, int y)
+int	draw_ocean(t_game_data *game_data, char type, int x, int y)
 {
-	int			result;
-	int			x;
-	mlx_image_t	*img;
-	char		*relative_path;
+	int		result;
 
-	relative_path = "./img/ocean_64.png";
-	img = get_image(mlx, relative_path);
 	result = 0;
-	x = 0;
-	while (line[x] != 0)
-	{
-		result = mlx_image_to_window(mlx, img, x * IMG_SIZE, y * IMG_SIZE);
-		x++;
-	}
+	if (type != 'x')
+		result = mlx_image_to_window(game_data->mlx,
+				game_data->ocean_img, x * IMG_SIZE, y * IMG_SIZE);
+	// mlx_set_instance_depth(game_data->ocean_img->instances, 0);
 	if (result < 0)
 		error();
 	return (result);
 }
 
-int	draw_exit(mlx_t *mlx, char *line, int y)
+int	draw_exit(t_game_data *game_data, char type, int x, int y)
 {
-	int			result;
-	int			x;
-	mlx_image_t	*img;
-	char		*relative_path;
+	int		result;
 
-	relative_path = "./img/luffys_flag_64.png";
-	img = get_image(mlx, relative_path);
 	result = 0;
-	x = 0;
-	while (line[x] != 0)
-	{
-		if (line[x] == 'E')
-			result = mlx_image_to_window(mlx, img, x * IMG_SIZE, y * IMG_SIZE);
-		x++;
-	}
+	if (type == 'E')
+		result = mlx_image_to_window(game_data->mlx,
+				game_data->exit_img, x * IMG_SIZE, y * IMG_SIZE);
+	// mlx_set_instance_depth(game_data->exit_img->instances, 100);
 	if (result < 0)
 		error();
 	return (result);
