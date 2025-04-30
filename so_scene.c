@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/29 17:16:20 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/30 11:44:38 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,13 @@ static t_map	*fill_map_data(t_map *map)
 	return (map);
 }
 
-t_map	*get_map(char *game_map)
+static t_map	*process_map(char *game_map, int height)
 {
 	char	*line;
 	int		fd;
-	int		height;
 	t_map	*map;
 	char	**lines;
 
-	height = validate_map(game_map);
 	fd = load_map(game_map);
 	lines = (char **)ft_calloc(height + 1, sizeof(char *));
 	height = 0;
@@ -55,12 +53,28 @@ t_map	*get_map(char *game_map)
 		lines[height++] = line;
 	}
 	lines[height] = NULL;
-	map = ft_calloc(8, sizeof(t_map));
+	map = ft_calloc(8, sizeof(t_map)); // BUG - map size?
 	map->map_with = ft_strlen(lines[0]) - 1;
 	map->lines = lines;
 	map->map_height = height;
 	map = fill_map_data(map);
 	close(fd);
+	return (map);
+}
+
+t_map	*get_map(char *game_map)
+{
+	int		height;
+	t_map	*map;
+
+	map = NULL;
+	height = validate_map(game_map);
+	if (height > 0)
+		map = process_map(game_map, height);
+	// else
+	// {
+	// 	close_window(game_map);
+	// }
 	return (map);
 }
 

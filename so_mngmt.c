@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/29 22:39:11 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/30 09:04:19 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	close_window(t_game_data *game_data)
 {
+	
 	mlx_close_window(game_data->mlx);
 }
 
