@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/30 11:43:40 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:36:33 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	create_game(char *game_map)
 	{
 		mlx_set_setting(MLX_MAXIMIZED, false);
 		mlx = mlx_init((IMG_SIZE * map->map_with),
-				(IMG_SIZE * (map->map_height - 1)), "So long", true);
+				(IMG_SIZE * (map->map_height - 1)), "So long", false);
 		if (!mlx)
 			error();
 		game_data = (t_game_data *)ft_calloc(100, sizeof(t_game_data));
