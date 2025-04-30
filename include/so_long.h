@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/30 07:54:10 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/01 06:49:53 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,17 @@ typedef struct s_game_data
 int			validate_map(char *game_map);
 
 /**
+ * @brief Validate map data
+ */
+void		validate_data(char **tab, t_map_pos size, t_map_pos player_pos);
+
+/**
  * @brief load a map
  * 
  * @param game_map struct with game data
  * @return file descriptor of the map
  */
-int			load_map(char *game_map);
+// int			load_map(char *game_map);
 
 /* ************************************************************************** */
 /* SCENE                                                                      */
