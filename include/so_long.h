@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/01 11:25:20 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/01 19:00:41 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ typedef struct s_map
 	int		map_with;
 	int		player_x;
 	int		player_y;
+	int		nbr_player;
+	int		nbr_exit;
+	int		nbr_ocean;
+	int		nbr_fish;
 }	t_map;
 
 typedef struct s_game_data
@@ -82,7 +86,7 @@ typedef struct s_game_data
  * @param map_path string with map path
  * @return if correct return true
  */
-int			validate_map_path(char *map_path);
+int			is_valid_map_path(char *map_path);
 
 /**
  * @brief Validate map is correct
@@ -91,13 +95,14 @@ int			validate_map_path(char *map_path);
  * @param map_path string with map path
  * @return if correct return height of the map
  */
-int			validate_map_size(char *map_path);
+int			is_valid_map_size(char *map_path);
 
 /**
  * @brief Validate map data
+ * @param map structure with map data
+ * @return 0 if cant validate, 1 if data are ok
  */
-// void		validate_data(char **tab, t_map_pos size, t_map_pos player_pos);
-void		validate_data(t_map *map);
+int			is_valid_data(t_map *map);
 
 /**
  * @brief load a map

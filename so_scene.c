@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/01 11:20:56 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:01:54 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static t_map	*fill_map_data(t_map *map)
 		{
 			map->player_x = x;
 			map->player_y = y;
+			map->nbr_player++;
 		}
 		y++;
 	}
@@ -67,25 +68,15 @@ t_map	*get_map(char *map_path)
 {
 	int		height;
 	t_map	*map;
-	t_map	*map_aux;
 
 	map = NULL;
-	map_aux = NULL;
-	if (validate_map_size(map_path) == 0)
-		return (map);
-	height = validate_map_size(map_path);
-	if (height > 0)
-	{
+	if (is_valid_map_path(map_path) == FALSE)
+		ft_printf("Map path not valid: %s\n", map_path);
+	height = is_valid_map_size(map_path);
+	if (height == 0)
+		ft_printf("Map is not a rectangle: %s\n", map_path);
+	else if (is_valid_data(process_map(map_path, height)) == TRUE)
 		map = process_map(map_path, height);
-		// TODO - complete data validation
-		// validate_data(process_map(map_path, height));
-		//for(int i =0; i <= map->map_height - 1; i++) // TODO - delete
-		//	ft_printf("%s", map->lines[i]);
-	}
-	// else
-	// {
-	// 	close_window(map_path);
-	// }
 	return (map);
 }
 
