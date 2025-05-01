@@ -72,3 +72,14 @@ cmake --build build -j4 # or do make -C build -j4
 ==297874== 
 ==297874== For lists of detected and suppressed errors, rerun with: -s
 ==297874== ERROR SUMMARY: 16 errors from 16 contexts (suppressed: 0 from 0)
+
+==700749== LEAK SUMMARY:
+==700749==    definitely lost: 7,782 bytes in 19 blocks
+==700749==    indirectly lost: 82,391 bytes in 13 blocks
+==700749==      possibly lost: 0 bytes in 0 blocks
+==700749==    still reachable: 317,955 bytes in 3,106 blocks
+==700749==         suppressed: 0 bytes in 0 blocks
+==700749== Reachable blocks (those to which a pointer was found) are not shown.
+==700749== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==700749== 
+==700749== ERROR SUMMARY: 15 errors from 15 contexts (suppressed: 0 from 0)
