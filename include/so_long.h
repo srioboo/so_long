@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/01 06:49:53 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:25:20 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 # include "so_colors.h"
+// # include <stdio.h>
 
 // HD size 1920×1080
 # define HD_WIDTH	1920
@@ -78,16 +79,25 @@ typedef struct s_game_data
 /**
  * @brief Validate map is correct
  * 
- * @details Validate map and, if correct, return height
- * @param game_map struct with game data
- * @return if correct resturn height of the map
+ * @param map_path string with map path
+ * @return if correct return true
  */
-int			validate_map(char *game_map);
+int			validate_map_path(char *map_path);
+
+/**
+ * @brief Validate map is correct
+ * 
+ * @details Validate map and, if correct, return height
+ * @param map_path string with map path
+ * @return if correct return height of the map
+ */
+int			validate_map_size(char *map_path);
 
 /**
  * @brief Validate map data
  */
-void		validate_data(char **tab, t_map_pos size, t_map_pos player_pos);
+// void		validate_data(char **tab, t_map_pos size, t_map_pos player_pos);
+void		validate_data(t_map *map);
 
 /**
  * @brief load a map

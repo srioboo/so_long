@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/01 08:52:12 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:20:56 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,33 +55,36 @@ static t_map	*process_map(char *game_map, int height)
 		height++;
 	}
 	map = ft_calloc(8, sizeof(t_map)); // BUG - map size?
+	map->map_height = height;
 	map->map_with = ft_strlen(lines[0]) - 1;
 	map->lines = lines;
-	map->map_height = height;
 	map = fill_map_data(map);
 	close(fd);
 	return (map);
 }
 
-t_map	*get_map(char *game_map)
+t_map	*get_map(char *map_path)
 {
 	int		height;
 	t_map	*map;
+	t_map	*map_aux;
 
 	map = NULL;
-	height = validate_map(game_map);
+	map_aux = NULL;
+	if (validate_map_size(map_path) == 0)
+		return (map);
+	height = validate_map_size(map_path);
 	if (height > 0)
 	{
-		map = process_map(game_map, height);
-		t_map_pos map_size = {map->map_with - 1, map->map_height - 1, '\0'};
-		t_map_pos player_pos = {map->player_x, map->player_y, '\0'};
-		validate_data(map->lines, map_size, player_pos);
-		// for(int i =0; i <= map->map_height - 1; i++) // TODO - delete
+		map = process_map(map_path, height);
+		// TODO - complete data validation
+		// validate_data(process_map(map_path, height));
+		//for(int i =0; i <= map->map_height - 1; i++) // TODO - delete
 		//	ft_printf("%s", map->lines[i]);
 	}
 	// else
 	// {
-	// 	close_window(game_map);
+	// 	close_window(map_path);
 	// }
 	return (map);
 }

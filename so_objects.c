@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:57:33 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/29 22:26:02 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:32:49 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ t_game_data	*get_objects_images(t_game_data *game_data)
 	char	*path_exit;
 	char	*path_fish;
 
-	path_wall = "./img/wall_64.png";
+	path_wall = "./textures/wall_64.png";
 	game_data->wall_img = get_image(game_data->mlx, path_wall);
-	path_ocean = "./img/ocean_64.png";
+	path_ocean = "./textures/ocean_64.png";
 	game_data->ocean_img = get_image(game_data->mlx, path_ocean);
-	path_exit = "./img/luffys_flag_64.png";
+	path_exit = "./textures/luffys_flag_64.png";
 	game_data->exit_img = get_image(game_data->mlx, path_exit);
-	path_fish = "./img/clown-fish_64.png";
+	path_fish = "./textures/clown-fish_64.png";
 	game_data->fish_img = get_image(game_data->mlx, path_fish);
 	// TODO - asign and free memory
 	// free(path_wall);

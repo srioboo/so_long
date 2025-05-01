@@ -6,20 +6,30 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/04/30 17:00:01 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:42:56 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	create_game(char *game_map)
+static void	set_base_game_data(t_game_data	*game_data)
+{
+	mlx_image_t	*img;
+
+	game_data->moves = 0;
+	game_data->redraw = 0;
+	draw_scene(game_data);
+	img = draw_player(game_data);
+	game_data->player_img = img;
+}
+
+static void	create_game(char *map_path)
 {
 	mlx_t		*mlx;
-	mlx_image_t	*img;
 	t_game_data	*game_data;
 	t_map		*map;
 
-	map = get_map(game_map);
+	map = get_map(map_path);
 	if (map != NULL)
 	{
 		mlx_set_setting(MLX_MAXIMIZED, false);
@@ -30,11 +40,7 @@ static void	create_game(char *game_map)
 		game_data = (t_game_data *)ft_calloc(100, sizeof(t_game_data));
 		game_data->map = map;
 		game_data->mlx = mlx;
-		game_data->moves = 0;
-		game_data->redraw = 0;
-		draw_scene(game_data);
-		img = draw_player(game_data);
-		game_data->player_img = img;
+		set_base_game_data(game_data);
 		mlx_key_hook(mlx, &process_moves, game_data);
 		mlx_loop(mlx);
 		mlx_terminate(mlx);
