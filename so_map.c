@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/02 12:13:19 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:28:19 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	is_valid_map_path(char *map_path)
 {
 	int	fd;
-	int is_valid;
+	int	is_valid;
 
 	is_valid = TRUE;
 	fd = open(map_path, O_RDONLY);
@@ -108,12 +108,13 @@ int	is_valid_data(t_map *map)
 	fill(map->lines, (t_map_pos){map->map_with - 1, map->map_height - 1, '\0'},
 		target, (t_map_pos){map->player_x, map->player_y, '\0'});
 	map = test_data(map);
-	if (map->nbr_player != 1 || map->nbr_exit != 1 || map->nbr_ocean > 1 || map->nbr_fish == 0)
+	if (map->nbr_player != 1 || map->nbr_exit != 1
+		|| map->nbr_ocean > 1 || map->nbr_fish == 0)
 		result = FALSE;
 	if (map->nbr_player != 1)
 		ft_printf("No player or two much players P: %d!!\n", map->nbr_player);
 	else if (map->nbr_fish == 0)
-		ft_printf("No fish C:%d \n", map->nbr_fish); 
+		ft_printf("No fish C:%d \n", map->nbr_fish);
 	else if (map->nbr_exit != 1 || map->nbr_ocean > 1)
 		ft_printf("No exit or exit not accesible!!\n", map->nbr_exit);
 	return (result);
