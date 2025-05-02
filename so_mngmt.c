@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/01 11:47:34 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/02 13:12:01 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 void	close_window(t_game_data *game_data)
 {
+	// TODO - here need to release memory
+	mlx_delete_image(game_data->mlx, game_data->exit_img);
+	mlx_delete_image(game_data->mlx, game_data->fish_img);
+	mlx_delete_image(game_data->mlx, game_data->wall_img);
+	mlx_delete_image(game_data->mlx, game_data->ocean_img);
+	game_data->exit_img = NULL;
+	game_data->fish_img = NULL;
+	game_data->wall_img = NULL;
 	mlx_close_window(game_data->mlx);
 }
 
@@ -56,15 +64,25 @@ void	process_moves(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		close_window(game_data);
 }
+static mlx_texture_t *get_texture(char *relative_path)
+{
+	mlx_texture_t	*texture;
+
+	texture = mlx_load_png(relative_path);
+	if (!texture)
+		error();
+	return (texture);
+}
 
 mlx_image_t	*get_image(mlx_t *mlx, char *relative_path)
 {
 	mlx_image_t		*img;
 	mlx_texture_t	*texture;
 
-	texture = mlx_load_png(relative_path);
-	if (!texture)
-		error();
+	//texture = mlx_load_png(relative_path);
+	//if (!texture)
+	//	error();
+	texture = get_texture(relative_path);
 	img = mlx_texture_to_image(mlx, texture);
 	if (!img)
 		error();
