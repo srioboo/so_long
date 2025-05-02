@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/02 15:32:18 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 18:51:03 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,34 +83,27 @@ typedef struct s_game_data
 /**
  * @brief Validate map is correct
  * 
- * @param map_path string with map path
- * @return if correct return true
- */
-int			is_valid_map_path(char *map_path);
-
-/**
- * @brief Validate map is correct
- * 
  * @details Validate map and, if correct, return height
- * @param map_path string with map path
+ * @param map_lines string with map path
  * @return if correct return height of the map
  */
-int			is_valid_map_size(char *map_path);
+int				is_valid_map_shape(char **map_lines);
 
 /**
  * @brief Validate map data
  * @param map structure with map data
  * @return 0 if cant validate, 1 if data are ok
  */
-int			is_valid_data(t_map *map);
+int				is_valid_data(t_map *map);
 
 /**
- * @brief load a map
+ * @brief validate map border
  * 
- * @param game_map struct with game data
- * @return file descriptor of the map
+ * @param map_lines the lines
+ * @param height map height
+ * @return 0 if cant validate, 1 if is valid
  */
-// int			load_map(char *game_map);
+int				is_valid_map_borders(char **map_lines, int height);
 
 /* ************************************************************************** */
 /* SCENE                                                                      */
@@ -122,7 +115,7 @@ int			is_valid_data(t_map *map);
  * @param game_map struct with game data
  * @return the map struct with player data
  */
-t_map		*get_map(char *game_map);
+t_map			*get_map(char *game_map);
 
 /**
  * @brief Draw the scene
@@ -131,7 +124,7 @@ t_map		*get_map(char *game_map);
  * @param game_map struct with game data
  * @return 0 or 1 if the scene has or not errors
  */
-int			draw_scene(t_game_data *game_data);
+int				draw_scene(t_game_data *game_data);
 
 /* ************************************************************************** */
 /* PLAYER                                                                     */
@@ -144,7 +137,7 @@ int			draw_scene(t_game_data *game_data);
  * @param game_map struct with game data
  * @return the player img
  */
-mlx_image_t	*draw_player(t_game_data *game_data);
+mlx_image_t		*draw_player(t_game_data *game_data);
 
 /**
  * @brief Move the player
@@ -153,8 +146,8 @@ mlx_image_t	*draw_player(t_game_data *game_data);
  * @param steps_x steps moving in x
  * @param steps_y steps moving in y
  */
-void		move_player(t_game_data *game_data,
-				int steps_x, int steps_y);
+void			move_player(t_game_data *game_data,
+					int steps_x, int steps_y);
 
 /* ************************************************************************** */
 /* GAME MANAGEMENT                                                            */
@@ -165,12 +158,12 @@ void		move_player(t_game_data *game_data,
  * 
  * @param game_data
  */
-void		close_window(t_game_data *game_data);
+void			close_window(t_game_data *game_data);
 
 /**
  * @brief Error management
  */
-void		error(void);
+void			error(void);
 
 /**
  * @brief get a texture from path
@@ -178,7 +171,7 @@ void		error(void);
  * @param relative_path the path to the texture
  * @return a texture
  */
-mlx_texture_t *get_texture(char *relative_path);
+mlx_texture_t	*get_texture(char *relative_path);
 
 /**
  * @brief get a image
@@ -188,7 +181,7 @@ mlx_texture_t *get_texture(char *relative_path);
  * 
  * @return and image
  */
-mlx_image_t	*get_image(mlx_t *mlx, char *relative_path);
+mlx_image_t		*get_image(mlx_t *mlx, char *relative_path);
 
 /**
  * @brief Move the player
@@ -196,7 +189,7 @@ mlx_image_t	*get_image(mlx_t *mlx, char *relative_path);
  * @param keydata with
  * @param param, generally game data
  */
-void		process_moves(mlx_key_data_t keydata, void *param);
+void			process_moves(mlx_key_data_t keydata, void *param);
 
 /* ************************************************************************** */
 /* OBJECTS                                                                    */
@@ -212,7 +205,7 @@ void		process_moves(mlx_key_data_t keydata, void *param);
  * 
  * @return 1 if is draw 0 if wasn't posible for son error
  */
-int			draw_fish(t_game_data *game_data, char type, int x, int y);
+int				draw_fish(t_game_data *game_data, char type, int x, int y);
 
 /**
  * @brief delete fish
@@ -222,7 +215,7 @@ int			draw_fish(t_game_data *game_data, char type, int x, int y);
  * @param y position
  * 
  */
-void		delete_fish_instance(t_game_data *game_data, int x, int y);
+void			delete_fish_instance(t_game_data *game_data, int x, int y);
 
 /* ************************************************************************** */
 /* OBJECTS                                                                    */
@@ -238,7 +231,7 @@ void		delete_fish_instance(t_game_data *game_data, int x, int y);
  * 
  * @return 1 if is draw 0 if wasn't posible for son error
  */
-int			draw_wall(t_game_data *game_data, char type, int x, int y);
+int				draw_wall(t_game_data *game_data, char type, int x, int y);
 
 /**
  * @brief draw ocean
@@ -250,7 +243,7 @@ int			draw_wall(t_game_data *game_data, char type, int x, int y);
  * 
  * @return 1 if is draw 0 if wasn't posible for son error
  */
-int			draw_ocean(t_game_data *game_data, char type, int x, int y);
+int				draw_ocean(t_game_data *game_data, char type, int x, int y);
 
 /**
  * @brief draw exit
@@ -262,7 +255,7 @@ int			draw_ocean(t_game_data *game_data, char type, int x, int y);
  * 
  * @return 1 if is draw 0 if wasn't posible for son error
  */
-int			draw_exit(t_game_data *game_data, char type, int x, int y);
+int				draw_exit(t_game_data *game_data, char type, int x, int y);
 
 /**
  * @brief get all images
@@ -271,6 +264,6 @@ int			draw_exit(t_game_data *game_data, char type, int x, int y);
  * 
  * @return game_data
  */
-t_game_data	*get_objects_images(t_game_data *game_data);
+t_game_data		*get_objects_images(t_game_data *game_data);
 
 #endif

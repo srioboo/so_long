@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_map.c                                           :+:      :+:    :+:   */
+/*   so_map_validate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/02 22:48:12 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 19:08:10 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static t_map	*test_data(t_map *map)
+static t_map	*set_data_count(t_map *map)
 {
 	int		x;
 	int		y;
@@ -63,10 +63,15 @@ int	is_valid_data(t_map *map)
 	char	target;
 
 	result = TRUE;
+	if (map->player_y <= 0 || map->player_x <= 0)
+	{
+		ft_printf("Error\nno player found\n");
+		return (FALSE);
+	}
 	target = map->lines[map->player_y][map->player_x];
 	fill(map->lines, (t_map_pos){map->map_with - 1, map->map_height - 1, '\0'},
 		target, (t_map_pos){map->player_x, map->player_y, '\0'});
-	map = test_data(map);
+	map = set_data_count(map);
 	if (map->nbr_player != 1 || map->nbr_exit != 1
 		|| map->nbr_ocean > 1 || map->nbr_fish == 0)
 		result = FALSE;
@@ -79,44 +84,49 @@ int	is_valid_data(t_map *map)
 	return (result);
 }
 
-int	is_valid_map_path(char *map_path)
+int	is_valid_map_shape(char **map_lines)
 {
-	int	fd;
-	int	is_valid;
+	int		y;
+	int		x;
+	size_t	initial_len;
 
-	is_valid = TRUE;
-	fd = open(map_path, O_RDONLY);
-	if (fd == -1)
-		is_valid = FALSE;
-	close(fd);
-	return (is_valid);
+	y = 0;
+	initial_len = ft_strlen(map_lines[0]);
+	while (map_lines[y])
+	{
+		x = 0;
+		while (map_lines[y][x] != '\n')
+			x++;
+		if (ft_strlen(map_lines[y]) != initial_len)
+			return (FALSE);
+		y++;
+	}
+	return (TRUE);
 }
 
-int	is_valid_map_size(char *map_path)
+int	is_valid_map_borders(char **map_lines, int height)
 {
-	int		fd;
-	char	*line;
-	int		height;
-	size_t	len;
+	int		y;
+	int		x;
+	int		len;
 
-	fd = open(map_path, O_RDONLY);
-	height = 0;
-	line = get_next_line(fd);
-	len = ft_strlen(line);
-	// TODO - change to detect borders
-	while (line != NULL)
+	y = 0;
+	len = ft_strlen(map_lines[0]);
+	while (y < (height - 1))
 	{
-		line = get_next_line(fd);
-		if (line == NULL && height > 0)
-			break ;
-		if (ft_strlen(line) != len)
+		x = 0;
+		while (map_lines[y][x] != '\n')
 		{
-			line = ft_free(&line);
-			close(fd);
-			return (0);
+			if ((y == 0 || y == (height - 2))
+				&& (map_lines[y][x] != '1'))
+				return (FALSE);
+			else if ((y > 0 && y < (height - 2))
+				&& (x == 0 || x == (len - 2))
+				&& map_lines[y][x] != '1')
+				return (FALSE);
+			x++;
 		}
-		height++;
+		y++;
 	}
-	close(fd);
-	return (height);
+	return (TRUE);
 }

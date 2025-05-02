@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/02 22:49:19 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 18:52:09 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,64 @@ static t_map	*fill_map_data(t_map *map)
 	return (map);
 }
 
-static t_map	*process_map(char *game_map, int height)
+int	map_size(char *map_path)
 {
-	char	*line;
 	int		fd;
-	t_map	*map;
-	char	**lines;
+	char	*line;
+	int		height;
 
-	fd = open(game_map, O_RDONLY);
-	lines = (char **)ft_calloc(height + 1, sizeof(char *));
+	fd = open(map_path, O_RDONLY);
 	height = 0;
 	line = get_next_line(fd);
-	lines[height] = line;
 	height++;
-	while (line != NULL)
+	while (line)
 	{
 		line = get_next_line(fd);
-		lines[height] = line;
 		height++;
 	}
 	close(fd);
+	free(line);
+	line = NULL;
+	return (height);
+}
+
+static char	**load_map(char *game_map, int height)
+{
+	int		fd;
+	char	**lines;
+	char	*line;
+	int		y;
+
+	fd = open(game_map, O_RDONLY);
+	if (fd == -1)
+		return (NULL);
+	lines = (char **)ft_calloc(height + 1, sizeof(char *));
+	y = 0;
+	line = get_next_line(fd);
+	lines[y] = line;
+	y++;
+	while (line)
+	{
+		line = get_next_line(fd);
+		lines[y] = line;
+		y++;
+	}
+	close(fd);
+	return (lines);
+}
+
+static t_map	*process_map(char *game_map, int height)
+{
+	t_map	*map;
+	char	**lines;
+
+	lines = load_map(game_map, height);
 	map = ft_calloc(1, sizeof(t_map));
 	map->map_height = height;
 	map->map_with = ft_strlen(lines[0]) - 1;
 	map->lines = lines;
+	map->player_x = -1;
+	map->player_y = -1;
 	map = fill_map_data(map);
 	return (map);
 }
@@ -67,15 +101,19 @@ static t_map	*process_map(char *game_map, int height)
 t_map	*get_map(char *map_path)
 {
 	int		height;
-	t_map	*map;
+	char	**map_lines;
+	t_map	*valid_map;
 
-	map = NULL;
-	if (is_valid_map_path(map_path) == FALSE)
+	valid_map = NULL;
+	height = map_size(map_path);
+	map_lines = load_map(map_path, height);
+	if (!map_lines)
 		ft_printf("Error\nmap path %d not valid", map_path);
-	height = is_valid_map_size(map_path);
-	if (height == 0)
+	else if (is_valid_map_shape(map_lines) == FALSE)
 		ft_printf("Error\nmap %s is not a rectangle", map_path);
-	else if (is_valid_data(process_map(map_path, height)) == TRUE)
-		map = process_map(map_path, height);
-	return (map);
+	else if (is_valid_map_borders(map_lines, height) == FALSE)
+		ft_printf("Error\nmap %s is not border by walls", map_path);
+	else if (is_valid_data(process_map(map_path, height)))
+		valid_map = process_map(map_path, height);
+	return (valid_map);
 }

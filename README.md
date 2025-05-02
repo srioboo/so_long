@@ -56,9 +56,9 @@ cmake --build build -j4 # or do make -C build -j4
 	- [x] an initial position (player)
 - [x] map must be rectagular
 - [] map must be rounded by walls, if not, return error
-- [] must control a valid exit route
+- [x] must control a valid exit route
 - [x] process each correct map
-- [] In case of error must return "Error\n" and a message
+- [x] In case of error must return "Error\n" and a message
 
 ## cosiderations for leaks
 
@@ -108,3 +108,16 @@ cmake --build build -j4 # or do make -C build -j4
 ==700749== To see them, rerun with: --leak-check=full --show-leak-kinds=all
 ==700749== 
 ==700749== ERROR SUMMARY: 15 errors from 15 contexts (suppressed: 0 from 0)
+
+AFTER REFACTORING: 497304b4fc04ef06b6c687dc30292e6aee6ad724
+==3007285== LEAK SUMMARY:
+==3007285==    definitely lost: 6,287 bytes in 19 blocks
+==3007285==    indirectly lost: 32,574 bytes in 1,309 blocks
+==3007285==      possibly lost: 7,862 bytes in 37 blocks
+==3007285==    still reachable: 2,910,020 bytes in 30,302 blocks
+==3007285==         suppressed: 616 bytes in 3 blocks
+==3007285== Reachable blocks (those to which a pointer was found) are not shown.
+==3007285== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==3007285== 
+==3007285== For lists of detected and suppressed errors, rerun with: -s
+==3007285== ERROR SUMMARY: 35 errors from 35 contexts (suppressed: 0 from 0)

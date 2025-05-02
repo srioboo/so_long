@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/02 15:29:09 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 11:49:54 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ mlx_image_t	*draw_player(t_game_data *game_data)
 	mlx_delete_texture(texture);
 	return (img);
 }
+
 static int	is_move_posible(t_game_data *game_data, int next_x, int next_y)
 {
 	int	can_move;
