@@ -45,18 +45,19 @@ cmake --build build -j4 # or do make -C build -j4
 - [x] show real moves count
 
 - [] can clean change windows, minimize
-- [] ESC close windows clean
-- [] close with X clean
+- [x] ESC close windows clean
+- [x] close with X clean
+- [] clean exit?
 - [x] use images
 
-- [] map need have
-	- [] an exit
-	- [] an object at least
-	- [] an initial position (player)
-- [] map must be rectagular
+- [x] map need have
+	- [x] an exit
+	- [x] an object at least
+	- [x] an initial position (player)
+- [x] map must be rectagular
 - [] map must be rounded by walls, if not, return error
 - [] must control a valid exit route
-- [] process each correct map
+- [x] process each correct map
 - [] In case of error must return "Error\n" and a message
 
 ## cosiderations for leaks

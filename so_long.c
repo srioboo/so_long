@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/01 11:42:56 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:12:22 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ static void	create_game(char *map_path)
 		mlx_loop(mlx);
 		mlx_terminate(mlx);
 	}
-	else
-		ft_printf("Not a valid map!");
 }
 
 int32_t	main(int argc, char **argv)
