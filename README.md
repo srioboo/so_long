@@ -35,6 +35,30 @@ cmake --build build -j4 # or do make -C build -j4
 - https://www.freepik.com/
 
 
+## TODO
+
+- [x] program parameter is ber file
+- [x] recolect all object and go out
+- [] shorter route?
+- [x] move with W, A, S y D and move in this directions
+- [x] player can't enter walls 
+- [x] show real moves count
+
+- [] can clean change windows, minimize
+- [] ESC close windows clean
+- [] close with X clean
+- [x] use images
+
+- [] map need have
+	- [] an exit
+	- [] an object at least
+	- [] an initial position (player)
+- [] map must be rectagular
+- [] map must be rounded by walls, if not, return error
+- [] must control a valid exit route
+- [] process each correct map
+- [] In case of error must return "Error\n" and a message
+
 ## cosiderations for leaks
 
 ==192925== LEAK SUMMARY:
