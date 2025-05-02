@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/01 19:00:41 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:32:18 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,14 @@ void		close_window(t_game_data *game_data);
 void		error(void);
 
 /**
+ * @brief get a texture from path
+ * 
+ * @param relative_path the path to the texture
+ * @return a texture
+ */
+mlx_texture_t *get_texture(char *relative_path);
+
+/**
  * @brief get a image
  * 
  * @param mlx
@@ -181,18 +189,6 @@ void		error(void);
  * @return and image
  */
 mlx_image_t	*get_image(mlx_t *mlx, char *relative_path);
-
-/**
- * @brief test if is posible to move
- * 
- * @param game data
- * @param current_x position
- * @param current_y position
- * 
- * @return 0 if can't move 1 if can
- */
-int			is_move_posible(t_game_data *game_data,
-				int current_x, int current_y);
 
 /**
  * @brief Move the player

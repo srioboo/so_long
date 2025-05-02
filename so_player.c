@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/01 12:08:12 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:29:09 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ mlx_image_t	*draw_player(t_game_data *game_data)
 	int				result;
 	mlx_texture_t	*texture;
 
-	texture = mlx_load_png("./textures/dolphin_64.png");
-	if (!texture)
-		error();
+	texture = get_texture("./textures/dolphin_64.png");
 	img = mlx_texture_to_image(game_data->mlx, texture);
 	if (!img)
 		error();
@@ -29,7 +27,20 @@ mlx_image_t	*draw_player(t_game_data *game_data)
 			IMG_SIZE * (game_data->map->player_y));
 	if (result < 0)
 		error();
+	mlx_delete_texture(texture);
 	return (img);
+}
+static int	is_move_posible(t_game_data *game_data, int next_x, int next_y)
+{
+	int	can_move;
+
+	can_move = 1;
+	if (next_x < 0 || next_y < 0
+		|| next_x >= game_data->map->map_with
+		|| next_y >= (game_data->map->map_height)
+		|| game_data->map->lines[next_y][next_x] == '1')
+		can_move = 0;
+	return (can_move);
 }
 
 void	move_player(t_game_data *game_data,
