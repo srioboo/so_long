@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/02 12:01:54 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:48:51 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ t_map	*get_map(char *map_path)
 
 	map = NULL;
 	if (is_valid_map_path(map_path) == FALSE)
-		ft_printf("Map path not valid: %s\n", map_path);
+		ft_printf("Error\nmap path %d not valid", map_path);
 	height = is_valid_map_size(map_path);
 	if (height == 0)
-		ft_printf("Map is not a rectangle: %s\n", map_path);
+		ft_printf("Error\nmap %s is not a rectangle", map_path);
 	else if (is_valid_data(process_map(map_path, height)) == TRUE)
 		map = process_map(map_path, height);
 	return (map);

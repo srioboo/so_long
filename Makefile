@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/05/01 12:02:25 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/02 16:47:16 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,11 +42,11 @@ libft:
 	@make -C $(LIBFT) full
 
 %.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 	@printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) -o $(NAME)
+	@$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) -o $(NAME)
 
 debug: $(OBJS)
 	@$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) $(DEBUG) -o main
@@ -70,7 +70,7 @@ test: all
 	./$(NAME) $(MAP)
 
 tclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 # detect memory leaks
 sane: $(OBJS)
