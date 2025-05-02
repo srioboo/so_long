@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/05/02 16:47:16 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/02 22:50:25 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIBSFT	= $(LIBFT)/libft.a
 SRCS	= so_long.c \
 		so_map.c \
+		so_map_validate.c \
 		so_scene.c \
 		so_player.c \
 		so_mngmt.c \
@@ -61,7 +62,7 @@ fclean: clean
 re: fclean all
 
 libft-clean:
-	@make -C ./libft fclean
+	@make -C ./libft -s fclean
 
 full-clean: libft-clean fclean
 
