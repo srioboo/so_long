@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/02 16:48:51 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/02 22:42:18 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_map	*process_map(char *game_map, int height)
 		lines[height] = line;
 		height++;
 	}
-	map = ft_calloc(8, sizeof(t_map)); // BUG - map size?
+	map = ft_calloc(1, sizeof(t_map));
 	map->map_height = height;
 	map->map_with = ft_strlen(lines[0]) - 1;
 	map->lines = lines;

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/02 15:28:49 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/02 20:17:00 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	process_moves(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		close_window(game_data);
 }
-mlx_texture_t *get_texture(char *relative_path)
+
+mlx_texture_t	*get_texture(char *relative_path)
 {
 	mlx_texture_t	*texture;
 
