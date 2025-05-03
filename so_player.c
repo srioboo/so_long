@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/03 11:49:54 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:36:52 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ mlx_image_t	*draw_player(t_game_data *game_data)
 	texture = get_texture("./textures/dolphin_64.png");
 	img = mlx_texture_to_image(game_data->mlx, texture);
 	if (!img)
-		error();
+		error_msg("Can't draw the player");
 	result = mlx_image_to_window(game_data->mlx, img,
 			IMG_SIZE * (game_data->map->player_x),
 			IMG_SIZE * (game_data->map->player_y));
 	if (result < 0)
-		error();
+		error_msg("Can't show the player in the window");
 	mlx_delete_texture(texture);
 	return (img);
 }
@@ -67,7 +67,7 @@ void	move_player(t_game_data *game_data,
 		}
 		if (game_data->map->lines[next.y][next.x] == 'E'
 			&& game_data->fish_img->count == 0)
-			close_window(game_data);
+			close_game(game_data);
 		game_data->moves++;
 		ft_printf("move: %d\n", game_data->moves);
 	}

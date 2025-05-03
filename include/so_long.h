@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/03 22:03:57 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:34:40 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
+# include <errno.h>
 # include <MLX42/MLX42.h>
 # include "libft.h"
 # include "get_next_line.h"
@@ -158,12 +159,12 @@ void			move_player(t_game_data *game_data,
  * 
  * @param game_data
  */
-void			close_window(t_game_data *game_data);
+void			close_game(t_game_data *game_data);
 
 /**
  * @brief Error management
  */
-void			error(void);
+void			error_msg(char *msg);
 
 /* ************************************************************************** */
 /* UTILS                                                                      */

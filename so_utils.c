@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/03 22:01:49 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:31:23 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	process_moves(mlx_key_data_t keydata, void *param)
 		&& (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		move_player(game_data, 0, 1);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		close_window(game_data);
+		close_game(game_data);
 }
 
 mlx_texture_t	*get_texture(char *relative_path)
@@ -39,7 +39,7 @@ mlx_texture_t	*get_texture(char *relative_path)
 
 	texture = mlx_load_png(relative_path);
 	if (!texture)
-		error();
+		error_msg("Can't load the texture");
 	return (texture);
 }
 
@@ -51,7 +51,7 @@ mlx_image_t	*get_image(mlx_t *mlx, char *relative_path)
 	texture = get_texture(relative_path);
 	img = mlx_texture_to_image(mlx, texture);
 	if (!img)
-		error();
+		error_msg("Can't load the image");
 	mlx_delete_texture(texture);
 	return (img);
 }

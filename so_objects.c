@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:57:33 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/01 11:55:11 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:29:57 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	draw_wall(t_game_data *game_data, char type, int x, int y)
 		result = mlx_image_to_window(game_data->mlx,
 				game_data->wall_img, x * IMG_SIZE, y * IMG_SIZE);
 	if (result < 0)
-		error();
+		error_msg("Can't draw the walls");
 	return (result);
 }
 
@@ -47,7 +47,7 @@ int	draw_ocean(t_game_data *game_data, char type, int x, int y)
 		result = mlx_image_to_window(game_data->mlx,
 				game_data->ocean_img, x * IMG_SIZE, y * IMG_SIZE);
 	if (result < 0)
-		error();
+		error_msg("Can't draw the ocean");
 	return (result);
 }
 
@@ -60,6 +60,6 @@ int	draw_exit(t_game_data *game_data, char type, int x, int y)
 		result = mlx_image_to_window(game_data->mlx,
 				game_data->exit_img, x * IMG_SIZE, y * IMG_SIZE);
 	if (result < 0)
-		error();
+		error_msg("Can't draw the exit");
 	return (result);
 }
