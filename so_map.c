@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/03 19:24:34 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:13:53 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ static char	**load_map(char *game_map, int height)
 	{
 		line = get_next_line(fd);
 		lines[y] = line;
-		free(line);
 		y++;
 	}
 	close(fd);

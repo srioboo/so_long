@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/05/03 12:54:41 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/03 22:03:04 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS	= so_long.c \
 		so_scene.c \
 		so_player.c \
 		so_mngmt.c \
+		so_utils.c \
 		so_objects.c \
 		so_fish.c
 OBJS	= $(SRCS:.c=.o)
