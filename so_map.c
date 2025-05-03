@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/03 18:52:09 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 19:18:44 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	map_size(char *map_path)
 	while (line)
 	{
 		line = get_next_line(fd);
+		free(line);
 		height++;
 	}
 	close(fd);
