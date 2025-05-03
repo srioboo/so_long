@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/03 22:14:47 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:55:55 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	is_valid_data(t_map *map)
 	result = TRUE;
 	if (map->player_y <= 0 || map->player_x <= 0)
 	{
-		ft_printf("Error\nno player found\n");
+		error_msg("No player found");
 		return (FALSE);
 	}
 	target = map->lines[map->player_y][map->player_x];
@@ -76,11 +76,11 @@ int	is_valid_data(t_map *map)
 		|| map->nbr_ocean > 1 || map->nbr_fish == 0)
 		result = FALSE;
 	if (map->nbr_player != 1)
-		ft_printf("Error\n%d is a wrong player quantity\n", map->nbr_player);
+		error_msg("%d is a wrong player quantity"); //ft_printf("Error\n%d is a wrong player quantity\n", map->nbr_player);
 	else if (map->nbr_fish == 0)
-		ft_printf("Error\n%d fish found \n", map->nbr_fish);
+		error_msg("%d fish found"); //ft_printf("Error\n%d fish found \n", map->nbr_fish);
 	else if (map->nbr_exit != 1 || map->nbr_ocean > 1)
-		ft_printf("Error\nno exit or exit path not found\n", map->nbr_exit);
+		error_msg("No exit or exit path not found"); //ft_printf("Error\nno exit or exit path not found\n", map->nbr_exit);
 	return (result);
 }
 

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/03 22:13:53 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:47:11 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,11 @@ t_map	*get_map(char *map_path)
 	height = map_size(map_path);
 	map_lines = load_map(map_path, height);
 	if (!map_lines)
-		ft_printf("Error\nmap path %d not valid", map_path);
+		error_msg("Map path not valid");
 	else if (is_valid_map_shape(map_lines) == FALSE)
-		ft_printf("Error\nmap %s is not a rectangle", map_path);
+		error_msg("Map is not a rectangle");
 	else if (is_valid_map_borders(map_lines, height) == FALSE)
-		ft_printf("Error\nmap %s is not border by walls", map_path);
+		error_msg("Map is not surrounded by walls");
 	else if (is_valid_data(process_map(map_path, height)))
 		valid_map = process_map(map_path, height);
 	return (valid_map);

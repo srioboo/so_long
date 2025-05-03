@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/03 22:35:09 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:52:16 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	error_msg(char *msg)
 {
 	ft_printf("Error\n");
 	ft_printf("%s\n", msg);
-	ft_printf("%s\n", strerror(errno));
-	ft_printf(mlx_strerror(mlx_errno));
+	// ft_printf("%s\n", strerror(errno));
+	// ft_printf(mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
 }
 
