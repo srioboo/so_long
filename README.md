@@ -121,3 +121,15 @@ AFTER REFACTORING: 497304b4fc04ef06b6c687dc30292e6aee6ad724
 ==3007285== 
 ==3007285== For lists of detected and suppressed errors, rerun with: -s
 ==3007285== ERROR SUMMARY: 35 errors from 35 contexts (suppressed: 0 from 0)
+
+==3620929== LEAK SUMMARY:
+==3620929==    definitely lost: 6,069 bytes in 14 blocks
+==3620929==    indirectly lost: 32,150 bytes in 1,306 blocks
+==3620929==      possibly lost: 7,526 bytes in 36 blocks
+==3620929==    still reachable: 2,911,478 bytes in 30,323 blocks
+==3620929==         suppressed: 616 bytes in 3 blocks
+==3620929== Reachable blocks (those to which a pointer was found) are not shown.
+==3620929== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==3620929== 
+==3620929== For lists of detected and suppressed errors, rerun with: -s
+==3620929== ERROR SUMMARY: 33 errors from 33 contexts (suppressed: 0 from 0)
