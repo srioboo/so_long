@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/03 22:34:40 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:19:55 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 
 # define TRUE 1
 # define FALSE 0
+# define WIN 1
+# define BYE 0
 
 typedef struct s_map_pos
 {
@@ -159,7 +161,7 @@ void			move_player(t_game_data *game_data,
  * 
  * @param game_data
  */
-void			close_game(t_game_data *game_data);
+void			close_game(t_game_data *game_data, int cause);
 
 /**
  * @brief Error management

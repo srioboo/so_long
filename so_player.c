@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/03 22:36:52 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:25:03 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	move_player(t_game_data *game_data,
 		}
 		if (game_data->map->lines[next.y][next.x] == 'E'
 			&& game_data->fish_img->count == 0)
-			close_game(game_data);
+			close_game(game_data, WIN);
 		game_data->moves++;
 		ft_printf("move: %d\n", game_data->moves);
 	}
