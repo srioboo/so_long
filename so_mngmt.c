@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/05 10:24:37 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:31:02 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,9 @@ void	close_game(t_game_data *game_data, int cause)
 {
 	// TODO - here need to release memory
 	//mlx_delete_image(game_data->mlx, game_data->exit_img);
-	//mlx_delete_image(game_data->mlx, game_data->fish_img);
-	//mlx_delete_image(game_data->mlx, game_data->wall_img);
-	//mlx_delete_image(game_data->mlx, game_data->ocean_img);
 
 	// if (game_data->exit_img)
 	// 	free(game_data->exit_img);
-	// if (game_data->fish_img)
-	// 	free(game_data->fish_img);
-	// if (game_data->wall_img)
-	// 	free(game_data->wall_img);
-	// if (game_data->ocean_img)
-	// 	free(game_data->ocean_img);
-	// if (game_data->player_img)
-	// 	free(game_data->player_img);
-	//if (game_data->exit_img)
-	//	free(game_data->map->lines);
 	mlx_close_window(game_data->mlx);
 	if (cause == 1)
 		ft_printf("YOU WIN!!!\n");
