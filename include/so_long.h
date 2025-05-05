@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/05 10:19:55 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 10:44:45 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_player
 	int			y_ini;
 	int			x;
 	int			y;
-	mlx_image_t	*player_img;
 }	t_player;
 
 typedef struct s_map
@@ -171,6 +170,8 @@ void			error_msg(char *msg);
 /* ************************************************************************** */
 /* UTILS                                                                      */
 /* ************************************************************************** */
+
+void			free_map_lines(char **lines, int height);
 
 /**
  * @brief get a texture from path

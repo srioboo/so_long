@@ -6,11 +6,26 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/05 10:26:17 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 10:44:04 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_map_lines(char **lines, int height)
+{
+	int	i;
+
+	if (!lines)
+		return ;
+	i = 0;
+	while (i++ < height)
+	{
+		if (lines[i])
+			free(lines[i]);
+	}
+	free(lines);
+}
 
 void	process_moves(mlx_key_data_t keydata, void *param)
 {
@@ -53,5 +68,6 @@ mlx_image_t	*get_image(mlx_t *mlx, char *relative_path)
 	if (!img)
 		error_msg("Can't load the image");
 	mlx_delete_texture(texture);
+	// ft_free(&relative_path); // free here broke the code
 	return (img);
 }

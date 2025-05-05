@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/03 22:47:11 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 10:58:50 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,24 @@ int	map_size(char *map_path)
 	int		fd;
 	char	*line;
 	int		height;
+	// int		end = 1;
 
 	fd = open(map_path, O_RDONLY);
 	height = 0;
 	line = get_next_line(fd);
 	height++;
-	while (line)
+	while (line) // (end == 1)
 	{
+		// free(line);
+		// line = NULL;
 		line = get_next_line(fd);
+		// if (line == NULL)
+		//	end = 0;
 		free(line);
 		height++;
 	}
 	close(fd);
 	free(line);
-	line = NULL;
 	return (height);
 }
 
@@ -80,8 +84,6 @@ static char	**load_map(char *game_map, int height)
 		y++;
 	}
 	close(fd);
-	free(line);
-	line = NULL;
 	return (lines);
 }
 
@@ -108,15 +110,31 @@ t_map	*get_map(char *map_path)
 	t_map	*valid_map;
 
 	valid_map = NULL;
+	// TODO - leaks here
 	height = map_size(map_path);
 	map_lines = load_map(map_path, height);
 	if (!map_lines)
+	{
 		error_msg("Map path not valid");
+		free_map_lines(map_lines, height);
+		return (NULL);
+	}
 	else if (is_valid_map_shape(map_lines) == FALSE)
+	{
 		error_msg("Map is not a rectangle");
+		free_map_lines(map_lines, height);
+		return (NULL);
+	}
 	else if (is_valid_map_borders(map_lines, height) == FALSE)
+	{
 		error_msg("Map is not surrounded by walls");
-	else if (is_valid_data(process_map(map_path, height)))
+		free_map_lines(map_lines, height);
+		return (NULL);
+	}
+	else if (is_valid_data(process_map(map_path, height)) == TRUE)
+	{
 		valid_map = process_map(map_path, height);
+		free_map_lines(map_lines, height);
+	}
 	return (valid_map);
 }
