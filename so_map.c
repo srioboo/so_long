@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 11:31:29 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 12:06:19 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ static t_map	*process_map(char *map_path, int height)
 	char	**map_lines;
 
 	map_lines = load_map(map_path, height);
-	// ft_printf("%p\n", map_lines);
 	map = ft_calloc(1, sizeof(t_map));
 	map->map_height = height;
 	map->map_with = ft_strlen(map_lines[0]) - 1;
@@ -117,7 +116,7 @@ t_map	*get_map(char *map_path)
 	if (!map_lines)
 	{
 		error_msg("Map path not valid");
-		free_map_lines(map_lines, height);
+		free_map_lines(map_lines);
 		return (NULL);
 	}
 	else if (is_valid_map_shape(map_lines, height) == FALSE)
@@ -125,13 +124,13 @@ t_map	*get_map(char *map_path)
 	else if (is_valid_map_borders(map_lines, height) == FALSE)
 	{
 		error_msg("Map is not surrounded by walls");
-		free_map_lines(map_lines, height);
+		free_map_lines(map_lines);
 		return (NULL);
 	}
 	else if (is_valid_data(process_map(map_path, height)) == TRUE)
 	{
 		valid_map = process_map(map_path, height);
-		free_map_lines(map_lines, height);
+		// free_map_lines(map_lines);
 	}
 	return (valid_map);
 }

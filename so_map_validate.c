@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 11:14:26 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 12:03:09 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	is_valid_map_shape(char **map_lines, int height)
 		if (ft_strlen(map_lines[y]) != initial_len)
 		{
 			error_msg("Map is not a rectangle");
-			free_map_lines(map_lines, height);
+			free_map_lines(map_lines);
 			return (FALSE);
 		}
 		y++;

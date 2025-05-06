@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 11:12:03 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 12:02:41 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ void			error_msg(char *msg);
 /* UTILS                                                                      */
 /* ************************************************************************** */
 
-void			free_map_lines(char **lines, int height);
+void			free_map_lines(char **lines);
 
 /**
  * @brief get a texture from path
