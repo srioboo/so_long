@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 14:21:41 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:12:20 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,40 +36,25 @@ static t_map	*fill_map_data(t_map *map)
 	return (map);
 }
 
-static int	map_size2(char **map_lines)
-{
-	int		height;
-
-	height = 0; // to teke null las line into considerations
-	while (map_lines[height] != NULL)
-		height++;
-	height++;
-	return (height);
-}
-
-int	map_size(char *map_path)
+static int	map_size(char *map_path)
 {
 	int		fd;
 	char	*line;
 	int		height;
-	// int		end = 1;
+	int		end;
 
 	fd = open(map_path, O_RDONLY);
 	height = 0;
-	line = get_next_line(fd);
-	height++;
-	while (line) // (end == 1)
+	end = 1;
+	while (end == 1)
 	{
-		// free(line);
-		// line = NULL;
 		line = get_next_line(fd);
-		// if (line == NULL)
-		//	end = 0;
+		if (line == NULL)
+			end = 0;
 		free(line);
 		height++;
 	}
 	close(fd);
-	free(line);
 	return (height);
 }
 
@@ -104,8 +89,10 @@ static t_map	*process_map(char *map_path, int height)
 	char	**map_lines;
 
 	map_lines = load_map(map_path, height);
-	map = ft_calloc(1, sizeof(t_map));
-	map->map_height = map_size2(map_lines);//height;
+	map = (t_map *)malloc(sizeof(t_map));
+	if (!map)
+		return (NULL);
+	map->map_height = height;
 	map->map_with = ft_strlen(map_lines[0]) - 1;
 	map->lines = map_lines;
 	map->player_x = -1;
@@ -124,7 +111,6 @@ t_map	*get_map(char *map_path)
 	// TODO - leaks here
 	height = map_size(map_path);
 	map_lines = load_map(map_path, height);
-	ft_printf("H: %d %d\n", height, map_size2(map_lines));
 	if (!map_lines)
 	{
 		error_msg("Map path not valid");

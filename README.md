@@ -133,3 +133,31 @@ AFTER REFACTORING: 497304b4fc04ef06b6c687dc30292e6aee6ad724
 ==3620929== 
 ==3620929== For lists of detected and suppressed errors, rerun with: -s
 ==3620929== ERROR SUMMARY: 33 errors from 33 contexts (suppressed: 0 from 0)
+
+==2032940== LEAK SUMMARY:
+==2032940==    definitely lost: 145 bytes in 4 blocks
+==2032940==    indirectly lost: 526 bytes in 13 blocks
+==2032940==      possibly lost: 92,991 bytes in 275 blocks
+==2032940==    still reachable: 7,494,144 bytes in 11,656 blocks
+==2032940==                       of which reachable via heuristic:
+==2032940==                         newarray           : 768,888 bytes in 9 blocks
+==2032940==                         multipleinheritance: 19,200 bytes in 28 blocks
+==2032940==         suppressed: 0 bytes in 0 blocks
+==2032940== Reachable blocks (those to which a pointer was found) are not shown.
+==2032940== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==2032940== 
+==2032940== For lists of detected and suppressed errors, rerun with: -s
+==2032940== ERROR SUMMARY: 202 errors from 202 contexts (suppressed: 0 from 0)
+
+==2058131== LEAK SUMMARY:
+==2058131==    definitely lost: 64 bytes in 1 blocks
+==2058131==    indirectly lost: 231 bytes in 6 blocks
+==2058131==      possibly lost: 0 bytes in 0 blocks
+==2058131==    still reachable: 335 bytes in 8 blocks
+==2058131==         suppressed: 0 bytes in 0 blocks
+==2058131== Reachable blocks (those to which a pointer was found) are not shown.
+==2058131== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==2058131== 
+==2058131== For lists of detected and suppressed errors, rerun with: -s
+==2058131== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+make: *** [Makefile:83: val] Error 1
