@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/05/03 22:03:04 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/06 22:39:21 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,12 +75,12 @@ tclean: clean
 	@$(RM) $(NAME)
 
 # detect memory leaks
-sane: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) -fsanitize=address,undefined -g
-	./$(NAME)
+sane: all
+	$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) -o $(NAME) -fsanitize=address,undefined -g
+	./$(NAME) $(MAP)
 
 val: all
-	valgrind --leak-check=full ./$(NAME) $(MAP)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(MAP)
 
 vall: all
 	valgrind --leak-check=full --verbose --track-origins=yes --log-file=leaks.txt ./$(NAME) $(MAP)

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 17:34:21 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 22:47:10 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	close_game(t_game_data *game_data, int cause)
 {
 	delete_images(game_data);
 	free_map_lines(game_data->map->lines);
+	if (game_data->map)
+		free(game_data->map);
 	mlx_close_window(game_data->mlx);
 	if (game_data->mlx)
 		free(game_data->mlx);

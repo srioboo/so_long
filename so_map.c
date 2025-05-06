@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 17:32:31 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:06:13 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ static char	**load_map(char *game_map, int height)
 	fd = open(game_map, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
-	lines = (char **)ft_calloc(height + 1, sizeof(char *));
+	lines = (char **)malloc((height + 1) * sizeof(char *));
+	if (!lines)
+		return (NULL);
 	y = 0;
 	line = get_next_line(fd);
 	lines[y] = line;
@@ -88,13 +90,22 @@ static t_map	*process_map(char *map_path, int height)
 	t_map	*map;
 	char	**map_lines;
 
+	map = NULL;
+	map_lines = NULL;
 	map_lines = load_map(map_path, height);
-	map = (t_map *)ft_calloc(1, sizeof(t_map));
+	map = (t_map *)malloc(sizeof(t_map));
+	if (!map)
+		return (free_map_lines(map_lines), map);
 	map->map_height = height;
 	map->map_with = ft_strlen(map_lines[0]) - 1;
 	map->lines = map_lines;
 	map->player_x = -1;
 	map->player_y = -1;
+	map->nbr_player = 0;
+	map->nbr_exit = 0;
+	map->nbr_ocean = 0;
+	map->nbr_fish = 0;
+	map = set_data_count(map);
 	map = fill_map_data(map);
 	return (map);
 }
@@ -109,16 +120,14 @@ t_map	*get_map(char *map_path)
 	height = map_size(map_path);
 	map_lines = load_map(map_path, height);
 	if (!map_lines)
-	{
-		error_msg("Map path not valid");
-		free_map_lines(map_lines);
-		return (NULL);
-	}
+		return (error_msg("Map path not valid"),
+			free_map_lines(map_lines), NULL);
 	else if (is_valid_map_shape(map_lines) == FALSE)
 		return (NULL);
 	else if (is_valid_map_borders(map_lines, height) == FALSE)
 		return (NULL);
-	else if (is_valid_data(process_map(map_path, height)) == TRUE)
-		valid_map = process_map(map_path, height);
+	valid_map = process_map(map_path, height);
+	if (is_valid_data(valid_map) == FALSE)
+		return (NULL);
 	return (valid_map);
 }

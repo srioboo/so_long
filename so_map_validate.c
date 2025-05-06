@@ -6,17 +6,19 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 17:36:40 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:13:51 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static t_map	*set_data_count(t_map *map)
+t_map	*set_data_count(t_map *map)
 {
 	int		x;
 	int		y;
 
+	if (map->nbr_ocean > 0)
+		map->nbr_ocean = 0;
 	y = 0;
 	while (map->lines[y] != NULL)
 	{
@@ -64,23 +66,19 @@ int	is_valid_data(t_map *map)
 
 	result = TRUE;
 	if (map->player_y <= 0 || map->player_x <= 0)
-	{
-		error_msg("No player found");
-		return (FALSE);
-	}
+		return (error_msg("No player found"), FALSE);
 	target = map->lines[map->player_y][map->player_x];
 	fill(map->lines, (t_map_pos){map->map_with - 1, map->map_height - 1, '\0'},
 		target, (t_map_pos){map->player_x, map->player_y, '\0'});
-	map = set_data_count(map);
-	if (map->nbr_player != 1 || map->nbr_exit != 1
-		|| map->nbr_ocean > 1 || map->nbr_fish == 0)
-		result = FALSE;
 	if (map->nbr_player != 1)
-		error_msg("Wrong player quantity");
-	else if (map->nbr_fish == 0)
-		error_msg("No fish found");
-	else if (map->nbr_exit != 1 || map->nbr_ocean > 1)
-		error_msg("No exit or exit path not found");
+		return (error_msg("Wrong player quantity"), FALSE);
+	if (map->nbr_fish == 0)
+		return (error_msg("No fish found"), FALSE);
+	if (map->nbr_exit != 1)
+		return (error_msg("Exit number is incorrect"), FALSE);
+	map = set_data_count(map);
+	if (map->nbr_ocean > 1)
+		return (error_msg("No exit or exit path not found"), FALSE);
 	return (result);
 }
 
@@ -122,11 +120,8 @@ int	is_valid_map_borders(char **map_lines, int height)
 				|| ((y > 0 && y < (height - 2))
 				&& (x == 0 || x == (initial_len - 2))
 				&& map_lines[y][x] != '1'))
-			{
-				error_msg("Map is not surrounded by walls");
-				free_map_lines(map_lines);
-				return (FALSE);
-			}
+				return (free_map_lines(map_lines),
+					error_msg("Map is not surrounded by walls"), FALSE);
 			x++;
 		}
 		y++;

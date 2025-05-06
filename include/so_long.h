@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 12:25:57 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:09:13 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,16 @@ typedef struct s_game_data
 /* ************************************************************************** */
 /* MAP                                                                      */
 /* ************************************************************************** */
+
+/**
+ * @brief Count elements in the maps and set into map struct
+ * 
+ * @details uses the lines setted previous and count all kinds of elements
+ * to be able to test their quantity
+ * @param map to fill data with lines include
+ * @return the map
+ */
+t_map			*set_data_count(t_map *map);
 
 /**
  * @brief Validate map is correct
@@ -171,6 +181,14 @@ void			error_msg(char *msg);
 /* UTILS                                                                      */
 /* ************************************************************************** */
 
+// TODO - deleted it?
+void			ft_print_map(char **map_lines);
+
+/**
+ * @brief free memorit in map lines
+ * 
+ * @param lines array of lines of data map
+ */
 void			free_map_lines(char **lines);
 
 /**

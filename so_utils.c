@@ -6,11 +6,30 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 17:32:53 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:50:55 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+// TODO - for testing purposes
+void	ft_print_map(char **map_lines)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (map_lines[y])
+	{
+		x = 0;
+		while (map_lines[y][x])
+		{
+			ft_printf("%c", map_lines[y][x]);
+			x++;
+		}
+		y++;
+	}
+}
 
 void	free_map_lines(char **lines)
 {

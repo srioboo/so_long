@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:57:33 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/05 17:24:07 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:53:44 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	draw_ocean(t_game_data *game_data, char type, int x, int y)
 	int		result;
 
 	result = 0;
-	if (type == '0' || type == 'C' || type == 'P')
+	if (type == '0' || type == 'C' || type == 'P' || type == 'X')
 		result = mlx_image_to_window(game_data->mlx,
 				game_data->ocean_img, x * IMG_SIZE, y * IMG_SIZE);
 	if (result < 0)
