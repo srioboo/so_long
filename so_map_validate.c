@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 17:30:38 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:36:40 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int	is_valid_data(t_map *map)
 		|| map->nbr_ocean > 1 || map->nbr_fish == 0)
 		result = FALSE;
 	if (map->nbr_player != 1)
-		error_msg("%d is a wrong player quantity");
+		error_msg("Wrong player quantity");
 	else if (map->nbr_fish == 0)
-		error_msg("%d fish found");
+		error_msg("No fish found");
 	else if (map->nbr_exit != 1 || map->nbr_ocean > 1)
 		error_msg("No exit or exit path not found");
 	return (result);
