@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 12:03:09 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 12:36:19 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	is_valid_data(t_map *map)
 	return (result);
 }
 
-int	is_valid_map_shape(char **map_lines, int height)
+int	is_valid_map_shape(char **map_lines)
 {
 	int		y;
 	int		x;
@@ -92,7 +92,7 @@ int	is_valid_map_shape(char **map_lines, int height)
 
 	y = 0;
 	initial_len = ft_strlen(map_lines[0]);
-	while (y < (height - 1))
+	while (map_lines[y] != NULL)
 	{
 		x = 0;
 		while (map_lines[y][x] != '\n')
@@ -116,18 +116,20 @@ int	is_valid_map_borders(char **map_lines, int height)
 
 	y = 0;
 	initial_len = ft_strlen(map_lines[0]);
-	while (y < (height - 1))
+	while (map_lines[y] != NULL)
 	{
 		x = 0;
 		while (map_lines[y][x] != '\n')
 		{
-			if ((y == 0 || y == (height - 2))
-				&& (map_lines[y][x] != '1'))
-				return (FALSE);
-			else if ((y > 0 && y < (height - 2))
+			if (((y == 0 || y == (height - 2)) && (map_lines[y][x] != '1'))
+				|| ((y > 0 && y < (height - 2))
 				&& (x == 0 || x == (initial_len - 2))
-				&& map_lines[y][x] != '1')
+				&& map_lines[y][x] != '1'))
+			{
+				error_msg("Map is not surrounded by walls");
+				free_map_lines(map_lines);
 				return (FALSE);
+			}
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 12:02:41 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 12:25:57 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct s_game_data
  * @param map_lines string with map path
  * @return if correct return height of the map
  */
-int				is_valid_map_shape(char **map_lines, int height);
+int				is_valid_map_shape(char **map_lines);
 
 /**
  * @brief Validate map data

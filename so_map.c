@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 12:06:19 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 12:36:34 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,14 +119,10 @@ t_map	*get_map(char *map_path)
 		free_map_lines(map_lines);
 		return (NULL);
 	}
-	else if (is_valid_map_shape(map_lines, height) == FALSE)
+	else if (is_valid_map_shape(map_lines) == FALSE)
 		return (NULL);
 	else if (is_valid_map_borders(map_lines, height) == FALSE)
-	{
-		error_msg("Map is not surrounded by walls");
-		free_map_lines(map_lines);
 		return (NULL);
-	}
 	else if (is_valid_data(process_map(map_path, height)) == TRUE)
 	{
 		valid_map = process_map(map_path, height);
