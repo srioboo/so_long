@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 10:58:50 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 11:31:29 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,17 @@ static char	**load_map(char *game_map, int height)
 	return (lines);
 }
 
-static t_map	*process_map(char *game_map, int height)
+static t_map	*process_map(char *map_path, int height)
 {
 	t_map	*map;
-	char	**lines;
+	char	**map_lines;
 
-	lines = load_map(game_map, height);
+	map_lines = load_map(map_path, height);
+	// ft_printf("%p\n", map_lines);
 	map = ft_calloc(1, sizeof(t_map));
 	map->map_height = height;
-	map->map_with = ft_strlen(lines[0]) - 1;
-	map->lines = lines;
+	map->map_with = ft_strlen(map_lines[0]) - 1;
+	map->lines = map_lines;
 	map->player_x = -1;
 	map->player_y = -1;
 	map = fill_map_data(map);
@@ -119,12 +120,8 @@ t_map	*get_map(char *map_path)
 		free_map_lines(map_lines, height);
 		return (NULL);
 	}
-	else if (is_valid_map_shape(map_lines) == FALSE)
-	{
-		error_msg("Map is not a rectangle");
-		free_map_lines(map_lines, height);
+	else if (is_valid_map_shape(map_lines, height) == FALSE)
 		return (NULL);
-	}
 	else if (is_valid_map_borders(map_lines, height) == FALSE)
 	{
 		error_msg("Map is not surrounded by walls");

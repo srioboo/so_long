@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/05 10:29:25 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 11:14:26 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	is_valid_data(t_map *map)
 	return (result);
 }
 
-int	is_valid_map_shape(char **map_lines)
+int	is_valid_map_shape(char **map_lines, int height)
 {
 	int		y;
 	int		x;
@@ -92,13 +92,17 @@ int	is_valid_map_shape(char **map_lines)
 
 	y = 0;
 	initial_len = ft_strlen(map_lines[0]);
-	while (map_lines[y])
+	while (y < (height - 1))
 	{
 		x = 0;
 		while (map_lines[y][x] != '\n')
 			x++;
 		if (ft_strlen(map_lines[y]) != initial_len)
+		{
+			error_msg("Map is not a rectangle");
+			free_map_lines(map_lines, height);
 			return (FALSE);
+		}
 		y++;
 	}
 	return (TRUE);
@@ -108,10 +112,10 @@ int	is_valid_map_borders(char **map_lines, int height)
 {
 	int		y;
 	int		x;
-	int		len;
+	int		initial_len;
 
 	y = 0;
-	len = ft_strlen(map_lines[0]);
+	initial_len = ft_strlen(map_lines[0]);
 	while (y < (height - 1))
 	{
 		x = 0;
@@ -121,7 +125,7 @@ int	is_valid_map_borders(char **map_lines, int height)
 				&& (map_lines[y][x] != '1'))
 				return (FALSE);
 			else if ((y > 0 && y < (height - 2))
-				&& (x == 0 || x == (len - 2))
+				&& (x == 0 || x == (initial_len - 2))
 				&& map_lines[y][x] != '1')
 				return (FALSE);
 			x++;
