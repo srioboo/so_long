@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/05 17:17:34 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:31:40 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,5 @@ int32_t	main(int argc, char **argv)
 		create_game(argv[1]);
 	else
 		return (EXIT_FAILURE);
-	// else if (argc == 1)
-	//	create_game(NULL);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 17:12:20 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:32:31 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,7 @@ static t_map	*process_map(char *map_path, int height)
 	char	**map_lines;
 
 	map_lines = load_map(map_path, height);
-	map = (t_map *)malloc(sizeof(t_map));
-	if (!map)
-		return (NULL);
+	map = (t_map *)ft_calloc(1, sizeof(t_map));
 	map->map_height = height;
 	map->map_with = ft_strlen(map_lines[0]) - 1;
 	map->lines = map_lines;
@@ -108,7 +106,6 @@ t_map	*get_map(char *map_path)
 	t_map	*valid_map;
 
 	valid_map = NULL;
-	// TODO - leaks here
 	height = map_size(map_path);
 	map_lines = load_map(map_path, height);
 	if (!map_lines)
@@ -122,9 +119,6 @@ t_map	*get_map(char *map_path)
 	else if (is_valid_map_borders(map_lines, height) == FALSE)
 		return (NULL);
 	else if (is_valid_data(process_map(map_path, height)) == TRUE)
-	{
 		valid_map = process_map(map_path, height);
-		// free_map_lines(map_lines);
-	}
 	return (valid_map);
 }
