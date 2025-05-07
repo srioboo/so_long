@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 17:09:43 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/08 09:41:48 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ t_map	*get_map(char *map_path)
 	t_map	*valid_map;
 
 	valid_map = NULL;
+	if (ft_strnstr(map_path, ".ber", ft_strlen(map_path)) == NULL)
+		return (error_msg("Map extension not valid"), NULL);
 	height = map_size(map_path);
 	map_lines = load_map(map_path, height);
 	if (!map_lines)
