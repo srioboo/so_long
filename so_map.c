@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 13:06:13 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:31:49 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,6 @@ static t_map	*process_map(char *map_path, int height)
 	map->lines = map_lines;
 	map->player_x = -1;
 	map->player_y = -1;
-	map->nbr_player = 0;
-	map->nbr_exit = 0;
-	map->nbr_ocean = 0;
-	map->nbr_fish = 0;
 	map = set_data_count(map);
 	map = fill_map_data(map);
 	return (map);

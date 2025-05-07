@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 13:26:27 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:39:11 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ t_map	*set_data_count(t_map *map)
 	int		x;
 	int		y;
 
-	if (map->nbr_ocean > 0)
-		map->nbr_ocean = 0;
+	map->nbr_player = 0;
+	map->nbr_exit = 0;
+	map->nbr_ocean = 0;
+	map->nbr_fish = 0;
 	y = 0;
 	while (map->lines[y] != NULL)
 	{
