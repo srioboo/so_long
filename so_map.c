@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 13:31:49 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:43:16 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ static int	map_size(char *map_path)
 
 	fd = open(map_path, O_RDONLY);
 	height = 0;
-	end = 1;
-	while (end == 1)
+	end = TRUE;
+	while (end == TRUE)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			end = 0;
+			end = FALSE;
 		free(line);
 		height++;
 	}
@@ -64,24 +64,26 @@ static char	**load_map(char *game_map, int height)
 	char	**lines;
 	char	*line;
 	int		y;
+	int		end;
 
 	fd = open(game_map, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
 	lines = (char **)malloc((height + 1) * sizeof(char *));
 	if (!lines)
-		return (NULL);
+		return (close(fd), NULL);
 	y = 0;
-	line = get_next_line(fd);
-	lines[y] = line;
-	y++;
-	while (line)
+	end = TRUE;
+	while (end == TRUE)
 	{
 		line = get_next_line(fd);
+		if (line == NULL)
+			end = FALSE;
 		lines[y] = line;
 		y++;
 	}
 	close(fd);
+	free(line);
 	return (lines);
 }
 

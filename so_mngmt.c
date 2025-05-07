@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 13:32:43 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:44:23 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	close_game(t_game_data *game_data, int cause)
 	if (cause == WIN)
 		ft_printf("YOU WIN!!!\n");
 	else
-		ft_printf("You don't complete the game, hope see you later!\n");
+		ft_printf("You didn't complete the game, hope see you later!\n");
 	exit(EXIT_SUCCESS);
 }
 
