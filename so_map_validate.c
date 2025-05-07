@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 13:13:51 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:26:27 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ int	is_valid_data(t_map *map)
 	fill(map->lines, (t_map_pos){map->map_with - 1, map->map_height - 1, '\0'},
 		target, (t_map_pos){map->player_x, map->player_y, '\0'});
 	if (map->nbr_player != 1)
-		return (error_msg("Wrong player quantity"), FALSE);
+		return (error_msg("More than one player is not allowed"), FALSE);
 	if (map->nbr_fish == 0)
 		return (error_msg("No fish found"), FALSE);
 	if (map->nbr_exit != 1)
-		return (error_msg("Exit number is incorrect"), FALSE);
+		return (error_msg("No exit or exit number greater than one"), FALSE);
 	map = set_data_count(map);
 	if (map->nbr_ocean > 1)
-		return (error_msg("No exit or exit path not found"), FALSE);
+		return (error_msg("Exit route not found"), FALSE);
 	return (result);
 }
 
