@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/05/07 16:01:40 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/07 16:57:51 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ sane: all
 	./$(NAME) $(MAP)
 
 val: all
-	valgrind --leak-check=full ./$(NAME) $(MAP)
+	valgrind --leak-check=full --track-origins=yes ./$(NAME) $(MAP)
 # valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(MAP)
 
 vall: all

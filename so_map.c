@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 16:43:16 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:09:43 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,11 +121,13 @@ t_map	*get_map(char *map_path)
 		return (error_msg("Map path not valid"),
 			free_map_lines(map_lines), NULL);
 	else if (is_valid_map_shape(map_lines) == FALSE)
-		return (NULL);
+		return (free_map_lines(map_lines),
+			error_msg("Map is not a rectangle"), NULL);
 	else if (is_valid_map_borders(map_lines, height) == FALSE)
-		return (NULL);
+		return (free_map_lines(map_lines),
+			error_msg("Map is not surrounded by walls"), NULL);
 	valid_map = process_map(map_path, height);
 	if (is_valid_data(valid_map) == FALSE)
-		return (NULL);
+		return (free_map_lines(map_lines), free(valid_map), NULL);
 	return (valid_map);
 }

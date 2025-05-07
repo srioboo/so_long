@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 13:39:11 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:06:52 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,7 @@ int	is_valid_map_shape(char **map_lines)
 		while (map_lines[y][x] != '\n')
 			x++;
 		if (ft_strlen(map_lines[y]) != initial_len)
-			return (free_map_lines(map_lines),
-				error_msg("Map is not a rectangle"), FALSE);
+			return (FALSE);
 		y++;
 	}
 	return (TRUE);
@@ -122,8 +121,7 @@ int	is_valid_map_borders(char **map_lines, int height)
 				|| ((y > 0 && y < (height - 2))
 				&& (x == 0 || x == (initial_len - 2))
 				&& map_lines[y][x] != '1'))
-				return (free_map_lines(map_lines),
-					error_msg("Map is not surrounded by walls"), FALSE);
+				return (FALSE);
 			x++;
 		}
 		y++;

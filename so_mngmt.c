@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 16:44:23 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:16:08 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,35 @@
 
 void	delete_images(t_game_data *game_data)
 {
-	mlx_delete_image(game_data->mlx, game_data->ocean_img);
-	mlx_delete_image(game_data->mlx, game_data->wall_img);
-	mlx_delete_image(game_data->mlx, game_data->fish_img);
-	mlx_delete_image(game_data->mlx, game_data->player_img);
-	mlx_delete_image(game_data->mlx, game_data->exit_img);
+	if (game_data->ocean_img)
+		mlx_delete_image(game_data->mlx, game_data->ocean_img);
+	if (game_data->wall_img)
+		mlx_delete_image(game_data->mlx, game_data->wall_img);
+	if (game_data->fish_img)
+		mlx_delete_image(game_data->mlx, game_data->fish_img);
+	if (game_data->player_img)
+		mlx_delete_image(game_data->mlx, game_data->player_img);
+	if (game_data->exit_img)
+		mlx_delete_image(game_data->mlx, game_data->exit_img);
 }
 
 void	close_game(t_game_data *game_data, int cause)
 {
-	delete_images(game_data);
-	free_map_lines(game_data->map->lines);
-	if (game_data->map)
-		free(game_data->map);
-	mlx_close_window(game_data->mlx);
-	if (game_data->mlx)
-		free(game_data->mlx);
-	if (game_data->player)
-		free(game_data->player);
 	if (game_data)
+	{
+		delete_images(game_data);
+		if (game_data->map)
+		{
+			free_map_lines(game_data->map->lines);
+			free(game_data->map);
+		}
+		mlx_close_window(game_data->mlx);
+		if (game_data->mlx)
+			free(game_data->mlx);
+		if (game_data->player)
+			free(game_data->player);
 		free(game_data);
+	}
 	if (cause == WIN)
 		ft_printf("YOU WIN!!!\n");
 	else
