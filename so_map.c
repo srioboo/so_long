@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/08 11:40:31 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/08 12:07:16 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,29 @@ static t_map	*fill_map_data(t_map *map)
 	return (map);
 }
 
-static t_map	*map_size(char *map_path)
+static t_map	*map_init(char *map_path)
 {
 	int		fd;
 	char	*line;
-	int		height;
 	int		end;
 	t_map	*map;
 
 	map = (t_map *)malloc(sizeof(t_map));
 	fd = open(map_path, O_RDONLY);
-	height = 0;
+	if (fd == -1)
+		return (NULL);
+	map->map_height = 0;
 	end = TRUE;
 	while (end == TRUE)
 	{
 		line = get_next_line(fd);
-		if (height == 0 && line != NULL)
+		if (map->map_height == 0 && line != NULL)
 			map->map_with = ft_strlen(line) - 1;
 		if (line == NULL)
 			end = FALSE;
 		free(line);
-		height++;
+		map->map_height++;
 	}
-	map->map_height = height;
 	map->map_path = map_path;
 	close(fd);
 	return (map);
@@ -72,8 +72,6 @@ static t_map	*load_map(t_map *map)
 	int		end;
 
 	fd = open(map->map_path, O_RDONLY);
-	if (fd == -1)
-		return (NULL);
 	map->lines = (char **)malloc((map->map_height + 1) * sizeof(char *));
 	if (!map->lines)
 		return (close(fd), NULL);
@@ -105,24 +103,24 @@ static t_map	*process_map(t_map *map)
 
 t_map	*get_map(char *map_path)
 {
-	t_map	*valid_map;
+	t_map	*map;
 
-	valid_map = NULL;
+	map = NULL;
 	if (ft_strnstr(map_path, ".ber", ft_strlen(map_path)) == NULL)
 		return (error_msg("Map extension not valid"), NULL);
-	valid_map = map_size(map_path);
-	valid_map = load_map(valid_map);
-	if (!valid_map->lines)
+	map = map_init(map_path);
+	if (!map)
 		return (error_msg("Map path not valid"),
-			free_map_lines(valid_map->lines), NULL);
-	else if (is_valid_map_shape(valid_map) == FALSE)
-		return (free_map_lines(valid_map->lines),
+			free_map_lines(map->lines), NULL);
+	map = load_map(map);
+	if (is_valid_map_shape(map) == FALSE)
+		return (free_map_lines(map->lines),
 			error_msg("Map is not a rectangle"), NULL);
-	else if (is_valid_map_borders(valid_map) == FALSE)
-		return (free_map_lines(valid_map->lines),
+	else if (is_valid_map_borders(map) == FALSE)
+		return (free_map_lines(map->lines),
 			error_msg("Map is not surrounded by walls"), NULL);
-	valid_map = process_map(valid_map);
-	if (is_valid_data(valid_map) == FALSE)
-		return (free_map_lines(valid_map->lines), free(valid_map), NULL);
-	return (valid_map);
+	map = process_map(map);
+	if (is_valid_data(map) == FALSE)
+		return (free_map_lines(map->lines), free(map), NULL);
+	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/08 11:34:47 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/08 11:43:28 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,11 +182,13 @@ void			error_msg(char *msg);
 /* UTILS                                                                      */
 /* ************************************************************************** */
 
-// TODO - deleted it?
+/**
+ * @brief printf map for test purposes
+ */
 void			ft_print_map(char **map_lines);
 
 /**
- * @brief free memorit in map lines
+ * @brief free memory in map lines
  * 
  * @param lines array of lines of data map
  */
