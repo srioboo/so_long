@@ -6,13 +6,12 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 12:50:55 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/08 16:08:12 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// TODO - for testing purposes
 void	ft_print_map(char **map_lines)
 {
 	int	y;
