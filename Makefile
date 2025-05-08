@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/05/07 16:57:51 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/08 12:46:07 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,9 @@ test: all
 tclean: clean
 	@$(RM) $(NAME)
 
+# Default for testing
+MAP = ./maps/map0.ber
+
 # detect memory leaks
 sane: all
 	$(CC) $(OBJS) $(LIBSFT) $(LIBS) $(HEADERS) -o $(NAME) -fsanitize=address,undefined -g
@@ -83,7 +86,13 @@ val: all
 	valgrind --leak-check=full --track-origins=yes ./$(NAME) $(MAP)
 # valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(MAP)
 
+fval: full-clean all
+	valgrind --leak-check=full --track-origins=yes ./$(NAME) $(MAP)
+
 vall: all
 	valgrind --leak-check=full --verbose --track-origins=yes --log-file=leaks.txt ./$(NAME) $(MAP)
+
+val-log: full-clean all
+	valgrind --leak-check=full --gen-suppressions=all --log-file=suppressions.txt ./$(NAME) $(MAP)
 
 .PHONY: all clean fclean re sane val vall test tclean libmlx libft libft-clean full-clean debug

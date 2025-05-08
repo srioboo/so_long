@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 17:16:08 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/08 12:23:32 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	close_game(t_game_data *game_data, int cause)
 			free(game_data->mlx);
 		if (game_data->player)
 			free(game_data->player);
-		free(game_data);
+		if (game_data)
+			free(game_data);
 	}
 	if (cause == WIN)
 		ft_printf("YOU WIN!!!\n");
