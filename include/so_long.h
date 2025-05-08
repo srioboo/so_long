@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 13:09:13 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/08 11:34:47 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 # include "so_colors.h"
-// # include <stdio.h>
 
 // HD size 1920×1080
 # define HD_WIDTH	1920
@@ -54,6 +53,7 @@ typedef struct s_player
 typedef struct s_map
 {
 	char	**lines;
+	char	*map_path;
 	int		map_height;
 	int		map_with;
 	int		player_x;
@@ -96,10 +96,11 @@ t_map			*set_data_count(t_map *map);
  * @brief Validate map is correct
  * 
  * @details Validate map and, if correct, return height
- * @param map_lines string with map path
+ * @param map structure with map data
  * @return if correct return height of the map
  */
-int				is_valid_map_shape(char **map_lines);
+int				is_valid_map_shape(t_map *map);
+
 
 /**
  * @brief Validate map data
@@ -111,11 +112,11 @@ int				is_valid_data(t_map *map);
 /**
  * @brief validate map border
  * 
- * @param map_lines the lines
- * @param height map height
+ * @param map structure with map data
  * @return 0 if cant validate, 1 if is valid
  */
-int				is_valid_map_borders(char **map_lines, int height);
+int				is_valid_map_borders(t_map *map);
+
 
 /* ************************************************************************** */
 /* SCENE                                                                      */

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 17:06:52 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/08 11:31:23 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,43 +84,44 @@ int	is_valid_data(t_map *map)
 	return (result);
 }
 
-int	is_valid_map_shape(char **map_lines)
+int	is_valid_map_shape(t_map *map)
 {
 	int		y;
 	int		x;
 	size_t	initial_len;
 
 	y = 0;
-	initial_len = ft_strlen(map_lines[0]);
-	while (map_lines[y] != NULL)
+	initial_len = ft_strlen(map->lines[0]);
+	while (map->lines[y] != NULL)
 	{
 		x = 0;
-		while (map_lines[y][x] != '\n')
+		while (map->lines[y][x] != '\n')
 			x++;
-		if (ft_strlen(map_lines[y]) != initial_len)
+		if (ft_strlen(map->lines[y]) != initial_len)
 			return (FALSE);
 		y++;
 	}
 	return (TRUE);
 }
 
-int	is_valid_map_borders(char **map_lines, int height)
+int	is_valid_map_borders(t_map *map)
 {
 	int		y;
 	int		x;
 	int		initial_len;
 
 	y = 0;
-	initial_len = ft_strlen(map_lines[0]);
-	while (map_lines[y] != NULL)
+	initial_len = ft_strlen(map->lines[0]);
+	while (map->lines[y] != NULL)
 	{
 		x = 0;
-		while (map_lines[y][x] != '\n')
+		while (map->lines[y][x] != '\n')
 		{
-			if (((y == 0 || y == (height - 2)) && (map_lines[y][x] != '1'))
-				|| ((y > 0 && y < (height - 2))
+			if (((y == 0 || y == (map->map_height - 2))
+					&& (map->lines[y][x] != '1'))
+				|| ((y > 0 && y < (map->map_height - 2))
 				&& (x == 0 || x == (initial_len - 2))
-				&& map_lines[y][x] != '1'))
+				&& map->lines[y][x] != '1'))
 				return (FALSE);
 			x++;
 		}
