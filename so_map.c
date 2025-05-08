@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/08 11:32:58 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/08 11:40:31 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static t_map	*map_size(char *map_path)
 static t_map	*load_map(t_map *map)
 {
 	int		fd;
-	char	**lines;
 	char	*line;
 	int		y;
 	int		end;
@@ -75,8 +74,8 @@ static t_map	*load_map(t_map *map)
 	fd = open(map->map_path, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
-	lines = (char **)malloc((map->map_height + 1) * sizeof(char *));
-	if (!lines)
+	map->lines = (char **)malloc((map->map_height + 1) * sizeof(char *));
+	if (!map->lines)
 		return (close(fd), NULL);
 	y = 0;
 	end = TRUE;
@@ -85,10 +84,9 @@ static t_map	*load_map(t_map *map)
 		line = get_next_line(fd);
 		if (line == NULL)
 			end = FALSE;
-		lines[y] = line;
+		map->lines[y] = line;
 		y++;
 	}
-	map->lines = lines;
 	close(fd);
 	free(line);
 	return (map);
