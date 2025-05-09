@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/05/08 16:05:08 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/09 15:36:01 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,9 @@ val: all
 
 # Clean, compile and launch valgrind with suppresions logs removed
 fval: full-clean all
+	valgrind --leak-check=full --track-origins=yes ./$(NAME) $(MAP)
+
+fval-s: full-clean all
 	valgrind --leak-check=full --track-origins=yes --suppressions=valgrind.supp ./$(NAME) $(MAP)
 
 vall: all

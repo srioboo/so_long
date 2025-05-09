@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/09 08:43:52 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/09 17:14:30 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define FALSE 0
 # define WIN 1
 # define BYE 0
+# define OTHER -1
 
 typedef struct s_map_pos
 {
@@ -76,10 +77,11 @@ typedef struct s_game_data
 	struct s_map	*map;
 	int				moves;
 	int				redraw;
+	int				game_start;
 }	t_game_data;
 
 /* ************************************************************************** */
-/* MAP                                                                      */
+/* MAP VALIDATE                                                               */
 /* ************************************************************************** */
 
 /**
@@ -174,9 +176,19 @@ void			move_player(t_game_data *game_data,
 void			close_game(t_game_data *game_data, int cause);
 
 /**
- * @brief Error management
+ * @brief close clean on validations
+ * 
+ * @param map for cleaning
+ * @param msg validation error message
  */
-void			error_msg(char *msg);
+void			close_map(t_map *map, char *msg);
+
+/**
+ * @brief free memory in map lines
+ * 
+ * @param lines array of lines of data map
+ */
+void			free_map_lines(char **lines);
 
 /* ************************************************************************** */
 /* UTILS                                                                      */
@@ -188,11 +200,9 @@ void			error_msg(char *msg);
 void			ft_print_map(char **map_lines);
 
 /**
- * @brief free memory in map lines
- * 
- * @param lines array of lines of data map
+ * @brief Error management
  */
-void			free_map_lines(char **lines);
+void			error_msg(char *msg);
 
 /**
  * @brief get a texture from path

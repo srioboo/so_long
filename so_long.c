@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 13:12:49 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/09 17:15:04 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	set_base_game_data(t_game_data	*game_data)
 {
 	mlx_image_t	*img;
 
+	game_data->game_start = TRUE;
 	game_data->moves = 0;
 	game_data->redraw = 0;
 	draw_scene(game_data);
@@ -49,8 +50,15 @@ static void	create_game(char *map_path)
 
 int32_t	main(int argc, char **argv)
 {
+	if (argc == 1)
+		return (error_msg("To launch: ./so_long path/to/map.ber"),
+			EXIT_FAILURE);
 	if (argc == 2)
+	{
+		if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL)
+			return (error_msg("Map extension not valid"), EXIT_FAILURE);
 		create_game(argv[1]);
+	}
 	else
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

@@ -6,11 +6,37 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/08 16:52:01 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/09 17:47:05 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	close_map(t_map *map, char *msg)
+{
+	if (map)
+	{
+		free_map_lines(map->lines);
+		free(map);
+	}
+	if (msg != NULL)
+		error_msg(msg);
+}
+
+void	free_map_lines(char **lines)
+{
+	int	i;
+
+	if (!lines)
+		return ;
+	i = 0;
+	while (lines[i] != NULL)
+	{
+		free(lines[i]);
+		i++;
+	}
+	free(lines);
+}
 
 void	delete_images(t_game_data *game_data)
 {
@@ -28,14 +54,11 @@ void	delete_images(t_game_data *game_data)
 
 void	close_game(t_game_data *game_data, int cause)
 {
+	game_data->game_start = FALSE;
 	if (game_data)
 	{
 		delete_images(game_data);
-		if (game_data->map)
-		{
-			free_map_lines(game_data->map->lines);
-			free(game_data->map);
-		}
+		close_map(game_data->map, NULL);
 		if (game_data->player)
 			free(game_data->player);
 		mlx_close_window(game_data->mlx);
@@ -48,11 +71,4 @@ void	close_game(t_game_data *game_data, int cause)
 	else
 		ft_printf("You didn't complete the game, hope see you later!\n");
 	exit(EXIT_SUCCESS);
-}
-
-void	error_msg(char *msg)
-{
-	ft_printf("Error\n");
-	ft_printf("%s\n", msg);
-	exit(EXIT_FAILURE);
 }

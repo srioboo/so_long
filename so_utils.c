@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/08 16:08:12 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/09 15:55:30 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,11 @@ void	ft_print_map(char **map_lines)
 	}
 }
 
-void	free_map_lines(char **lines)
+void	error_msg(char *msg)
 {
-	int	i;
-
-	if (!lines)
-		return ;
-	i = 0;
-	while (lines[i] != NULL)
-	{
-		free(lines[i]);
-		i++;
-	}
-	free(lines);
+	ft_printf("Error\n");
+	ft_printf("%s\n", msg);
+	exit(EXIT_FAILURE);
 }
 
 void	process_moves(mlx_key_data_t keydata, void *param)
