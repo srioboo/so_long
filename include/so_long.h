@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/08 11:43:28 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/09 08:43:52 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ t_map			*set_data_count(t_map *map);
 /**
  * @brief Validate map is correct
  * 
- * @details Validate map and, if correct, return height
+ * @details Validate map and, if correct, return TRUE
  * @param map structure with map data
- * @return if correct return height of the map
+ * @return if correct return TRUE and set the map height and width
  */
 int				is_valid_map_shape(t_map *map);
 
@@ -113,7 +113,7 @@ int				is_valid_data(t_map *map);
  * @brief validate map border
  * 
  * @param map structure with map data
- * @return 0 if cant validate, 1 if is valid
+ * @return 0 (FALSE) if cant validate, 1 (TRUE) if is valid
  */
 int				is_valid_map_borders(t_map *map);
 
