@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/09 17:14:30 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:46:26 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
-# include "so_colors.h"
 
 // HD size 1920×1080
 # define HD_WIDTH	1920

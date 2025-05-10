@@ -25,6 +25,16 @@ cmake -B build # build here refers to the outputfolder.
 cmake --build build -j4 # or do make -C build -j4
 ```
 
+## vesion cc 42
+
+Ubuntu clang version 12.0.1-19ubuntu3
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+
+INFO
+https://phoenixnap.com/kb/install-gcc-ubuntu
+
 ## Resources
 
 - https://harm-smits.github.io/42docs/

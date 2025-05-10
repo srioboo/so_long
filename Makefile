@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/05/09 15:36:01 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/11 00:51:41 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBMLX	:= ./MLX42
 LIBFT	:= ./libft
 DEBUG	= -fdiagnostics-color=always -g
 
-HEADERS	= -I ./include -I $(LIBMLX)/include \
+HEADERS	= -I $(LIBMLX)/include \
 		-I $(LIBFT)/src -I $(LIBFT)/get_next_line -I $(LIBFT)/ft_printf
 LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIBSFT	= $(LIBFT)/libft.a
