@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/11 00:46:26 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:18:26 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define FALSE 0
 # define WIN 1
 # define BYE 0
-# define OTHER -1
+# define TEX -1
 
 typedef struct s_map_pos
 {
@@ -102,7 +102,6 @@ t_map			*set_data_count(t_map *map);
  */
 int				is_valid_map_shape(t_map *map);
 
-
 /**
  * @brief Validate map data
  * @param map structure with map data
@@ -117,7 +116,6 @@ int				is_valid_data(t_map *map);
  * @return 0 (FALSE) if cant validate, 1 (TRUE) if is valid
  */
 int				is_valid_map_borders(t_map *map);
-
 
 /* ************************************************************************** */
 /* SCENE                                                                      */
@@ -206,20 +204,21 @@ void			error_msg(char *msg);
 /**
  * @brief get a texture from path
  * 
+ * @param game_data
  * @param relative_path the path to the texture
  * @return a texture
  */
-mlx_texture_t	*get_texture(char *relative_path);
+mlx_texture_t	*get_texture(t_game_data *game_data, char *relative_path);
 
 /**
  * @brief get a image
  * 
- * @param mlx
+ * @param game_data
  * @param relative_path in witch the image can be found
  * 
  * @return and image
  */
-mlx_image_t		*get_image(mlx_t *mlx, char *relative_path);
+mlx_image_t		*get_image(t_game_data *game_data, char *relative_path);
 
 /**
  * @brief Move the player

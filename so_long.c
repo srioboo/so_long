@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/09 17:15:04 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:12:22 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	create_game(char *map_path)
 		mlx = mlx_init((IMG_SIZE * map->map_with),
 				(IMG_SIZE * (map->map_height - 1)), "So long", false);
 		if (!mlx)
-			error_msg("Can't initialize");
+			close_map(map, "Can't initialize");
 		game_data = (t_game_data *)ft_calloc(1, sizeof(t_game_data));
 		game_data->map = map;
 		game_data->mlx = mlx;

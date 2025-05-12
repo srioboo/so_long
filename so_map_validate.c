@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/08 11:31:23 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/12 09:59:01 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,20 @@ int	is_valid_data(t_map *map)
 
 	result = TRUE;
 	if (map->player_y <= 0 || map->player_x <= 0)
-		return (error_msg("No player found"), FALSE);
+		return (close_map(map, "No player found"), FALSE);
 	target = map->lines[map->player_y][map->player_x];
 	fill(map->lines, (t_map_pos){map->map_with - 1, map->map_height - 1, '\0'},
 		target, (t_map_pos){map->player_x, map->player_y, '\0'});
 	if (map->nbr_player != 1)
-		return (error_msg("More than one player is not allowed"), FALSE);
+		return (close_map(map, "More than one player is not allowed"), FALSE);
 	if (map->nbr_fish == 0)
-		return (error_msg("No fish found"), FALSE);
+		return (close_map(map, "No fish found"), FALSE);
 	if (map->nbr_exit != 1)
-		return (error_msg("No exit or exit number greater than one"), FALSE);
+		return (close_map(map, "No exit or exit number greater than one"),
+			FALSE);
 	map = set_data_count(map);
 	if (map->nbr_ocean > 1)
-		return (error_msg("Exit route not found"), FALSE);
+		return (close_map(map, "Exit route not found"), FALSE);
 	return (result);
 }
 

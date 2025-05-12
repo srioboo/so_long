@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:57:33 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/07 12:53:44 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/12 10:40:34 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 t_game_data	*get_objects_images(t_game_data *game_data)
 {
-	game_data->wall_img = get_image(game_data->mlx,
+	game_data->wall_img = get_image(game_data,
 			"./textures/wall_64.png");
-	game_data->ocean_img = get_image(game_data->mlx,
+	game_data->ocean_img = get_image(game_data,
 			"./textures/ocean_64.png");
-	game_data->exit_img = get_image(game_data->mlx,
+	game_data->exit_img = get_image(game_data,
 			"./textures/luffys_flag_64.png");
-	game_data->fish_img = get_image(game_data->mlx,
+	game_data->fish_img = get_image(game_data,
 			"./textures/clown-fish_64.png");
 	return (game_data);
 }

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/09 17:47:05 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:12:06 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	close_game(t_game_data *game_data, int cause)
 	}
 	if (cause == WIN)
 		ft_printf("YOU WIN!!!\n");
+	else if (cause == TEX)
+		ft_printf("Error\nCan't load the texture\n");
 	else
 		ft_printf("You didn't complete the game, hope see you later!\n");
 	exit(EXIT_SUCCESS);

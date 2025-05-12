@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/09 17:14:40 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/12 10:31:24 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ mlx_image_t	*draw_player(t_game_data *game_data)
 	int				result;
 	mlx_texture_t	*texture;
 
-	texture = get_texture("./textures/dolphin_64.png");
+	texture = get_texture(game_data, "./textures/dolphin_64.png");
 	img = mlx_texture_to_image(game_data->mlx, texture);
 	if (!img)
 		error_msg("Can't draw the player");
