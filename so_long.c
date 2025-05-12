@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/12 11:12:22 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:25:31 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int32_t	main(int argc, char **argv)
 		create_game(argv[1]);
 	}
 	else
-		return (EXIT_FAILURE);
+		return (error_msg("To launch: ./so_long path/to/map.ber"),
+			EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
