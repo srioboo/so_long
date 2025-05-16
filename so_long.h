@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/15 22:36:42 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:24:34 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_map
 	int		nbr_fish;
 	int		fish_blocked;
 	int		exit_blocked;
+	int		player_blocked;
 }	t_map;
 
 typedef struct s_game_data
@@ -236,6 +237,7 @@ void			process_moves(mlx_key_data_t keydata, void *param);
 
 void			is_fish_blocked(t_map *map, int y, int x);
 void			is_exit_blocked(t_map *map, int y, int x);
+void			is_player_blocked(t_map *map, int y, int x);
 
 /**
  * @brief draw fish

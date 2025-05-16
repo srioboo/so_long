@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/16 12:02:37 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:28:26 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ int	is_valid_data(t_map *map)
 	if (map->player_y <= 0 || map->player_x <= 0)
 		return (close_map(map, "No player found"), FALSE);
 	target = map->lines[map->player_y][map->player_x];
+	is_player_blocked(map, map->player_y, map->player_x);
+	if (map->player_blocked == TRUE)
+		return (close_map(map, "PLAYER BLOCKED!!"), FALSE);
 	fill(map->lines, (t_map_pos){map->map_with - 1, map->map_height - 1, '\0'},
 		target, (t_map_pos){map->player_x, map->player_y, '\0'});
 	if (map->nbr_player != 1)

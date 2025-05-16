@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/12 10:31:24 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:24:11 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ mlx_image_t	*draw_player(t_game_data *game_data)
 		error_msg("Can't show the player in the window");
 	mlx_delete_texture(texture);
 	return (img);
+}
+
+void	is_player_blocked(t_map *map, int y, int x)
+{
+	if ((map->lines[y + 1][x] == '1') && (map->lines[y - 1][x] == '1')
+		&& (map->lines[y][x - 1] == '1') && (map->lines[y][x + 1] == '1')
+	)
+		map->player_blocked = TRUE;
 }
 
 static int	is_move_posible(t_game_data *game_data, int next_x, int next_y)
