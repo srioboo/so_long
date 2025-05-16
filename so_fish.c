@@ -6,11 +6,19 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:56:29 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/06 17:35:42 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/16 11:40:21 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	is_fish_blocked(t_map *map, int y, int x)
+{
+	if ((map->lines[y + 1][x] == '1') && (map->lines[y - 1][x] == '1')
+		&& (map->lines[y][x - 1] == '1') && (map->lines[y][x + 1] == '1')
+	)
+		map->fish_blocked = TRUE;
+}
 
 void	delete_fish_instance(t_game_data *game_data, int x, int y)
 {

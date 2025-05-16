@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/12 09:59:01 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/16 11:40:53 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ t_map	*set_data_count(t_map *map)
 	int		x;
 	int		y;
 
-	map->nbr_player = 0;
-	map->nbr_exit = 0;
 	map->nbr_ocean = 0;
-	map->nbr_fish = 0;
 	y = 0;
 	while (map->lines[y] != NULL)
 	{
@@ -28,9 +25,15 @@ t_map	*set_data_count(t_map *map)
 		while (map->lines[y][x] != '\0')
 		{
 			if (map->lines[y][x] == 'E')
+			{
+				is_exit_blocked(map, y, x);
 				map->nbr_exit++;
+			}
 			if (map->lines[y][x] == 'C')
+			{
+				is_fish_blocked(map, y, x);
 				map->nbr_fish++;
+			}
 			if (map->lines[y][x] == '0')
 				map->nbr_ocean++;
 			x++;
@@ -74,10 +77,11 @@ int	is_valid_data(t_map *map)
 		target, (t_map_pos){map->player_x, map->player_y, '\0'});
 	if (map->nbr_player != 1)
 		return (close_map(map, "More than one player is not allowed"), FALSE);
-	if (map->nbr_fish == 0)
-		return (close_map(map, "No fish found"), FALSE);
-	if (map->nbr_exit != 1)
-		return (close_map(map, "No exit or exit number greater than one"),
+	if (map->nbr_fish == 0 || map->fish_blocked == TRUE)
+		return (close_map(map, "No fish found or some fish are blocked"),
+			FALSE);
+	if (map->nbr_exit != 1 || map->exit_blocked == TRUE)
+		return (close_map(map, "No exit, exit blocked or more than one exit"),
 			FALSE);
 	map = set_data_count(map);
 	if (map->nbr_ocean > 1)

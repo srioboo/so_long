@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/09 17:48:00 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/16 11:41:06 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ static t_map	*process_map(t_map *map)
 		return (free_map_lines(map->lines), map);
 	map->player_x = -1;
 	map->player_y = -1;
+	map->nbr_player = 0;
+	map->nbr_exit = 0;
+	map->nbr_fish = 0;
+	map->fish_blocked = FALSE;
+	map->exit_blocked = FALSE;
 	map = set_data_count(map);
 	map = fill_map_data(map);
 	return (map);
