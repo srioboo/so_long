@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/16 11:40:53 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:02:37 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ t_map	*set_data_count(t_map *map)
 	int		y;
 
 	map->nbr_ocean = 0;
-	y = 0;
-	while (map->lines[y] != NULL)
+	y = -1;
+	while (map->lines[++y] != NULL)
 	{
-		x = 0;
-		while (map->lines[y][x] != '\0')
+		x = -1;
+		while (map->lines[y][++x] != '\0')
 		{
 			if (map->lines[y][x] == 'E')
 			{
@@ -36,9 +36,7 @@ t_map	*set_data_count(t_map *map)
 			}
 			if (map->lines[y][x] == '0')
 				map->nbr_ocean++;
-			x++;
 		}
-		y++;
 	}
 	return (map);
 }
