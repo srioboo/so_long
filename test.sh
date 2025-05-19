@@ -12,6 +12,7 @@ function border_error()
 	./so_long maps/error-border-3.ber
 	printf "\nBorder: maps/error-border-4.ber\n"
 	./so_long maps/error-border-4.ber
+	printf "\n===================================\n";
 }
 
 function exit_error()
@@ -22,6 +23,7 @@ function exit_error()
 	./so_long maps/error-no-exit.ber
 	printf "\nExit: maps/error-exit-blocked-1.ber\n"
 	./so_long maps/error-exit-blocked-1.ber
+	printf "\n===================================\n";
 }
 
 function fish_error()
@@ -32,6 +34,7 @@ function fish_error()
 	./so_long maps/error-fish-blocked-2.ber
 	printf "\nFish: maps/error-no-fish.ber\n"
 	./so_long maps/error-no-fish.ber
+	printf "\n===================================\n";
 }
 
 function player_error()
@@ -42,12 +45,14 @@ function player_error()
 	./so_long maps/error-player-blocked.ber
 	printf "\nPlayermaps/error-two-players.ber\n"
 	./so_long maps/error-two-players.ber
+	printf "\n===================================\n";
 }
 
 function shape_error()
 {
 	printf "\nShape: maps/error-no-rectangle.ber\n"
 	./so_long maps/error-no-rectangle.ber
+	printf "\n===================================\n";
 }
 
 function too_small_error()
@@ -58,10 +63,15 @@ function too_small_error()
 	./so_long maps/error-too-narrow.ber
 	printf "\nEmpty: maps/error-too-short.ber\n"
 	./so_long maps/error-too-short.ber
+	printf "\n===================================\n";
 }
 
-# printf "\nExtension: maps/map.ber.wrong\n"
-# ./so_long maps/map.ber.wrong
+function extension_error()
+{
+	printf "\nExtension: maps/map.ber.wrong\n"
+	./so_long maps/map.ber.wrong
+	printf "\n===================================\n";
+}
 
 border_error
 exit_error
@@ -69,3 +79,4 @@ fish_error
 player_error
 shape_error
 too_small_error
+# extension_error
