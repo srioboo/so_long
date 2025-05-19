@@ -70,6 +70,10 @@ function extension_error()
 {
 	printf "\nExtension: maps/map.ber.wrong\n"
 	./so_long maps/map.ber.wrong
+	printf "\nExtension: maps/map.ger\n"
+	./so_long maps/map.ger
+	printf "\nExtension: maps/map.is_correct.ber\n"
+	./so_long maps/map.is_correct.ber
 	printf "\n===================================\n";
 }
 

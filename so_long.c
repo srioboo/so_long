@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:07:39 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/12 11:25:31 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/20 09:00:56 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int32_t	main(int argc, char **argv)
 			EXIT_FAILURE);
 	if (argc == 2)
 	{
-		if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL)
+		if (is_valid_extension(argv[1]) == FALSE)
 			return (error_msg("Map extension not valid"), EXIT_FAILURE);
 		create_game(argv[1]);
 	}

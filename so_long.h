@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/19 18:39:11 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:17:35 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,26 @@ t_game_data		*get_objects_images(t_game_data *game_data);
 t_map			*get_map(char *game_map);
 
 /* ************************************************************************** */
+/* MAP UTILS                                                                  */
+/* ************************************************************************** */
+
+/**
+ * @brief Count elements in the maps and set into map struct
+ * 
+ * @details uses the lines setted previous and count all kinds of elements
+ * to be able to test their quantity
+ * @param map to fill data with lines include
+ * @return the map
+ */
+t_map			*set_data_count(t_map *map);
+
+/**
+ * @brief fill maps to do some validations
+ */
+void			fill(char **tab, t_map_pos map_size, char target,
+					t_map_pos player_pos);
+
+/* ************************************************************************** */
 /* OBJECTS                                                                    */
 /* ************************************************************************** */
 
@@ -287,23 +307,24 @@ void			process_moves(mlx_key_data_t keydata, void *param);
 /* VALIDATE BLOCKED                                                           */
 /* ************************************************************************** */
 
+/**
+ * @brief validate if fish are blocked
+ */
 void			is_fish_blocked(t_map *map, int y, int x);
+
+/**
+ * @brief validate if exit is blocked
+ */
 void			is_exit_blocked(t_map *map, int y, int x);
+
+/**
+ * @brief validate if player is blocked
+ */
 void			is_player_blocked(t_map *map, int y, int x);
 
 /* ************************************************************************** */
 /* VALIDATE MAP                                                               */
 /* ************************************************************************** */
-
-/**
- * @brief Count elements in the maps and set into map struct
- * 
- * @details uses the lines setted previous and count all kinds of elements
- * to be able to test their quantity
- * @param map to fill data with lines include
- * @return the map
- */
-t_map			*set_data_count(t_map *map);
 
 /**
  * @brief Validate map is correct
@@ -328,5 +349,10 @@ int				is_valid_data(t_map *map);
  * @return 0 (FALSE) if cant validate, 1 (TRUE) if is valid
  */
 int				is_valid_map_borders(t_map *map);
+
+/**
+ * @brief validate the map extension
+ */
+int				is_valid_extension(const char *file_name);
 
 #endif
