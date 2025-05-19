@@ -14,11 +14,13 @@ printf "\nExit: maps/error-cant-exit.ber\n"
 ./so_long maps/error-cant-exit.ber
 printf "\nExit: maps/error-no-exit.ber\n"
 ./so_long maps/error-no-exit.ber
-printf "\nExit: maps/error-exit-blocked.ber\n"
-./so_long maps/error-exit-blocked.ber
+printf "\nExit: maps/error-exit-blocked-1.ber\n"
+./so_long maps/error-exit-blocked-1.ber
 
-printf "\nFish: maps/error-fish-blocked.ber\n"
-./so_long maps/error-fish-blocked.ber
+printf "\nFish: maps/error-fish-blocked-1.ber\n"
+./so_long maps/error-fish-blocked-1.ber
+printf "\nFish: maps/error-fish-blocked-2.ber\n"
+./so_long maps/error-fish-blocked-2.ber
 printf "\nFish: maps/error-no-fish.ber\n"
 ./so_long maps/error-no-fish.ber
 
