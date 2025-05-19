@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_mngmt.c                                         :+:      :+:    :+:   */
+/*   so_manage_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/12 11:12:06 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/19 18:23:07 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,6 @@ void	free_map_lines(char **lines)
 		i++;
 	}
 	free(lines);
-}
-
-void	delete_images(t_game_data *game_data)
-{
-	if (game_data->ocean_img)
-		mlx_delete_image(game_data->mlx, game_data->ocean_img);
-	if (game_data->wall_img)
-		mlx_delete_image(game_data->mlx, game_data->wall_img);
-	if (game_data->fish_img)
-		mlx_delete_image(game_data->mlx, game_data->fish_img);
-	if (game_data->exit_img)
-		mlx_delete_image(game_data->mlx, game_data->exit_img);
-	if (game_data->player_img)
-		mlx_delete_image(game_data->mlx, game_data->player_img);
 }
 
 void	close_game(t_game_data *game_data, int cause)

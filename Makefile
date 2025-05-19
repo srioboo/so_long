@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/05/19 17:51:10 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/19 18:22:38 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,12 @@ LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIBSFT	= $(LIBFT)/libft.a
 SRCS	= so_long.c \
 		so_map.c \
-		so_map_validate.c \
+		so_validate_maps.c \
+		so_validate_blocked.c \
 		so_scene.c \
 		so_player.c \
-		so_mngmt.c \
+		so_manage_game.c \
+		so_manage_images.c \
 		so_utils.c \
 		so_objects.c \
 		so_fish.c

@@ -6,38 +6,11 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/16 12:24:11 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/19 18:42:14 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-mlx_image_t	*draw_player(t_game_data *game_data)
-{
-	mlx_image_t		*img;
-	int				result;
-	mlx_texture_t	*texture;
-
-	texture = get_texture(game_data, "./textures/dolphin_64.png");
-	img = mlx_texture_to_image(game_data->mlx, texture);
-	if (!img)
-		error_msg("Can't draw the player");
-	result = mlx_image_to_window(game_data->mlx, img,
-			IMG_SIZE * (game_data->map->player_x),
-			IMG_SIZE * (game_data->map->player_y));
-	if (result < 0)
-		error_msg("Can't show the player in the window");
-	mlx_delete_texture(texture);
-	return (img);
-}
-
-void	is_player_blocked(t_map *map, int y, int x)
-{
-	if ((map->lines[y + 1][x] == '1') && (map->lines[y - 1][x] == '1')
-		&& (map->lines[y][x - 1] == '1') && (map->lines[y][x + 1] == '1')
-	)
-		map->player_blocked = TRUE;
-}
 
 static int	is_move_posible(t_game_data *game_data, int next_x, int next_y)
 {
@@ -79,4 +52,23 @@ void	move_player(t_game_data *game_data,
 		game_data->moves++;
 		ft_printf("move: %d\n", game_data->moves);
 	}
+}
+
+mlx_image_t	*draw_player(t_game_data *game_data)
+{
+	mlx_image_t		*img;
+	int				result;
+	mlx_texture_t	*texture;
+
+	texture = get_texture(game_data, "./textures/dolphin_64.png");
+	img = mlx_texture_to_image(game_data->mlx, texture);
+	if (!img)
+		error_msg("Can't draw the player");
+	result = mlx_image_to_window(game_data->mlx, img,
+			IMG_SIZE * (game_data->map->player_x),
+			IMG_SIZE * (game_data->map->player_y));
+	if (result < 0)
+		error_msg("Can't show the player in the window");
+	mlx_delete_texture(texture);
+	return (img);
 }

@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/16 12:24:34 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/19 18:39:11 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,89 +83,33 @@ typedef struct s_game_data
 }	t_game_data;
 
 /* ************************************************************************** */
-/* MAP VALIDATE                                                               */
+/* FISH                                                                       */
 /* ************************************************************************** */
 
 /**
- * @brief Count elements in the maps and set into map struct
+ * @brief draw fish
  * 
- * @details uses the lines setted previous and count all kinds of elements
- * to be able to test their quantity
- * @param map to fill data with lines include
- * @return the map
+ * @param game_data
+ * @param type 1, 0, E, C, P
+ * @param x position
+ * @param y position
+ * 
+ * @return 1 if is draw 0 if wasn't posible for son error
  */
-t_map			*set_data_count(t_map *map);
+int				draw_fish(t_game_data *game_data, char type, int x, int y);
 
 /**
- * @brief Validate map is correct
+ * @brief delete fish
  * 
- * @details Validate map and, if correct, return TRUE
- * @param map structure with map data
- * @return if correct return TRUE and set the map height and width
- */
-int				is_valid_map_shape(t_map *map);
-
-/**
- * @brief Validate map data
- * @param map structure with map data
- * @return 0 if cant validate, 1 if data are ok
- */
-int				is_valid_data(t_map *map);
-
-/**
- * @brief validate map border
+ * @param game_data
+ * @param x position
+ * @param y position
  * 
- * @param map structure with map data
- * @return 0 (FALSE) if cant validate, 1 (TRUE) if is valid
  */
-int				is_valid_map_borders(t_map *map);
+void			delete_fish_instance(t_game_data *game_data, int x, int y);
 
 /* ************************************************************************** */
-/* SCENE                                                                      */
-/* ************************************************************************** */
-
-/**
- * @brief Get the map
- * 
- * @param game_map struct with game data
- * @return the map struct with player data
- */
-t_map			*get_map(char *game_map);
-
-/**
- * @brief Draw the scene
- * 
- * @details Draw the scene with the images
- * @param game_map struct with game data
- * @return 0 or 1 if the scene has or not errors
- */
-int				draw_scene(t_game_data *game_data);
-
-/* ************************************************************************** */
-/* PLAYER                                                                     */
-/* ************************************************************************** */
-
-/**
- * @brief Draw the player
- * 
- * @details Draw the player with the images
- * @param game_map struct with game data
- * @return the player img
- */
-mlx_image_t		*draw_player(t_game_data *game_data);
-
-/**
- * @brief Move the player
- * 
- * @param game_map struct with game data
- * @param steps_x steps moving in x
- * @param steps_y steps moving in y
- */
-void			move_player(t_game_data *game_data,
-					int steps_x, int steps_y);
-
-/* ************************************************************************** */
-/* GAME MANAGEMENT                                                            */
+/* MANAGE GAME                                                                */
 /* ************************************************************************** */
 
 /**
@@ -191,18 +135,8 @@ void			close_map(t_map *map, char *msg);
 void			free_map_lines(char **lines);
 
 /* ************************************************************************** */
-/* UTILS                                                                      */
+/* MANAGE IMAGES                                                              */
 /* ************************************************************************** */
-
-/**
- * @brief printf map for test purposes
- */
-void			ft_print_map(char **map_lines);
-
-/**
- * @brief Error management
- */
-void			error_msg(char *msg);
 
 /**
  * @brief get a texture from path
@@ -224,42 +158,36 @@ mlx_texture_t	*get_texture(t_game_data *game_data, char *relative_path);
 mlx_image_t		*get_image(t_game_data *game_data, char *relative_path);
 
 /**
- * @brief Move the player
+ * @brief delete images
  * 
- * @param keydata with
- * @param param, generally game data
+ * @param game_data
  */
-void			process_moves(mlx_key_data_t keydata, void *param);
+void			delete_images(t_game_data *game_data);
+
+/**
+ * @brief get all images
+ * 
+ * @param game_data
+ * 
+ * @return game_data
+ */
+t_game_data		*get_objects_images(t_game_data *game_data);
+
+/* ************************************************************************** */
+/* MAP                                                                        */
+/* ************************************************************************** */
+
+/**
+ * @brief Get the map
+ * 
+ * @param game_map struct with game data
+ * @return the map struct with player data
+ */
+t_map			*get_map(char *game_map);
 
 /* ************************************************************************** */
 /* OBJECTS                                                                    */
 /* ************************************************************************** */
-
-void			is_fish_blocked(t_map *map, int y, int x);
-void			is_exit_blocked(t_map *map, int y, int x);
-void			is_player_blocked(t_map *map, int y, int x);
-
-/**
- * @brief draw fish
- * 
- * @param game_data
- * @param type 1, 0, E, C, P
- * @param x position
- * @param y position
- * 
- * @return 1 if is draw 0 if wasn't posible for son error
- */
-int				draw_fish(t_game_data *game_data, char type, int x, int y);
-
-/**
- * @brief delete fish
- * 
- * @param game_data
- * @param x position
- * @param y position
- * 
- */
-void			delete_fish_instance(t_game_data *game_data, int x, int y);
 
 /**
  * @brief draw wall
@@ -297,13 +225,108 @@ int				draw_ocean(t_game_data *game_data, char type, int x, int y);
  */
 int				draw_exit(t_game_data *game_data, char type, int x, int y);
 
+/* ************************************************************************** */
+/* PLAYER                                                                     */
+/* ************************************************************************** */
+
 /**
- * @brief get all images
+ * @brief Draw the player
  * 
- * @param game_data
- * 
- * @return game_data
+ * @details Draw the player with the images
+ * @param game_map struct with game data
+ * @return the player img
  */
-t_game_data		*get_objects_images(t_game_data *game_data);
+mlx_image_t		*draw_player(t_game_data *game_data);
+
+/**
+ * @brief Move the player
+ * 
+ * @param game_map struct with game data
+ * @param steps_x steps moving in x
+ * @param steps_y steps moving in y
+ */
+void			move_player(t_game_data *game_data,
+					int steps_x, int steps_y);
+
+/* ************************************************************************** */
+/* SCENE                                                                      */
+/* ************************************************************************** */
+
+/**
+ * @brief Draw the scene
+ * 
+ * @details Draw the scene with the images
+ * @param game_map struct with game data
+ * @return 0 or 1 if the scene has or not errors
+ */
+int				draw_scene(t_game_data *game_data);
+
+/* ************************************************************************** */
+/* UTILS                                                                      */
+/* ************************************************************************** */
+
+/**
+ * @brief printf map for test purposes
+ */
+void			ft_print_map(char **map_lines);
+
+/**
+ * @brief Error management
+ */
+void			error_msg(char *msg);
+
+/**
+ * @brief Move the player
+ * 
+ * @param keydata with
+ * @param param, generally game data
+ */
+void			process_moves(mlx_key_data_t keydata, void *param);
+
+/* ************************************************************************** */
+/* VALIDATE BLOCKED                                                           */
+/* ************************************************************************** */
+
+void			is_fish_blocked(t_map *map, int y, int x);
+void			is_exit_blocked(t_map *map, int y, int x);
+void			is_player_blocked(t_map *map, int y, int x);
+
+/* ************************************************************************** */
+/* VALIDATE MAP                                                               */
+/* ************************************************************************** */
+
+/**
+ * @brief Count elements in the maps and set into map struct
+ * 
+ * @details uses the lines setted previous and count all kinds of elements
+ * to be able to test their quantity
+ * @param map to fill data with lines include
+ * @return the map
+ */
+t_map			*set_data_count(t_map *map);
+
+/**
+ * @brief Validate map is correct
+ * 
+ * @details Validate map and, if correct, return TRUE
+ * @param map structure with map data
+ * @return if correct return TRUE and set the map height and width
+ */
+int				is_valid_map_shape(t_map *map);
+
+/**
+ * @brief Validate map data
+ * @param map structure with map data
+ * @return 0 if cant validate, 1 if data are ok
+ */
+int				is_valid_data(t_map *map);
+
+/**
+ * @brief validate map border
+ * 
+ * @param map structure with map data
+ * @return 0 (FALSE) if cant validate, 1 (TRUE) if is valid
+ */
+int				is_valid_map_borders(t_map *map);
 
 #endif
