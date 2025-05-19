@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/16 12:29:38 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/19 21:54:01 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ t_map	*get_map(char *map_path)
 	map = map_init(map);
 	if (!map)
 		return (close_map(map, "Map path not valid"), NULL);
+	if (map->map_height <= 3 || map->map_with < 3)
+		return (close_map(map, "Map is null, too short or too narrow"), NULL);
 	map = load_map(map);
 	if (is_valid_map_shape(map) == FALSE)
 		return (close_map(map, "Map is not a rectangle"), NULL);
