@@ -117,3 +117,10 @@ KO ==2733011==    still reachable: 7,494,024 bytes in 11,653 blocks (3106)
 ==2733011== For lists of detected and suppressed errors, rerun with: -s
 ==2733011== ERROR SUMMARY: 199 errors from 199 contexts (suppressed: 0 from 0)
 
+# test exit
+
+to test exit message use, this show the exit status of the last command launched
+
+```shell
+echo $?
+```
