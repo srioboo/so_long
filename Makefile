@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/05/11 00:51:41 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/19 17:51:10 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ fclean: clean
 re: fclean all
 
 libft-clean:
-	@make -C ./libft -s fclean
+	@make -C ./libft -s full-clean
 
 full-clean: libft-clean fclean
 
