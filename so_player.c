@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/19 18:42:14 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:45:48 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	move_player(t_game_data *game_data,
 	pixels.y = game_data->player_img->instances[0].y;
 	next.x = (pixels.x + (steps_x * IMG_SIZE)) / IMG_SIZE;
 	next.y = (pixels.y + (steps_y * IMG_SIZE)) / IMG_SIZE;
-	if (is_move_posible(game_data, next.x, next.y) > 0 && game_data->game_start)
+	if (is_move_posible(game_data, next.x, next.y) > 0
+		&& game_data->game_start == TRUE)
 	{
 		game_data->player_img->instances[0].x += (steps_x * IMG_SIZE);
 		game_data->player_img->instances[0].y += (steps_y * IMG_SIZE);
