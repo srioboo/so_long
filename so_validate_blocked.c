@@ -6,32 +6,32 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:57:33 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/20 09:07:59 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:43:18 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	is_exit_blocked(t_map *map, int y, int x)
+static int	is_sourrounded(t_map *map, int y, int x)
 {
 	if ((map->lines[y + 1][x] == '1') && (map->lines[y - 1][x] == '1')
 		&& (map->lines[y][x - 1] == '1') && (map->lines[y][x + 1] == '1')
 	)
-		map->exit_blocked = TRUE;
+		return (TRUE);
+	return (FALSE);
+}
+
+void	is_exit_blocked(t_map *map, int y, int x)
+{
+	map->exit_blocked = is_sourrounded (map, y, x);
 }
 
 void	is_player_blocked(t_map *map, int y, int x)
 {
-	if ((map->lines[y + 1][x] == '1') && (map->lines[y - 1][x] == '1')
-		&& (map->lines[y][x - 1] == '1') && (map->lines[y][x + 1] == '1')
-	)
-		map->player_blocked = TRUE;
+	map->player_blocked = is_sourrounded (map, y, x);
 }
 
 void	is_fish_blocked(t_map *map, int y, int x)
 {
-	if ((map->lines[y + 1][x] == '1') && (map->lines[y - 1][x] == '1')
-		&& (map->lines[y][x - 1] == '1') && (map->lines[y][x + 1] == '1')
-	)
-		map->fish_blocked = TRUE;
+	map->fish_blocked = is_sourrounded (map, y, x);
 }
