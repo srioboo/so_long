@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:57:33 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/20 10:43:18 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:59:27 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,16 @@ static int	is_sourrounded(t_map *map, int y, int x)
 	return (FALSE);
 }
 
-void	is_exit_blocked(t_map *map, int y, int x)
+int	is_exit_route_blocked(t_map *map, char **map_content)
 {
-	map->exit_blocked = is_sourrounded (map, y, x);
+	map = data_count(map, map_content);
+	if (map->nbr_ocean > 0 || map->nbr_fish > 0 || map->nbr_exit > 0)
+		return (TRUE);
+	return (FALSE);
 }
 
-void	is_player_blocked(t_map *map, int y, int x)
+int	is_player_blocked(t_map *map, int y, int x)
 {
 	map->player_blocked = is_sourrounded (map, y, x);
-}
-
-void	is_fish_blocked(t_map *map, int y, int x)
-{
-	map->fish_blocked = is_sourrounded (map, y, x);
+	return (map->player_blocked);
 }

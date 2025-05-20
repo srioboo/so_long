@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/20 10:17:35 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:58:36 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,16 @@ t_map			*set_data_count(t_map *map);
 void			fill(char **tab, t_map_pos map_size, char target,
 					t_map_pos player_pos);
 
+/**
+ * @brief duplicate map structure
+ */
+char			**ft_dupmap(t_map *map);
+
+/**
+ * @brief count objects given in a map_content and store it in map strucutre
+ */
+t_map			*data_count(t_map *map, char **map_content);
+
 /* ************************************************************************** */
 /* OBJECTS                                                                    */
 /* ************************************************************************** */
@@ -310,17 +320,17 @@ void			process_moves(mlx_key_data_t keydata, void *param);
 /**
  * @brief validate if fish are blocked
  */
-void			is_fish_blocked(t_map *map, int y, int x);
+// void			is_fish_blocked(t_map *map, int y, int x);
 
 /**
- * @brief validate if exit is blocked
+ * @brief validate if exit route is blocked
  */
-void			is_exit_blocked(t_map *map, int y, int x);
+int				is_exit_route_blocked(t_map *map, char **map_content);
 
 /**
  * @brief validate if player is blocked
  */
-void			is_player_blocked(t_map *map, int y, int x);
+int				is_player_blocked(t_map *map, int y, int x);
 
 /* ************************************************************************** */
 /* VALIDATE MAP                                                               */

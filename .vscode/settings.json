@@ -22,10 +22,7 @@
 	"files.associations": {
 		"*.test": "makefile",
 		".editorconfig": "c",
-		"so_long.h": "c",
-		"mlx42.h": "c",
-		"get_next_line.h": "c",
-		"so_colors.h": "c"
+		"so_long.h": "c"
 	},
 	"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
 	"makefile.launchConfigurations": [
