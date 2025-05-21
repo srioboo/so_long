@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/19 23:46:03 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:32:20 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,17 @@ void	process_moves(mlx_key_data_t keydata, void *param)
 		move_player(game_data, 0, 1);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		close_game(game_data, BYE);
+}
+
+void	show_moves(int type, t_game_data *game_data)
+{
+	if (type == 0)
+		ft_printf("move: %d\n", game_data->moves);
+	else if (type == 1)
+		mlx_put_string(game_data->mlx, ft_itoa(game_data->moves), 10, 10);
+	else
+	{
+		ft_printf("move: %d\n", game_data->moves);
+		mlx_put_string(game_data->mlx, ft_itoa(game_data->moves), 10, 10);
+	}
 }
