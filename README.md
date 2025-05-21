@@ -16,6 +16,7 @@
 - **sudo showkey -k** show pressed key (-a for ascii)
 - **convert svg to png**: mogrify -format png *.svg or mogrify -format xpm *.svg
 - **scale image**: convert small.xpm -scale 16x16 bigger.xpm
+- **mirrow image**: convert -flop input.png output.png
 
 ## compile library MLX42
 

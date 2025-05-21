@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/21 15:04:07 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:41:49 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	is_valid_data(t_map *map)
 	if (is_exit_route_blocked(map, aux_map_content) == TRUE)
 	{
 		free_map_lines(aux_map_content);
-		return (close_map(map, "Exit route not found"), FALSE);
+		return (close_map(map,
+				"Exit route not found or game not playable"), FALSE);
 	}
 	free_map_lines(aux_map_content);
 	return (result);
