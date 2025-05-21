@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/21 12:58:36 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:25:42 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,11 +316,6 @@ void			process_moves(mlx_key_data_t keydata, void *param);
 /* ************************************************************************** */
 /* VALIDATE BLOCKED                                                           */
 /* ************************************************************************** */
-
-/**
- * @brief validate if fish are blocked
- */
-// void			is_fish_blocked(t_map *map, int y, int x);
 
 /**
  * @brief validate if exit route is blocked

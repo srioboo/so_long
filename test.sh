@@ -4,8 +4,8 @@
 
 clear && make $1
 
-# EXEC="valgrind --leak-check=full ./so_long"
-EXEC="./so_long"
+EXEC="valgrind --leak-check=summary ./so_long"
+# EXEC="./so_long"
 GREEN="\033[1;32m"
 NC="\033[m"
 
