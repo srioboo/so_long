@@ -8,8 +8,14 @@
 	sudo apt install libxext-dev libx11-dev
 	```
 
-- go to main directorio and do 'make'
-- 'make test' for testing
+- go to main directory and do 'make'
+- 'make test' for testing with default map
+
+To ejecute another maps, do make and
+
+```shell
+./so_long maps/choose_one_map.ber
+```
 
 # utils
 
@@ -25,51 +31,6 @@ cd MLX42
 cmake -B build # build here refers to the outputfolder.
 cmake --build build -j4 # or do make -C build -j4
 ```
-
-## vesion cc 42
-
-Ubuntu clang version 12.0.1-19ubuntu3
-Target: x86_64-pc-linux-gnu
-Thread model: posix
-InstalledDir: /usr/bin
-
-INFO
-https://phoenixnap.com/kb/install-gcc-ubuntu
-
-## Resources
-
-- https://harm-smits.github.io/42docs/
-- https://iconoir.com/
-- https://github.com/codam-coding-college/MLX42
-- https://itch.io/
-- https://convertio.co/
-- https://www.freepik.com/
-
-
-## TODO
-
-- [x] program parameter is ber file
-- [x] recolect all object and go out
-- [] shorter route?
-- [x] move with W, A, S y D and move in this directions
-- [x] player can't enter walls 
-- [x] show real moves count
-
-- [] can clean change windows, minimize
-- [x] ESC close windows clean
-- [x] close with X clean
-- [] clean exit?
-- [x] use images
-
-- [x] map need have
-	- [x] an exit
-	- [x] an object at least
-	- [x] an initial position (player)
-- [x] map must be rectagular
-- [] map must be rounded by walls, if not, return error
-- [x] must control a valid exit route
-- [x] process each correct map
-- [x] In case of error must return "Error\n" and a message
 
 ## suppresion files
 
@@ -96,8 +57,17 @@ Use the following regex to clean:
 ==.*$\n
 ```
 
+# test exit message
+
+to test exit message use, this show the exit status of the last command launched
+
+```shell
+echo $?
+```
+
 ## cosiderations for leaks
 
+```shell
 OK ==2733011==    definitely lost: 0 bytes in 1 blocks
 OK ==2733011==    indirectly lost: 0 bytes in 0 blocks
 KO ==2733011==      possibly lost: 92,991 bytes in 275 blocks (must be 0 blocks)
@@ -117,11 +87,23 @@ KO ==2733011==    still reachable: 7,494,024 bytes in 11,653 blocks (3106)
 ==2733011== 
 ==2733011== For lists of detected and suppressed errors, rerun with: -s
 ==2733011== ERROR SUMMARY: 199 errors from 199 contexts (suppressed: 0 from 0)
-
-# test exit
-
-to test exit message use, this show the exit status of the last command launched
-
-```shell
-echo $?
 ```
+
+## version cc 42
+
+Ubuntu clang version 12.0.1-19ubuntu3
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+
+INFO
+https://phoenixnap.com/kb/install-gcc-ubuntu
+
+## Resources
+
+- https://harm-smits.github.io/42docs/
+- https://iconoir.com/
+- https://github.com/codam-coding-college/MLX42
+- https://itch.io/
+- https://convertio.co/
+- https://www.freepik.com/
