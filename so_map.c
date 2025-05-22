@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/21 15:54:37 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:26:21 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ t_map	*get_map(char *map_path)
 	map = load_map(map);
 	if (is_valid_map_shape(map) == FALSE)
 		return (close_map(map,
-				"Map is not a rectangle or do no end in empty line"), NULL);
+				"Map is not a rectangle or do not end in empty line"), NULL);
 	else if (is_valid_map_borders(map) == FALSE)
 		return (close_map(map, "Map is not surrounded by walls"), NULL);
 	map = process_map(map);
