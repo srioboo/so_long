@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/22 10:14:13 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:48:27 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,6 +321,14 @@ void			process_moves(mlx_key_data_t keydata, void *param);
  * @param game_data, game data to draw
  */
 void			show_moves(int type, t_game_data *game_data);
+
+/**
+ * @brief test if the char is allowed in the map
+ * 
+ * @param c type to test
+ * @return TRUE if is allowed FALSE if not
+ */
+int				is_char_allowed(char c);
 
 /* ************************************************************************** */
 /* VALIDATE BLOCKED                                                           */

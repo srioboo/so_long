@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/21 16:32:20 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:55:17 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,11 @@ void	show_moves(int type, t_game_data *game_data)
 		ft_printf("move: %d\n", game_data->moves);
 		mlx_put_string(game_data->mlx, ft_itoa(game_data->moves), 10, 10);
 	}
+}
+
+int	is_char_allowed(char c)
+{
+	if (c == '1' || c == '0' || c == 'E' || c == 'P' || c == 'C' || c == '\n')
+		return (TRUE);
+	return (FALSE);
 }

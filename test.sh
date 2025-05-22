@@ -88,11 +88,11 @@ function extension_error()
 	printf "\n===================================\n";
 }
 
-# border_error
-# player_error
-# shape_error
-# too_small_error
-# extension_error
+border_error
+player_error
+shape_error
+too_small_error
+extension_error
 wrong_char_error
 exit_error
 fish_error
