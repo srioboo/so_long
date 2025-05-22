@@ -6,7 +6,7 @@
 #    By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 08:26:13 by srioboo-          #+#    #+#              #
-#    Updated: 2025/05/20 09:03:19 by srioboo-         ###   ########.fr        #
+#    Updated: 2025/05/22 12:56:23 by srioboo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,13 +60,13 @@ clean:
 	@rm -rf $(OBJS)
 	@rm -rf $(LIBMLX)/build
 
-fclean: clean
+fclean: libft-clean clean
 	@rm -rf $(NAME)
 
 re: fclean all
 
 libft-clean:
-	@make -C ./libft -s full-clean
+	@make -C ./libft -s fclean full-clean
 
 full-clean: libft-clean fclean
 
