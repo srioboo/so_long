@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/21 09:59:38 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/22 10:13:59 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ t_map	*data_count(t_map *map, char **map_content)
 				map->nbr_fish++;
 			if (map_content[y][x] == '0')
 				map->nbr_ocean++;
+			if (map_content[y][x] != '0' || map_content[y][x] != 'E'
+				|| map_content[y][x] != '1' || map_content[y][x] != 'C'
+				|| map_content[y][x] != 'P')
+				map->nbr_wrong++;
 		}
 	}
 	return (map);

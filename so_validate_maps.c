@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:27:53 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/21 15:41:49 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/22 10:43:35 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	is_amount_object_correct(t_map *map)
 {
+	if (map->nbr_wrong > 0)
+		return (close_map(map, "Items not allowed found in the map"), FALSE);
 	if (map->nbr_player != 1)
 		return (close_map(map, "More than one player is not allowed"), FALSE);
 	if (map->nbr_fish == 0)

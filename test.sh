@@ -4,8 +4,8 @@
 
 clear && make $1
 
-EXEC="valgrind --leak-check=summary ./so_long"
-# EXEC="./so_long"
+# EXEC="valgrind --leak-check=summary ./so_long"
+EXEC="./so_long"
 GREEN="\033[1;32m"
 NC="\033[m"
 
@@ -57,6 +57,16 @@ function shape_error()
 	printf "\n===================================\n";
 }
 
+function wrong_char_error()
+{
+	for file in $(ls maps/error-wrong-char*.ber)
+	do
+		printf "\n${GREEN}Wrong char:${NC} $file\n"
+		${EXEC} $file; echo $?
+	done
+	printf "\n===================================\n";
+}
+
 function too_small_error()
 {
 	for file in $(ls maps/error-too*.ber)
@@ -78,10 +88,11 @@ function extension_error()
 	printf "\n===================================\n";
 }
 
-border_error
-player_error
-shape_error
-too_small_error
-extension_error
+# border_error
+# player_error
+# shape_error
+# too_small_error
+# extension_error
+wrong_char_error
 exit_error
 fish_error

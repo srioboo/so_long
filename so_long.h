@@ -6,7 +6,7 @@
 /*   By: srioboo- <srioboo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:05:25 by srioboo-          #+#    #+#             */
-/*   Updated: 2025/05/21 16:32:57 by srioboo-         ###   ########.fr       */
+/*   Updated: 2025/05/22 10:14:13 by srioboo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_map
 	int		nbr_exit;
 	int		nbr_ocean;
 	int		nbr_fish;
+	int		nbr_wrong;
 	int		fish_blocked;
 	int		exit_blocked;
 	int		player_blocked;
